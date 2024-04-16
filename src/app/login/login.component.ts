@@ -18,11 +18,13 @@ export class LoginComponent {
     if (this.username != "" && this.name != "") {
       this.stomp.subscribe(`/user/${this.username}/queue/messages`);
       this.stomp.subscribe(`/user/public`);
-      this.stomp.sendRequest(
-        '/app/user.addUser',
-        JSON.stringify({username:this.username,fullname:this.name,status:'ONLINE'}));
-
+      sessionStorage.setItem(
+        "username",
+        this.username
+      );
     }
     this.isConnected=this.stomp.stompClient.connected;
   }
+
+
 }

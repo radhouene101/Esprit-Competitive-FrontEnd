@@ -6,7 +6,7 @@ import * as Stomp from 'stompjs';
   providedIn: 'root'
 })
 export class StompService {
-  baseUrl:string="http://localhost:8080/ws"
+  baseUrl:string="http://localhost:8083/ws"
   socket=new SockJS(this.baseUrl);
   stompClient=Stomp.over(this.socket);
   constructor() { }
@@ -24,6 +24,7 @@ export class StompService {
     this.stompClient.subscribe(topic,()=>{
       callback();
     })
+
   }
 
   sendRequest(url:string,data:any){
