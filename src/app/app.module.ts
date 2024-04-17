@@ -12,12 +12,19 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const routes:Routes=[
+/*const routes:Routes=[
 
   {
     path:'home',
-    component:MyFirstCompComponent
+    component:(
+      () => {
+        return sessionStorage.getItem("userToken") ?
+          MyFirstCompComponent
+          : NotFoundComponent
+      }
+    )()
   },
   {
     path:'signup',
@@ -34,11 +41,12 @@ const routes:Routes=[
   {
     path:'',
     component:LoginComponent
-  },{
+  },
+  {
     path:'**',//route has error
     component: NotFoundComponent
   }
-]//Added for Routing
+]*/ //Added for Routing
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,12 +60,10 @@ const routes:Routes=[
   ],
   imports: [
     BrowserModule,
-    RouterOutlet,
     FormsModule,
-    RouterModule.forRoot(routes),//Added for Routing
-    HttpClientModule
+    HttpClientModule, AppRoutingModule
   ],
-  exports:[RouterModule],//Added for routing
+  exports:[],//Added for routing
   providers: [HttpClient],
   bootstrap: [AppComponent]
 })
