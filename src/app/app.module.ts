@@ -11,12 +11,17 @@ import { AboutComponent } from './about/about.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 
 const routes:Routes=[
 
   {
     path:'home',
     component:MyFirstCompComponent
+  },
+  {
+    path:'signup',
+    component:SignUpPageComponent
   },
   {
     path:'about',
@@ -43,6 +48,7 @@ const routes:Routes=[
     AboutComponent,
     LoginComponent,
     NotFoundComponent,
+    SignUpPageComponent,
   ],
   imports: [
     BrowserModule,
