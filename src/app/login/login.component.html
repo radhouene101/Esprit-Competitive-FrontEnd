@@ -1,16 +1,32 @@
-<div class="user-form" id="username-page">
-  <h2>Enter Chatroom</h2>
-  <form id="usernameForm" (ngSubmit)="onConnect()">
-    <label for="username">Nickname:</label>
-    <input type="text" id="username" name="username" [(ngModel)]="username" required>
+<div class="login-page-container">
+  <div class="login-form-container">
+    <div class="login-logo-container">
+      <div class="login-logo-layout">
+        <div class="login-logo-style1">
+          ESPRIT
+        </div>
+        <div class="login-logo-style2">
+          Competitive
+        </div>
+      </div>
+    </div>
+    <div class="login-input-container">
+      <div class="login-input-layout">
+        <input type="text" placeholder="Username or Email" name="username" [ngModel]="username" class="login-input">
+        <input type="password" placeholder="Password" name="name" [ngModel]="name" class="login-input">
+        <button type="submit" class="login-btn">Login</button>
+        <div class="other-btns">
+          <div class="other-btn1">
+            Forget
+          </div>
+          <div class="other-btn2">
 
-    <label for="fullname">Real Name:</label>
-    <input type="text" id="fullname" name="fullname" [(ngModel)]="name" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="login-social-container">
 
-    <button type="submit">Enter Chatroom</button>
-  </form>
+    </div>
+  </div>
 </div>
-
-<h1>{{username}}</h1>
-<h1>{{name}}</h1>
-<h1>{{isConnected}}</h1>

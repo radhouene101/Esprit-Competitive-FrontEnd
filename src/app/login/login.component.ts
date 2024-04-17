@@ -23,7 +23,7 @@ export class LoginComponent {
         this.username
       );
     }
-    this.isConnected=this.stomp.stompClient.connected;
+    sessionStorage.setItem("username",this.username);
   }
 
 

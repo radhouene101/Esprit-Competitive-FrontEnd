@@ -10,8 +10,10 @@ import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes:Routes=[
+
   {
     path:'home',
     component:MyFirstCompComponent
@@ -27,6 +29,9 @@ const routes:Routes=[
   {
     path:'',
     component:LoginComponent
+  },{
+    path:'**',//route has error
+    component: NotFoundComponent
   }
 ]//Added for Routing
 @NgModule({
@@ -37,6 +42,7 @@ const routes:Routes=[
     MenuComponent,
     AboutComponent,
     LoginComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
