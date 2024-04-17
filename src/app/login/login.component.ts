@@ -22,7 +22,8 @@ export class LoginComponent {
         '/app/user.addUser',
         JSON.stringify({username:this.username,fullname:this.name,status:'ONLINE'}));
 
+
     }
-    this.isConnected=this.stomp.stompClient.connected;
+    sessionStorage.setItem("username",this.username);
   }
 }
