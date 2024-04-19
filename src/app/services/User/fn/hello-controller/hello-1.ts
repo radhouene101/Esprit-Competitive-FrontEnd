@@ -13,11 +13,14 @@ export interface Hello1$Params {
 
 export function hello1(http: HttpClient, rootUrl: string, params?: Hello1$Params, context?: HttpContext): Observable<StrictHttpResponse<HelloResponse>> {
   const rb = new RequestBuilder(rootUrl, hello1.PATH, 'get');
-  if (params) {
+  if (sessionStorage.getItem('userToken')) {
+    rb.header('Authorization',
+      "Bearer "+sessionStorage.getItem('userToken'),
+      {});
   }
 
   return http.request(
-    rb.build({ responseType: 'blob', accept: '*/*', context })
+    rb.build({ responseType: 'json', accept: '*/*', context })
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {

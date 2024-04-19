@@ -351,11 +351,12 @@ export class RequestBuilder {
       httpHeaders = headerParam.append(httpHeaders);
     }
 
+
     // Request content headers
     if (this._bodyContentType && !(this._bodyContent instanceof FormData)) {
       httpHeaders = httpHeaders.set('Content-Type', this._bodyContentType);
     }
-
+    console.log(httpHeaders);
     // Perform the request
     return new HttpRequest<T>(this.method.toUpperCase(), url, this._bodyContent, {
       params: httpParams,

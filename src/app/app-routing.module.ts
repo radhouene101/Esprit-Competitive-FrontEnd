@@ -6,6 +6,7 @@ import {NotFoundComponent} from "./not-found/not-found.component";
 import {SignUpPageComponent} from "./sign-up-page/sign-up-page.component";
 import {AboutComponent} from "./about/about.component";
 import {LoginComponent} from "./login/login.component";
+import {ChatPageComponent} from "./chat-page/chat-page.component";
 
 
 const routes:Routes=[
@@ -29,6 +30,10 @@ const routes:Routes=[
   {
     path:'notfound',//Path Param
     component:NotFoundComponent
+  },
+  {
+    path:'messages',//Path Param
+    component:ChatPageComponent
   },
   {
     path:'',

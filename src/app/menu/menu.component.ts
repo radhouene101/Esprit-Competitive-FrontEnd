@@ -15,4 +15,8 @@ export class MenuComponent {
   navigateToAbout() {
     this.router.navigate(["about"]);
   }
+  logout(){
+    sessionStorage.clear();
+    this.router.navigate(['']);
+  }
 }

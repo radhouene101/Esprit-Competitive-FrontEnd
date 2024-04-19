@@ -10,6 +10,7 @@ import {AuthentificationRequest} from "../../User/models/authentification-reques
 import {AuthentificationResponse} from "../../User/models/authentification-response";
 import {Router} from "@angular/router";
 import {SignupControllerService} from "../../User/services/signup-controller.service";
+import {HelloControllerService} from "../../User/services/hello-controller.service";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ export class UserService {
     private router:Router,
     private http:HttpClient,
     private authController:AuthentificationControllerService,
-    private signUpController:SignupControllerService
+    private signUpController:SignupControllerService,
+    private getData:HelloControllerService
   ) { }
 
   authenticate(user:AuthentificationRequest){
@@ -51,5 +53,19 @@ export class UserService {
         console.log("Registration failed !!");
       }
     });
+  }
+
+  getUserData(){
+    let res=null;
+    this.getData.hello1().subscribe({
+      next:(response)=>{
+        console.log(response);
+        res=response;
+      },
+      error:()=>{
+        console.log("Data failed !!");
+      }
+    });
+    return res;
   }
 }
