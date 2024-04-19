@@ -13,40 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import {ApiModule} from "./services/User/api.module";
 
-/*const routes:Routes=[
-
-  {
-    path:'home',
-    component:(
-      () => {
-        return sessionStorage.getItem("userToken") ?
-          MyFirstCompComponent
-          : NotFoundComponent
-      }
-    )()
-  },
-  {
-    path:'signup',
-    component:SignUpPageComponent
-  },
-  {
-    path:'about',
-    component:AboutComponent
-  },
-  {
-    path:'about/:username',//Path Param
-    component:AboutComponent
-  },
-  {
-    path:'',
-    component:LoginComponent
-  },
-  {
-    path:'**',//route has error
-    component: NotFoundComponent
-  }
-]*/ //Added for Routing
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +29,9 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule, AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    ApiModule.forRoot({rootUrl:'http://localhost:8083'})
   ],
   exports:[],//Added for routing
   providers: [HttpClient],

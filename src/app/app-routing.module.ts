@@ -12,13 +12,7 @@ const routes:Routes=[
 
   {
     path:'home',
-    component:(
-      () => {
-        return sessionStorage.getItem("userToken") ?
-          MyFirstCompComponent
-          : NotFoundComponent
-      }
-    )()
+    component:MyFirstCompComponent
   },
   {
     path:'signup',
@@ -31,6 +25,10 @@ const routes:Routes=[
   {
     path:'about/:username',//Path Param
     component:AboutComponent
+  },
+  {
+    path:'notfound',//Path Param
+    component:NotFoundComponent
   },
   {
     path:'',

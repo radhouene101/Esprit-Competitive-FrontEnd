@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../../models/User";
+import {AuthentificationControllerService} from "../../User/services/authentification-controller.service";
+import {
+  createAuthentificationToken,
+  CreateAuthentificationToken$Params
+} from "../../User/fn/authentification-controller/create-authentification-token";
+import {AuthentificationRequest} from "../../User/models/authentification-request";
+import {AuthentificationResponse} from "../../User/models/authentification-response";
+import {Router} from "@angular/router";
+import {SignupControllerService} from "../../User/services/signup-controller.service";
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +17,39 @@ import {User} from "../../../models/User";
 export class UserService {
 
   baseUrl:string="http://localhost:8083/"
-  constructor(private http:HttpClient) { }
+  constructor(
+    private router:Router,
+    private http:HttpClient,
+    private authController:AuthentificationControllerService,
+    private signUpController:SignupControllerService
+  ) { }
 
-  authenticate(user:User){
-    let url="http://localhost:8083/authentication"
-    return this.http.post<any>(url,user);
+  authenticate(user:AuthentificationRequest){
+
+      this.authController.createAuthentificationToken({
+        body:user
+      }).subscribe({
+        next:(reponse)=>{
+          sessionStorage.setItem(
+            'userToken',
+            <string>reponse.jwt
+          );
+          this.router.navigate(['home']);
+        },
+        error:()=> console.log("Login failed!!")
+      })
+
+  }
+  signup(user:User){
+    this.signUpController.createUser$Response({
+      body:user
+    }).subscribe({
+      next:(response)=>{
+        console.log(response);
+      },
+      error:()=>{
+        console.log("Registration failed !!");
+      }
+    });
   }
 }
