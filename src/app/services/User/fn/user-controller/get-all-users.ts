@@ -6,15 +6,14 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { User } from '../../models/user';
 
-export interface ForgotPassword$Params {
-  email: string;
+export interface GetAllUsers$Params {
 }
 
-export function forgotPassword(http: HttpClient, rootUrl: string, params: ForgotPassword$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
-  const rb = new RequestBuilder(rootUrl, forgotPassword.PATH, 'put');
+export function getAllUsers(http: HttpClient, rootUrl: string, params?: GetAllUsers$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<User>>> {
+  const rb = new RequestBuilder(rootUrl, getAllUsers.PATH, 'get');
   if (params) {
-    rb.query('email', params.email, {});
   }
 
   return http.request(
@@ -22,9 +21,9 @@ export function forgotPassword(http: HttpClient, rootUrl: string, params: Forgot
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<string>;
+      return r as StrictHttpResponse<Array<User>>;
     })
   );
 }
 
-forgotPassword.PATH = '/forgot-password';
+getAllUsers.PATH = '/user/all';

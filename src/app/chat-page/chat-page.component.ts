@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {User} from "../models/User";
 import {UserService} from "../services/REST/User/user.service";
+import {UserDetails} from "../models/UserDetails";
 
 @Component({
   selector: 'app-chat-page',
@@ -9,12 +9,12 @@ import {UserService} from "../services/REST/User/user.service";
   styleUrls: ['./chat-page.component.css']
 })
 export class ChatPageComponent implements OnInit{
-  user:User=new User();
+  user:UserDetails=new UserDetails();
   ngOnInit(): void {
     if(!sessionStorage.getItem('userToken')){
       this.router.navigate(['notfound'])
     }else{
-
+      this.userService.getUserData();
     }
   }
   constructor(

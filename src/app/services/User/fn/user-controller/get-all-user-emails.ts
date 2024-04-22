@@ -6,17 +6,13 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { HelloResponse } from '../../models/hello-response';
 
-export interface Hello1$Params {
+export interface GetAllUserEmails$Params {
 }
 
-export function hello1(http: HttpClient, rootUrl: string, params?: Hello1$Params, context?: HttpContext): Observable<StrictHttpResponse<HelloResponse>> {
-  const rb = new RequestBuilder(rootUrl, hello1.PATH, 'get');
-  if (sessionStorage.getItem('userToken')) {
-    rb.header('Authorization',
-      "Bearer "+sessionStorage.getItem('userToken'),
-      {});
+export function getAllUserEmails(http: HttpClient, rootUrl: string, params?: GetAllUserEmails$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<string>>> {
+  const rb = new RequestBuilder(rootUrl, getAllUserEmails.PATH, 'get');
+  if (params) {
   }
 
   return http.request(
@@ -24,9 +20,9 @@ export function hello1(http: HttpClient, rootUrl: string, params?: Hello1$Params
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<HelloResponse>;
+      return r as StrictHttpResponse<Array<string>>;
     })
   );
 }
 
-hello1.PATH = '/api/hello';
+getAllUserEmails.PATH = '/user/emails';

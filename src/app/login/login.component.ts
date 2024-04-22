@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../services/REST/User/user.service";
-import {User} from "../models/User";
 import {Router} from "@angular/router";
+import {User} from "../services/User/models/user";
+import {UserDetails} from "../models/UserDetails";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent{
-  user:User=new User();
+  user:UserDetails=new UserDetails();
   constructor(
     private userService:UserService,
   ) {

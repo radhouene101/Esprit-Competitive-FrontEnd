@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {User} from "../models/User";
 import {UserService} from "../services/REST/User/user.service";
 import {Router} from "@angular/router";
+import {User} from "../services/User/models/user";
+import {UserDetails} from "../models/UserDetails";
 
 @Component({
   selector: 'app-sign-up-page',
@@ -9,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./sign-up-page.component.css']
 })
 export class SignUpPageComponent {
-  user:User=new User()
+  user:UserDetails=new UserDetails();
   confirmPassword!:string
   constructor(
     private userService:UserService,

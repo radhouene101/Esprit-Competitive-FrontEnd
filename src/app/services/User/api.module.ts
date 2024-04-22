@@ -7,8 +7,8 @@ import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 import { ForgotpasswordControllerService } from './services/forgotpassword-controller.service';
 import { SignupControllerService } from './services/signup-controller.service';
 import { AuthentificationControllerService } from './services/authentification-controller.service';
+import { UserControllerService } from './services/user-controller.service';
 import { RoleTestControllerService } from './services/role-test-controller.service';
-import { HelloControllerService } from './services/hello-controller.service';
 
 /**
  * Module that provides all services and configuration.
@@ -21,8 +21,8 @@ import { HelloControllerService } from './services/hello-controller.service';
     ForgotpasswordControllerService,
     SignupControllerService,
     AuthentificationControllerService,
+    UserControllerService,
     RoleTestControllerService,
-    HelloControllerService,
     ApiConfiguration
   ],
 })

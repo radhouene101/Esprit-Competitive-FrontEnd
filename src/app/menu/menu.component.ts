@@ -12,9 +12,7 @@ export class MenuComponent {
     private router:Router
   ) {
   }
-  navigateToAbout() {
-    this.router.navigate(["about"]);
-  }
+
   logout(){
     sessionStorage.clear();
     this.router.navigate(['']);
