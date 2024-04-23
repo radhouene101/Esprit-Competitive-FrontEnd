@@ -7,6 +7,7 @@ import {SignUpPageComponent} from "./sign-up-page/sign-up-page.component";
 import {AboutComponent} from "./about/about.component";
 import {LoginComponent} from "./login/login.component";
 import {ChatPageComponent} from "./chat-page/chat-page.component";
+import { ProductsComponent } from './marketplace/products/products.component';
 
 
 const routes:Routes=[
@@ -22,6 +23,10 @@ const routes:Routes=[
   {
     path:'about',
     component:AboutComponent
+  },
+  {
+    path:'products',
+    component:ProductsComponent
   },
   {
     path:'about/:username',//Path Param

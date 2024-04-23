@@ -15,6 +15,7 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import {ApiModule} from "./services/User/api.module";
 import { ChatPageComponent } from './chat-page/chat-page.component';
+import { ProductsComponent } from './marketplace/products/products.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ChatPageComponent } from './chat-page/chat-page.component';
     NotFoundComponent,
     SignUpPageComponent,
     ChatPageComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
