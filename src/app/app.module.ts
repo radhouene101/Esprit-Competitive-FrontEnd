@@ -15,6 +15,17 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import {ApiModule} from "./services/User/api.module";
 import { ChatPageComponent } from './chat-page/chat-page.component';
+import {FooterComponent} from "./components/footer/footer/footer.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatCardModule} from "@angular/material/card";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {LayoutModule} from "@angular/cdk/layout";
+import {ContestComponent} from "./pages/bal-de-projet-pages/contest/contest.component";
+import {AdminDashboardComponent} from "./pages/bal-de-projet-pages/admin-dashboard/admin-dashboard.component";
+import {AddContestComponent} from "./components/bal-de-project-components/add-contest/add-contest.component";
 
 @NgModule({
   declarations: [
@@ -27,13 +38,24 @@ import { ChatPageComponent } from './chat-page/chat-page.component';
     NotFoundComponent,
     SignUpPageComponent,
     ChatPageComponent,
+    ContestComponent,
+    AdminDashboardComponent,
+    FooterComponent,
+    AddContestComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    ApiModule.forRoot({rootUrl:'http://localhost:8083'})
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
+    ApiModule.forRoot({rootUrl:'http://localhost:8083'}),
+    BrowserAnimationsModule
   ],
   exports:[],//Added for routing
   providers: [HttpClient],
