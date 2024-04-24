@@ -15,7 +15,6 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
 import { AppRoutingModule } from './app-routing.module';
 import {ApiModule} from "./services/User/api.module";
 import {FooterComponent} from "./components/footer/footer/footer.component";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 import {MatMenuModule} from "@angular/material/menu";
