@@ -19,7 +19,7 @@ export class ChatPageComponent implements OnInit, OnChanges {
   user: User ={};
   message!: string;
   selectedUser!: string | undefined;
-
+  messages: any[] = [];
   ngOnInit(): void {
     if (!sessionStorage.getItem('userToken')) {
       this.router.navigate(['notfound'])
@@ -30,28 +30,30 @@ export class ChatPageComponent implements OnInit, OnChanges {
     this.displayData();
     this.displayUsers();
     this.webSocketService.stompClient.connect({}, () => {
-      this.webSocketService.stompClient.subscribe(`/user/${this.user.name}/queue/messages`, (payload: any) => {
+      this.webSocketService.stompClient.subscribe(`/user/${this.user.name}/queue/messages`,
+        async (payload: any) => {
+        await this.fetchAndDisplayUserChat();
+        const msg = JSON.parse(payload.body);
+        console.log(msg);
+      });
+      this.webSocketService.stompClient.subscribe(`/user/public`, (payload: any) => {
         const msg = JSON.parse(payload.body);
         if (this.selectedUser && this.selectedUser === msg.senderId) {
-          console.log(msg);
-          this.messages.push({
+          /*this.messages.push({
             text: msg.text,
             date: msg.timestamp,
             reply: msg.senderId != this.user.name,
             user: {
               name: msg.senderId != this.user.name ? this.selectedUser : this.user.name,
             },
-          });
-        }
-      });
-      this.webSocketService.stompClient.subscribe(`/user/public`, (payload: any) => {
-        const msg = JSON.parse(payload.body);
-        if (this.selectedUser && this.selectedUser === msg.senderId) {
+          });*/
           console.log(msg);
         }
       });
-    }, () => {
-      console.log("fail")
+    }, async (payload:any) => {
+      await this.fetchAndDisplayUserChat();
+      const msg=JSON.parse(payload.body);
+      console.log(msg);
     });
   }
 
@@ -65,13 +67,13 @@ export class ChatPageComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
         console.log(changes)
-    }
+  }
 
   displayData() {
     let res = this.userService.getUserData();
     res.subscribe({
       next: (response) => {
-        this.user = <UserDetails>response;
+        this.user = <User>response;
         console.log(this.user);
       },
       error: (response) => {
@@ -95,7 +97,7 @@ export class ChatPageComponent implements OnInit, OnChanges {
     });
   }
 
-  sendMessage() {
+  async sendMessage() {
     if (this.selectedUser && this.user.name) {
       const chatMessage = {
         senderId: this.user.name,
@@ -103,10 +105,10 @@ export class ChatPageComponent implements OnInit, OnChanges {
         content: this.message,
         timestamp: new Date()
       }
-      console.log(chatMessage);
       this.webSocketService.stompClient.send('/app/chat', {}, JSON.stringify(chatMessage));
       this.fetchAndDisplayUserChat().then()
     }
+    await this.fetchAndDisplayUserChat();
   }
 
   assignSelectedUser(name: string | undefined) {
@@ -122,18 +124,13 @@ export class ChatPageComponent implements OnInit, OnChanges {
   async fetchAndDisplayUserChat() {
     const userChatResponse = await fetch(`http://localhost:8083/messages/${this.user.name}/${this.selectedUser}`);
     const userChat = await userChatResponse.json();
-    let i:number=0;
-    this.messages=[]
+
+    this.messages=[];
     userChat.forEach((chat: any) => {
-      console.log(chat.content)
      this.classifyMessage(chat.content,chat.senderId!=this.user.name,chat.timestamp);
-      i++;
     })
-    console.log(this.messages)
+    //console.log(this.messages)
   }
-
-
-  messages: any[] = [];
 
   classifyMessage(message:string,isReply:boolean,date:string) {
     this.messages.push({
