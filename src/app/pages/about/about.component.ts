@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {FirstAPIService} from "../services/REST/first-api.service";
+import {FirstAPIService} from "../../services/REST/first-api.service";
 
 @Component({
   selector: 'app-about',

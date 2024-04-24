@@ -3,16 +3,13 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 @Component({
   selector: 'app-message-details',
   templateUrl: './message-details.component.html',
-  styleUrls: ['./message-details.component.css']
+  styleUrls: ['./message-details.component.css','../../../pages/chat/chat-page/chat-page.component.css']
 })
 export class MessageDetailsComponent {
   @Input()
-  message:any={};
+  message:any;
   @Input()
-  index:number=-1;
-  @Output()
-  delete:EventEmitter<number>=new EventEmitter<number>();
-  onDelete() {
-    this.delete.emit(this.index);
-  }
+  timestamp:any;
+  @Input()
+  cssClass:any;
 }

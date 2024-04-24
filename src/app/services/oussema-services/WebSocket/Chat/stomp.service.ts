@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {Observable,of} from "rxjs";
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 @Injectable({
@@ -11,8 +10,8 @@ export class StompService {
   stompClient=Stomp.over(this.socket);
   constructor() { }
   subscribe(topic:string,callback?:any){
-    const connected:boolean=this.stompClient.connected;
-    if(connected){
+
+    if(this.stompClient.connected){
       this.subscribeToTopic(topic,callback);
       return;
     }

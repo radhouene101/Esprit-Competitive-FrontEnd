@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, RouterOutlet, Routes} from "@angular/router";
-import {MyFirstCompComponent} from "./my-first-comp/my-first-comp.component";
-import {NotFoundComponent} from "./not-found/not-found.component";
-import {SignUpPageComponent} from "./sign-up-page/sign-up-page.component";
-import {AboutComponent} from "./about/about.component";
-import {LoginComponent} from "./login/login.component";
-import {ChatPageComponent} from "./chat-page/chat-page.component";
+
 import {AddContestComponent} from "./components/bal-de-project-components/add-contest/add-contest.component";
 import {AdminDashboardComponent} from "./pages/bal-de-projet-pages/admin-dashboard/admin-dashboard.component";
 import {ContestComponent} from "./pages/bal-de-projet-pages/contest/contest.component";
+import {MyFirstCompComponent} from "./pages/my-first-comp/my-first-comp.component";
+import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {SignUpPageComponent} from "./pages/sign-up-page/sign-up-page.component";
+import {AboutComponent} from "./pages/about/about.component";
+import {LoginComponent} from "./pages/login/login.component";
+import {ChatPageComponent} from "./pages/chat/chat-page/chat-page.component";
 
 
 const routes:Routes=[
