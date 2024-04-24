@@ -1,5 +1,5 @@
 <p>chat-page works!</p>
-<script src="assets/main.js"></script>
+<script src="../../../assets/main.js"></script>
 <div class="chat-container hidden" id="chat-page">
   <div class="users-list">
     <div class="users-list-container">
@@ -20,17 +20,20 @@
   <div class="chat-area">
     <div class="chat-area" id="chat-messages" >
 
-      <div  *ngFor="let msg of messages" class="">
-        <div *ngIf="!msg.reply" class="message-container-sender">
-          <p class="message-sender">
-            {{ msg.text }}
-          </p>
-        </div>
-        <div *ngIf="msg.reply" class="message-container-receiver">
-          <p class="message-receiver">
-            {{ msg.text }}
-          </p>
-        </div>
+      <div  *ngFor="let msg of messages">
+        <app-message-details
+          *ngIf="!msg.reply"
+          [message]="msg.text"
+          [cssClass]="'message-container-sender'"
+        >
+        </app-message-details>
+        <app-message-details
+          *ngIf="msg.reply"
+          [message]="msg.text"
+          [timestamp]="msg.date"
+          [cssClass]="'message-container-receiver'"
+        >
+        </app-message-details>
       </div>
     </div>
 

@@ -1,11 +1,12 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
-import {UserService} from "../services/REST/User/user.service";
-import {UserDetails} from "../models/UserDetails";
-import {StompService} from "../services/WebSocket/Chat/stomp.service";
+import {UserService} from "../../services/REST/User/user.service";
+import {UserDetails} from "../../models/UserDetails";
+import {StompService} from "../../services/WebSocket/Chat/stomp.service";
 import {Socket} from "ngx-socket-io";
 import {NbFocusMonitor, NbStatusService} from "@nebular/theme";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {User} from "../../services/User/models/user";
 
 @Component({
   selector: 'app-chat-page',
@@ -14,8 +15,8 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
   providers: [NbStatusService, NbFocusMonitor]
 })
 export class ChatPageComponent implements OnInit, OnChanges {
-  users: UserDetails[] = [];
-  user: UserDetails = new UserDetails();
+  users: User[] = [];
+  user: User ={};
   message!: string;
   selectedUser!: string | undefined;
 

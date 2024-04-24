@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../services/REST/User/user.service";
+import {UserService} from "../../services/REST/User/user.service";
 import {Router} from "@angular/router";
-import {User} from "../services/User/models/user";
-import {UserDetails} from "../models/UserDetails";
+import {User} from "../../services/User/models/user";
+import {UserDetails} from "../../models/UserDetails";
 
 @Component({
   selector: 'app-login',
