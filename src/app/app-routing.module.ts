@@ -9,7 +9,7 @@ import {LoginComponent} from "./login/login.component";
 import {ChatPageComponent} from "./chat-page/chat-page.component";
 import {ContestComponent} from "./pages/contest/contest.component";
 import {AdminDashboardComponent} from "./pages/admin-dashboard/admin-dashboard.component";
-import {AddContestComponent} from "./components/contestForm/add-contest/add-contest.component";
+import {AddContestComponent} from "./components/bal-de-project-components/add-contest/add-contest.component";
 
 
 const routes:Routes=[
