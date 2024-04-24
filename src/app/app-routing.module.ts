@@ -6,7 +6,7 @@ import {NotFoundComponent} from "./pages/not-found/not-found.component";
 import {SignUpPageComponent} from "./pages/sign-up-page/sign-up-page.component";
 import {AboutComponent} from "./pages/about/about.component";
 import {LoginComponent} from "./pages/login/login.component";
-import {ChatPageComponent} from "./pages/chat-page/chat-page.component";
+import {ChatPageComponent} from "./pages/chat/chat-page/chat-page.component";
 
 
 const routes:Routes=[
