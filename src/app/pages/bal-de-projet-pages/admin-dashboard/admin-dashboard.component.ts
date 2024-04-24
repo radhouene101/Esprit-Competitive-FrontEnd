@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import {ProjectsDto} from "../../services/radhouene/models/projects-dto";
-import {ProjectsService} from "../../services/radhouene/services/projects.service";
-import {UserService} from "../../services/radhouene/services/user.service";
+import {ProjectsService} from "../../../services/radhouene/services/projects.service";
+import {ProjectsDto} from "../../../services/radhouene/models/projects-dto";
+import {UserService} from "../../../services/radhouene/services/user.service";
 
 
 @Component({

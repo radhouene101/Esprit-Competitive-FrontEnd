@@ -7,9 +7,9 @@ import {SignUpPageComponent} from "./sign-up-page/sign-up-page.component";
 import {AboutComponent} from "./about/about.component";
 import {LoginComponent} from "./login/login.component";
 import {ChatPageComponent} from "./chat-page/chat-page.component";
-import {ContestComponent} from "./pages/contest/contest.component";
-import {AdminDashboardComponent} from "./pages/admin-dashboard/admin-dashboard.component";
 import {AddContestComponent} from "./components/bal-de-project-components/add-contest/add-contest.component";
+import {AdminDashboardComponent} from "./pages/bal-de-projet-pages/admin-dashboard/admin-dashboard.component";
+import {ContestComponent} from "./pages/bal-de-projet-pages/contest/contest.component";
 
 
 const routes:Routes=[

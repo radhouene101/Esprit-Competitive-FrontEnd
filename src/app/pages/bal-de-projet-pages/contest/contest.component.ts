@@ -1,9 +1,10 @@
 import { Component,OnInit } from '@angular/core';
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {UserService} from "../../services/radhouene/services/user.service";
-import {ProjectsService} from "../../services/radhouene/services/projects.service";
-import {ContestBalDeProjetService} from "../../services/radhouene/services/contest-bal-de-projet.service";
-import {ContestDto} from "../../services/radhouene/models/contest-dto";
+import {ContestBalDeProjetService} from "../../../services/radhouene/services/contest-bal-de-projet.service";
+import {ProjectsService} from "../../../services/radhouene/services/projects.service";
+import {UserService} from "../../../services/REST/User/user.service";
+import {ContestDto} from "../../../services/radhouene/models/contest-dto";
+
 
 
 @Component({
