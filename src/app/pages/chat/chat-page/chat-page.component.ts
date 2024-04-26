@@ -1,11 +1,8 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../../services/REST/User/user.service";
-import {UserDetails} from "../../../models/UserDetails";
 import {StompService} from "../../../services/oussema-services/WebSocket/Chat/stomp.service";
-import {Socket} from "ngx-socket-io";
 import {NbFocusMonitor, NbStatusService} from "@nebular/theme";
-import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {User} from "../../../services/User/models/user";
 
 @Component({
