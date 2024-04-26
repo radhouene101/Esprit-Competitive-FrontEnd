@@ -5,18 +5,18 @@ import {Router} from "@angular/router";
 import {SignupControllerService} from "../../User/services/signup-controller.service";
 import {RoleTestControllerService} from "../../User/services/role-test-controller.service";
 import {User} from "../../User/models/user";
+import {UserControllerService} from "../../User/services/user-controller.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  //baseUrl:string="http://localhost:8083/"
   constructor(
     private router:Router,
     private authController:AuthentificationControllerService,
     private signUpController:SignupControllerService,
-    private getData:RoleTestControllerService
+    private getData:RoleTestControllerService,
+    private getUsers:UserControllerService
   ) { }
 
   authenticate(user:AuthentificationRequest){
@@ -49,16 +49,12 @@ export class UserService {
   }
 
   getUserData(){
-    let res=null;
-    this.getData.hello$Response().subscribe({
-      next:(response)=>{
-        console.log(response);
-        res=response;
-      },
-      error:()=>{
-        console.log("Data failed !!");
-      }
-    });
-    return res;
+    return this.getData.hello();
+  }
+
+  getUserList(){
+
+    return this.getUsers.getAllUsers();
+
   }
 }
