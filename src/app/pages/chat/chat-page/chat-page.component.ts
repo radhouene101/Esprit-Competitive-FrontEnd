@@ -14,7 +14,7 @@ import {User} from "../../../services/User/models/user";
   styleUrls: ['./chat-page.component.css'],
   providers: [NbStatusService, NbFocusMonitor]
 })
-export class ChatPageComponent implements OnInit, OnChanges {
+export class ChatPageComponent implements OnInit {
   users: User[] = [];
   user: User ={};
   message!: string;
@@ -34,26 +34,17 @@ export class ChatPageComponent implements OnInit, OnChanges {
         async (payload: any) => {
         await this.fetchAndDisplayUserChat();
         const msg = JSON.parse(payload.body);
-        console.log(msg);
+
+        console.log("updating one !!")
       });
-      this.webSocketService.stompClient.subscribe(`/user/public`, (payload: any) => {
+      this.webSocketService.stompClient.subscribe(`/user/public`, async (payload: any) => {
+        await this.fetchAndDisplayUserChat();
         const msg = JSON.parse(payload.body);
-        if (this.selectedUser && this.selectedUser === msg.senderId) {
-          /*this.messages.push({
-            text: msg.text,
-            date: msg.timestamp,
-            reply: msg.senderId != this.user.name,
-            user: {
-              name: msg.senderId != this.user.name ? this.selectedUser : this.user.name,
-            },
-          });*/
-          console.log(msg);
-        }
-      });
-    }, async (payload:any) => {
-      await this.fetchAndDisplayUserChat();
-      const msg=JSON.parse(payload.body);
-      console.log(msg);
+        console.log(msg);
+      }
+      );
+    }, () => {
+      console.log("Error connecting !!");
     });
   }
 
@@ -63,10 +54,6 @@ export class ChatPageComponent implements OnInit, OnChanges {
     private webSocketService: StompService,
   ) {
 
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-        console.log(changes)
   }
 
   displayData() {
@@ -97,7 +84,7 @@ export class ChatPageComponent implements OnInit, OnChanges {
     });
   }
 
-  async sendMessage() {
+   sendMessage() {
     if (this.selectedUser && this.user.name) {
       const chatMessage = {
         senderId: this.user.name,
@@ -106,9 +93,9 @@ export class ChatPageComponent implements OnInit, OnChanges {
         timestamp: new Date()
       }
       this.webSocketService.stompClient.send('/app/chat', {}, JSON.stringify(chatMessage));
-      this.fetchAndDisplayUserChat().then()
+      this.classifyMessage(chatMessage.content,false,chatMessage.timestamp.toString());
     }
-    await this.fetchAndDisplayUserChat();
+    console.log("message sent !!");
   }
 
   assignSelectedUser(name: string | undefined) {
@@ -129,7 +116,6 @@ export class ChatPageComponent implements OnInit, OnChanges {
     userChat.forEach((chat: any) => {
      this.classifyMessage(chat.content,chat.senderId!=this.user.name,chat.timestamp);
     })
-    //console.log(this.messages)
   }
 
   classifyMessage(message:string,isReply:boolean,date:string) {
