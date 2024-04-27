@@ -7,3 +7,4 @@ RUN npm install
 RUN node -v
 RUN ifconfig
 CMD ["ng","serve","--host","0.0.0.0"]
+EXPOSE 4200
