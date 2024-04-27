@@ -7,7 +7,7 @@ import {SignUpPageComponent} from "./sign-up-page/sign-up-page.component";
 import {AboutComponent} from "./about/about.component";
 import {LoginComponent} from "./login/login.component";
 import {ChatPageComponent} from "./chat-page/chat-page.component";
-import { ProductsComponent } from './marketplace/products/products.component';
+import { ProductsFrontComponent } from './marketplace/products-front/products-front.component';
 
 
 const routes:Routes=[
@@ -24,10 +24,7 @@ const routes:Routes=[
     path:'about',
     component:AboutComponent
   },
-  {
-    path:'products',
-    component:ProductsComponent
-  },
+
   {
     path:'about/:username',//Path Param
     component:AboutComponent
@@ -39,6 +36,10 @@ const routes:Routes=[
   {
     path:'messages',//Path Param
     component:ChatPageComponent
+  },
+  {
+    path: 'products', // Define the path for ProductsFrontComponent
+    component: ProductsFrontComponent // Specify the component for the path
   },
   {
     path:'',

@@ -9,13 +9,23 @@ import { RequestBuilder } from '../../request-builder';
 import { MarketplaceProduct } from '../../models/marketplace-product';
 
 export interface CreateProduct$Params {
-      body: MarketplaceProduct
+  productName: string;
+  productDescription: string;
+  productPrice: number;
+  categoryId?: number;
+      body?: {
+'imageFile'?: Blob;
+}
 }
 
 export function createProduct(http: HttpClient, rootUrl: string, params: CreateProduct$Params, context?: HttpContext): Observable<StrictHttpResponse<MarketplaceProduct>> {
   const rb = new RequestBuilder(rootUrl, createProduct.PATH, 'post');
   if (params) {
-    rb.body(params.body, 'application/json');
+    rb.query('productName', params.productName, {});
+    rb.query('productDescription', params.productDescription, {});
+    rb.query('productPrice', params.productPrice, {});
+    rb.query('categoryId', params.categoryId, {});
+    rb.body(params.body, 'multipart/form-data');
   }
 
   return http.request(
