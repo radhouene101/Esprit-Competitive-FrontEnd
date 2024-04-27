@@ -28,6 +28,8 @@ import { ChatPageComponent } from './pages/chat/chat-page/chat-page.component';
 import {SocketIoConfig, SocketIoModule} from "ngx-socket-io";
 import {NbChatModule} from "@nebular/theme";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import { EventsComponent } from './events/events.component';
+
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -47,7 +49,8 @@ const socketConfig:SocketIoConfig={
     ContestComponent,
     AdminDashboardComponent,
     FooterComponent,
-    AddContestComponent
+    AddContestComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
