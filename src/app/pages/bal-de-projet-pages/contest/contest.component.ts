@@ -4,6 +4,7 @@ import {ContestBalDeProjetService} from "../../../services/radhouene/services/co
 import {ProjectsService} from "../../../services/radhouene/services/projects.service";
 import {UserService} from "../../../services/REST/User/user.service";
 import {ContestDto} from "../../../services/radhouene/models/contest-dto";
+import {ProjectsDto} from "../../../services/radhouene/models/projects-dto";
 
 
 
@@ -18,7 +19,7 @@ export class ContestComponent implements OnInit{
     private breakpointObserver: BreakpointObserver,
     private user : UserService,
     private projetService : ProjectsService,
-    private contestService :ContestBalDeProjetService
+    private contestService :ContestBalDeProjetService,
   ) { }
 
   contestList:Array<ContestDto> = [];
@@ -30,9 +31,18 @@ export class ContestComponent implements OnInit{
     }
     )
   }
-
+  projectList:Array<ProjectsDto>=[]
+  getWinnersProjects(){
+    this.projetService.getAllWinners().subscribe(
+      (data)=>{
+        this.projectList=data
+        console.log(JSON.stringify(this.projectList))
+      }
+    )
+  }
   ngOnInit(): void {
     this.getContestList()
+    this.getWinnersProjects();
   }
 
 

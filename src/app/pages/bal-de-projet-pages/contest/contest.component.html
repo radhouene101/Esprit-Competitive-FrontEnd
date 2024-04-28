@@ -5,38 +5,54 @@
     </div>
 
   </div>
-  <div class=" p-5 row justify-content-end  ">
-    <div  class=" rounded col-6
-    secondary-bg
-    border border-black border-1
-    text-center
-    align-items-baseline">
+  <div class="p-5 row align-content-center  ">
+    <div  class="rounded col-7 ms-5  secondary-bg border border-black border-1 ">
 
-      <p class="text-white  "> Contests</p>
+      <p class="text-white  "><i class="fa-solid fa-trophy "></i> Contests</p>
       <div class="row m-auto "><!--here we load all the contests-->
-        <div class="card bg-dark-subtle " style="width: 18rem;" *ngFor="let contest of contestList">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ contest.name }}</h5>
-            <p class="card-text"> {{ contest.description}}</p>
-            <a href="#" class="btn btn-primary"> display competition</a>
+<!--        <div class="card bg-dark-subtle " style="width: 18rem;" *ngFor="let contest of contestList">-->
+<!--          <img src="assets/racing%20contest.jpg"  class="card-img-top overflow-auto" alt="...">-->
+<!--          <div class="card-body">-->
+<!--            <h5 class="card-title">{{ contest.name }}</h5>-->
+<!--            <p class="card-text"> {{ contest.description}}</p>-->
+<!--            <a href="#" class="btn btn-primary"> display competition</a>-->
+<!--          </div>-->
+<!--        </div>-->
+        <div class="card m-2" *ngFor="let contest of contestList">
+          <div class="no-image">
+            <img src="assets/racing%20contest.jpg"  class="card-img-top overflow-auto" alt="...">
+
+          </div>
+          <div class="content">
+            <p class="name">{{ contest.name }}</p>
+            <p class="time">{{ contest.description}}</p>
           </div>
         </div>
+
         <div >
 
         </div>
       </div>
     </div>
-    <div  class=" rounded col-6
-    secondary-bg
-    border border-black border-1
-    text-center
-    align-items-baseline">
+    <div  class="rounded col-3  secondary-bg  border border-black border-1 text-center align-items-baseline m-5">
 
-      <p class="text-white"> Ranking </p>
-      <div ><!--here we load all the winners-->
+      <p class="text-white"> <i class="fa-solid fa-award "></i> Ranking </p>
+      <div class="walletBalanceCard border border-1 m-2" *ngFor="let pl of projectList">
+        <div class="svgwrapper">
+          <img src="favicon.ico">
+        </div>
 
+        <div class="balancewrapper">
+          <span class="balanceHeading"> Group Name: {{ pl.groupName }}</span>
+          <span class="balanceHeading">Speciality: {{ pl.optionSpeciality?.name}}</span>
+          <span class="balance-coach">Classe: {{ pl.classe}}</span>
+          <span class="balance"> Coach: {{pl.coach}}</span>
+          <span class="balance">year: {{pl.scolarYear}}</span>
+
+        </div>
       </div>
+
+
     </div>
   </div>
 </div>

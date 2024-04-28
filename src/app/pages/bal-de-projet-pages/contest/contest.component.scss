@@ -4,3 +4,138 @@
 .right-padding{
   padding-right:  10%;
 }
+.card {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 285px;
+  padding: 8px;
+  background-color: #282727;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  aspect-ratio: 16/12;
+  transition: all 0.3s ease;
+}
+
+.card .no-image {
+  border: 2px dashed #373737;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  aspect-ratio: 16/8;
+}
+
+.card .no-image .icon {
+  width: 60px;
+  color: #373737;
+}
+
+.card .image {
+  width: 100%;
+  aspect-ratio: 16/8;
+}
+
+.card .image .picture {
+  border-radius: 8px;
+  width: inherit;
+  aspect-ratio: 16/8;
+}
+
+.card .content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 12px;
+  padding-left: 4px;
+}
+
+.card .content .name {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.card .content .time {
+  padding-top: 12px;
+  font-size: 0.875rem;
+  color: #c5c5c5;
+}
+
+.card:hover {
+  -webkit-box-shadow: 0px 0px 15px -8px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 15px -8px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 15px -8px rgba(66, 68, 90, 1);
+}
+.walletBalanceCard {
+
+  height: 100px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 0px 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.svgwrapper {
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svgwrapper svg {
+  width: 100%;
+}
+.balancewrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 120px;
+  gap: 0px;
+}
+.balanceHeading {
+  font-size: 12px;
+  color: white;
+  font-weight: 100;
+  letter-spacing: 0.6px;
+}
+.balance {
+  font-size: 13.5px;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.balance-coach {
+  font-size: 13.5px;
+  color: white;
+  font-weight: 350;
+  letter-spacing: 0.5px;
+}
+
+.addmoney {
+  padding: 1px 15px;
+  border-radius: 20px;
+  background-color: #c083eb;
+  color: white;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.addmoney:hover {
+  background-color: whitesmoke;
+  color: #9c59cc;
+}
+.plussign {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
