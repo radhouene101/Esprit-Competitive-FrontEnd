@@ -1,15 +1,23 @@
-<!-- products-front.component.html -->
+<div class="container">
+  <div class="categories">
+    <label for="categorySelect">Select a category:</label>
+    <select id="categorySelect" (change)="filterProductsByCategory($event)">
+      <option value="">All Categories</option>
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+    </select>
+  </div>
 
-<div class="products-container">
-  <div class="product-card" *ngFor="let product of products">
-    <div class="product-image">
-      <img [src]="assetsImagePath + product.imageUrl" alt="Product Image">
-    </div>
-    <div class="product-details">
-      <h3>{{ product.productName }}</h3>
-      <p class="description">{{ product.productDescription }}</p>
-      <p class="price">{{ product.productPrice }} TND</p>
-      <button class="add-to-cart-button">Add to Cart</button>
+  <div class="products-container">
+    <div class="product-card" *ngFor="let product of filteredProducts">
+      <div class="product-image">
+        <img [src]="assetsImagePath + product.imageUrl" alt="Product Image">
+      </div>
+      <div class="product-details">
+        <h3>{{ product.productName }}</h3>
+        <p class="description">{{ product.productDescription }}</p>
+        <p class="price">{{ product.productPrice }} TND</p>
+        <button class="add-to-cart-button">Add to Cart</button>
+      </div>
     </div>
   </div>
 </div>

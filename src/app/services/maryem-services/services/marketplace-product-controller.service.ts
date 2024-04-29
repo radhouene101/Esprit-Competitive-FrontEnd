@@ -13,6 +13,8 @@ import { createProduct } from '../fn/marketplace-product-controller/create-produ
 import { CreateProduct$Params } from '../fn/marketplace-product-controller/create-product';
 import { deleteProduct } from '../fn/marketplace-product-controller/delete-product';
 import { DeleteProduct$Params } from '../fn/marketplace-product-controller/delete-product';
+import { findProductsByCategoryId } from '../fn/marketplace-product-controller/find-products-by-category-id';
+import { FindProductsByCategoryId$Params } from '../fn/marketplace-product-controller/find-products-by-category-id';
 import { getAllProducts } from '../fn/marketplace-product-controller/get-all-products';
 import { GetAllProducts$Params } from '../fn/marketplace-product-controller/get-all-products';
 import { getProductById } from '../fn/marketplace-product-controller/get-product-by-id';
@@ -21,11 +23,20 @@ import { MarketplaceProduct } from '../models/marketplace-product';
 import { updateProduct } from '../fn/marketplace-product-controller/update-product';
 import { UpdateProduct$Params } from '../fn/marketplace-product-controller/update-product';
 
+import { ProductCategory } from '../models/product-category' 
+
+
 @Injectable({ providedIn: 'root' })
 export class MarketplaceProductControllerService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
   }
+
+
+//FETCHING CATEGORIES
+  getProductCategories(): Observable<ProductCategory[]> {
+    return this.http.get<ProductCategory[]>(`${this.rootUrl}/api/marketplace/categories/getAllCategories`);
+}
 
   /** Path part for operation `updateProduct()` */
   static readonly UpdateProductPath = '/api/marketplace/products/updateProduct/{id}';
@@ -123,6 +134,31 @@ export class MarketplaceProductControllerService extends BaseService {
    */
   getAllProducts(params?: GetAllProducts$Params, context?: HttpContext): Observable<Array<MarketplaceProduct>> {
     return this.getAllProducts$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<MarketplaceProduct>>): Array<MarketplaceProduct> => r.body)
+    );
+  }
+
+  /** Path part for operation `findProductsByCategoryId()` */
+  static readonly FindProductsByCategoryIdPath = '/api/marketplace/products/category/{categoryId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `findProductsByCategoryId()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  findProductsByCategoryId$Response(params: FindProductsByCategoryId$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<MarketplaceProduct>>> {
+    return findProductsByCategoryId(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `findProductsByCategoryId$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  findProductsByCategoryId(params: FindProductsByCategoryId$Params, context?: HttpContext): Observable<Array<MarketplaceProduct>> {
+    return this.findProductsByCategoryId$Response(params, context).pipe(
       map((r: StrictHttpResponse<Array<MarketplaceProduct>>): Array<MarketplaceProduct> => r.body)
     );
   }
