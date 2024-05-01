@@ -16,6 +16,8 @@ export class ProductsFrontComponent implements OnInit {
   categories: ProductCategory[] = [];
   assetsImagePath = '/assets/images/';
 
+  productQuantity: number = 1;  
+
   constructor(private productService: MarketplaceProductControllerService ,  private cartService: CartControllerService ) { }
 
   ngOnInit(): void {
@@ -52,7 +54,7 @@ export class ProductsFrontComponent implements OnInit {
   onAddToCart(product: MarketplaceProduct): void {
     const cartItem: CartItem = {
         product: product,
-        quantity: 1
+        quantity: this.productQuantity 
     };
 
     // Create the AddItemToCart$Params object 
@@ -68,5 +70,16 @@ export class ProductsFrontComponent implements OnInit {
             // Handle error (e.g., display an error message)
             console.error("Error adding to cart:", error);
         });
+        this.productQuantity = 1;
+}
+
+incrementQuantity() {
+  this.productQuantity++;
+}
+
+decrementQuantity() {
+  if (this.productQuantity > 1) {
+      this.productQuantity--;
+  }
 }
 }

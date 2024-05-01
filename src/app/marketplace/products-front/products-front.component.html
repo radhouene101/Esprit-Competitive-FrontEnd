@@ -17,6 +17,11 @@
         <p class="description">{{ product.productDescription }}</p>
         <p class="price">{{ product.productPrice }} TND</p>
         <button class="add-to-cart-button" (click)="onAddToCart(product)">Add to Cart</button>
+        <div class="quantity-counter">
+          <button (click)="decrementQuantity()">-</button>
+          <span>{{ productQuantity }}</span>
+          <button (click)="incrementQuantity()">+</button>
+      </div>
       </div>
     </div>
   </div>
