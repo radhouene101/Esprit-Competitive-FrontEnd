@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MarketplaceProductControllerService } from '../../services/maryem-services/services/marketplace-product-controller.service';
 import { MarketplaceProduct } from '../../services/maryem-services/models/marketplace-product';
 import { ProductCategory } from '../../services/maryem-services/models/product-category';
-
+import { CartControllerService } from '../../services/maryem-services/services/cart-controller.service'; 
+import { CartItem } from 'src/app/services/maryem-services/models/cart-item';
+import { AddItemToCart$Params } from 'src/app/services/maryem-services/fn/cart-controller/add-item-to-cart';
 @Component({
   selector: 'app-products-front',
   templateUrl: './products-front.component.html',
@@ -14,7 +16,7 @@ export class ProductsFrontComponent implements OnInit {
   categories: ProductCategory[] = [];
   assetsImagePath = '/assets/images/';
 
-  constructor(private productService: MarketplaceProductControllerService) { }
+  constructor(private productService: MarketplaceProductControllerService ,  private cartService: CartControllerService ) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -45,4 +47,26 @@ export class ProductsFrontComponent implements OnInit {
       this.filteredProducts = this.products.filter(product => product.category && product.category.id === Number(categoryId));
     }
   }
+
+
+  onAddToCart(product: MarketplaceProduct): void {
+    const cartItem: CartItem = {
+        product: product,
+        quantity: 1
+    };
+
+    // Create the AddItemToCart$Params object 
+    const params: AddItemToCart$Params = {
+        body: cartItem
+    };
+
+    this.cartService.addItemToCart(params)
+        .subscribe((addedItem) => {
+            // Handle successful addition (e.g., display a success message or feedback)
+            console.log("Item added to cart:", addedItem); 
+        }, (error) => {
+            // Handle error (e.g., display an error message)
+            console.error("Error adding to cart:", error);
+        });
+}
 }

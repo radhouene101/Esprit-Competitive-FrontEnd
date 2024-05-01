@@ -25,7 +25,6 @@ import { UpdateProduct$Params } from '../fn/marketplace-product-controller/updat
 
 import { ProductCategory } from '../models/product-category' 
 
-
 @Injectable({ providedIn: 'root' })
 export class MarketplaceProductControllerService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
@@ -33,10 +32,11 @@ export class MarketplaceProductControllerService extends BaseService {
   }
 
 
-//FETCHING CATEGORIES
+  //FETCHING CATEGORIES
   getProductCategories(): Observable<ProductCategory[]> {
     return this.http.get<ProductCategory[]>(`${this.rootUrl}/api/marketplace/categories/getAllCategories`);
 }
+
 
   /** Path part for operation `updateProduct()` */
   static readonly UpdateProductPath = '/api/marketplace/products/updateProduct/{id}';

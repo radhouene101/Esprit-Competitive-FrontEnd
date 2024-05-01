@@ -11,6 +11,7 @@ import { CartItemControllerService } from './services/cart-item-controller.servi
 import { SignupControllerService } from './services/signup-controller.service';
 import { AuthentificationControllerService } from './services/authentification-controller.service';
 import { ProductCategoryControllerService } from './services/product-category-controller.service';
+import { CartControllerService } from './services/cart-controller.service';
 import { HelloControllerService } from './services/hello-controller.service';
 
 /**
@@ -28,6 +29,7 @@ import { HelloControllerService } from './services/hello-controller.service';
     SignupControllerService,
     AuthentificationControllerService,
     ProductCategoryControllerService,
+    CartControllerService,
     HelloControllerService,
     ApiConfiguration
   ],
