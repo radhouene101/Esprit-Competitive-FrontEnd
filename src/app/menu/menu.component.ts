@@ -17,4 +17,10 @@ export class MenuComponent {
     sessionStorage.clear();
     this.router.navigate(['']);
   }
+
+  goToCart() {
+    this.router.navigate(['/cart']);
+  }
+  
+
 }

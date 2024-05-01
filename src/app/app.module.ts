@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {ApiModule} from "./services/User/api.module";
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { ProductsFrontComponent } from './marketplace/products-front/products-front.component';
+import { CartComponent } from './marketplace/cart/cart.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ProductsFrontComponent } from './marketplace/products-front/products-fr
     SignUpPageComponent,
     ChatPageComponent,
     ProductsFrontComponent,
+    CartComponent,
 
   ],
   imports: [

@@ -8,6 +8,7 @@ import {AboutComponent} from "./about/about.component";
 import {LoginComponent} from "./login/login.component";
 import {ChatPageComponent} from "./chat-page/chat-page.component";
 import { ProductsFrontComponent } from './marketplace/products-front/products-front.component';
+import { CartComponent } from './marketplace/cart/cart.component';
 
 
 const routes:Routes=[
@@ -40,6 +41,10 @@ const routes:Routes=[
   {
     path: 'products', // Define the path for ProductsFrontComponent
     component: ProductsFrontComponent // Specify the component for the path
+  },
+  {
+    path: 'cart', // Define the path for ProductsFrontComponent
+    component: CartComponent // Specify the component for the path
   },
   {
     path:'',
