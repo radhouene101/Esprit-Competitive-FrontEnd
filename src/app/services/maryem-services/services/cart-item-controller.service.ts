@@ -14,6 +14,8 @@ import { AddItem$Params } from '../fn/cart-item-controller/add-item';
 import { CartItem } from '../models/cart-item';
 import { deleteItem } from '../fn/cart-item-controller/delete-item';
 import { DeleteItem$Params } from '../fn/cart-item-controller/delete-item';
+import { findByProductId } from '../fn/cart-item-controller/find-by-product-id';
+import { FindByProductId$Params } from '../fn/cart-item-controller/find-by-product-id';
 import { getAllItems } from '../fn/cart-item-controller/get-all-items';
 import { GetAllItems$Params } from '../fn/cart-item-controller/get-all-items';
 import { getItemById } from '../fn/cart-item-controller/get-item-by-id';
@@ -149,6 +151,31 @@ export class CartItemControllerService extends BaseService {
   addItem(params: AddItem$Params, context?: HttpContext): Observable<CartItem> {
     return this.addItem$Response(params, context).pipe(
       map((r: StrictHttpResponse<CartItem>): CartItem => r.body)
+    );
+  }
+
+  /** Path part for operation `findByProductId()` */
+  static readonly FindByProductIdPath = '/api/cart-items/findByProductId/{productId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `findByProductId()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  findByProductId$Response(params: FindByProductId$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<CartItem>>> {
+    return findByProductId(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `findByProductId$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  findByProductId(params: FindByProductId$Params, context?: HttpContext): Observable<Array<CartItem>> {
+    return this.findByProductId$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<CartItem>>): Array<CartItem> => r.body)
     );
   }
 

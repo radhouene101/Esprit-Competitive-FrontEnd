@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
     return this.cartItems.reduce((sum, item) => {
       const itemQuantity = item.quantity ?? 0; // Using nullish coalescing operator (??) to provide a default value of 0 if quantity is undefined
       const itemPrice = item.price ?? 0; // Using nullish coalescing operator (??) to provide a default value of 0 if price is undefined
-      return sum + (itemQuantity * itemPrice);
+      return sum + ( itemPrice);
     }, 0);
   }
   

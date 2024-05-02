@@ -23,7 +23,9 @@ import { MarketplaceProduct } from '../models/marketplace-product';
 import { updateProduct } from '../fn/marketplace-product-controller/update-product';
 import { UpdateProduct$Params } from '../fn/marketplace-product-controller/update-product';
 
+
 import { ProductCategory } from '../models/product-category' 
+
 
 @Injectable({ providedIn: 'root' })
 export class MarketplaceProductControllerService extends BaseService {
@@ -32,10 +34,12 @@ export class MarketplaceProductControllerService extends BaseService {
   }
 
 
+
   //FETCHING CATEGORIES
   getProductCategories(): Observable<ProductCategory[]> {
     return this.http.get<ProductCategory[]>(`${this.rootUrl}/api/marketplace/categories/getAllCategories`);
 }
+
 
 
   /** Path part for operation `updateProduct()` */
