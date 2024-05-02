@@ -53,8 +53,6 @@ export class UserService {
   }
 
   getUserList(){
-
     return this.getUsers.getAllUsers();
-
   }
 }

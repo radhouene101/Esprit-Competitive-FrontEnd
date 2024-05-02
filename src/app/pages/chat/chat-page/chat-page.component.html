@@ -1,22 +1,29 @@
-<div class="chat-container hidden" id="chat-page">
+<div class="chat-container">
   <div class="users-list">
     <div class="users-list-container">
-      <h2>Users</h2>
-      <ul id="connectedUsers" >
+      <div class="chat-current-user">
+        Available Users
+      </div>
+      <ul>
         <div *ngFor="let i of users">
-          <li class="user-item" *ngIf="i.name!=user.name" (click)="assignSelectedUser(i.name)">{{i.name}}</li>
+          <app-user-chat *ngIf="i.name!=user.name"
+                         (click)="assignSelectedUser(i.name)"
+                         [username]="i.name"
+          ></app-user-chat>
         </div>
 
       </ul>
     </div>
-    <div>
-      <p id="connected-user-fullname">{{user.name}}</p>
+    <div class="chat-current-user">
+      <p>{{user.name}}</p>
     </div>
   </div>
 
   <div class="chat-area">
+    <div class="selected-user-details" *ngIf="selectedUser">
+      <app-selected-user-chat [username]="selectedUser"></app-selected-user-chat>
+    </div>
     <div class="chat-area" id="chat-messages" >
-
       <div  *ngFor="let msg of messages">
         <app-message-details
           *ngIf="!msg.reply"
@@ -37,7 +44,7 @@
     <form id="messageForm" name="messageForm" class="hidden">
       <div class="message-input">
           <input autocomplete="off" (keyup)="updateMessage($event)" type="text" id="message" placeholder="Type your message...">
-        <button (click)="sendMessage()">Send</button>
+        <button (click)="sendMessage()" type="submit">Send</button>
       </div>
     </form>
   </div>
