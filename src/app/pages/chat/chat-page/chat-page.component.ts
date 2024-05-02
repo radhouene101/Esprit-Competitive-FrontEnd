@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../../services/REST/User/user.service";
 import {StompService} from "../../../services/oussema-services/WebSocket/Chat/stomp.service";
@@ -23,7 +23,6 @@ export class ChatPageComponent implements OnInit {
     } else {
       this.userService.getUserData();
     }
-
     this.displayData();
     this.displayUsers();
     this.webSocketService.stompClient.connect({}, () => {

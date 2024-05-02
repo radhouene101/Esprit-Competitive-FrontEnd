@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {RouterModule, RouterOutlet, Routes} from "@angular/router";
 import { MyFirstCompComponent } from './pages/my-first-comp/my-first-comp.component';
 import {FormsModule} from "@angular/forms";
 import { MessageDetailsComponent } from './components/chat/message-details/message-details.component';
@@ -28,6 +27,9 @@ import { ChatPageComponent } from './pages/chat/chat-page/chat-page.component';
 import {SocketIoConfig, SocketIoModule} from "ngx-socket-io";
 import {NbChatModule} from "@nebular/theme";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import { UserChatComponent } from './components/chat/user-chat/user-chat.component';
+import { SelectedUserChatComponent } from './components/chat/selected-user-chat/selected-user-chat.component';
+import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -47,7 +49,10 @@ const socketConfig:SocketIoConfig={
     ContestComponent,
     AdminDashboardComponent,
     FooterComponent,
-    AddContestComponent
+    AddContestComponent,
+    UserChatComponent,
+    SelectedUserChatComponent,
+    ActivateAccountComponent
   ],
   imports: [
     BrowserModule,
