@@ -12,6 +12,8 @@ import { StrictHttpResponse } from '../strict-http-response';
 import { addItemToCart } from '../fn/cart-controller/add-item-to-cart';
 import { AddItemToCart$Params } from '../fn/cart-controller/add-item-to-cart';
 import { CartItem } from '../models/cart-item';
+import { deleteItemFromCart } from '../fn/cart-controller/delete-item-from-cart';
+import { DeleteItemFromCart$Params } from '../fn/cart-controller/delete-item-from-cart';
 
 @Injectable({ providedIn: 'root' })
 export class CartControllerService extends BaseService {
@@ -41,6 +43,35 @@ export class CartControllerService extends BaseService {
   addItemToCart(params: AddItemToCart$Params, context?: HttpContext): Observable<CartItem> {
     return this.addItemToCart$Response(params, context).pipe(
       map((r: StrictHttpResponse<CartItem>): CartItem => r.body)
+    );
+  }
+
+  /** Path part for operation `deleteItemFromCart()` */
+  static readonly DeleteItemFromCartPath = '/api/cart/delete-item/{cartItemId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `deleteItemFromCart()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  deleteItemFromCart$Response(params: DeleteItemFromCart$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return deleteItemFromCart(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `deleteItemFromCart$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  deleteItemFromCart(params: DeleteItemFromCart$Params, context?: HttpContext): Observable<{
+}> {
+    return this.deleteItemFromCart$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
     );
   }
 
