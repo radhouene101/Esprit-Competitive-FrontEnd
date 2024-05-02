@@ -1,0 +1,43 @@
+<h1>liste des utilisateurs</h1>
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Status</th>
+    <th scope="col">Roles</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of listUsers; let i=index">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.status }}</td>
+    <td>
+      <ul>
+        <li *ngFor="let role of user.roles">{{ role.name }}</li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<h1>affecter un role</h1>
+<select (change)="getuserid($event)" class="custom-select">
+  <option value="" selected disabled>Select a user</option>
+  <option *ngFor="let user of listUsers" [value]="user.id">{{ user.name }}</option>
+</select>
+
+<select (change)="getroleid($event)" class="custom-select">
+  <option value="" selected disabled>Select a role</option>
+  <option *ngFor="let role of listRoles" [value]="role.id">{{ role.name }}</option>
+</select>
+
+<button (click)="affecterRoleToUser()" class="btn btn-dark" style="color: #343a40;">Affecter</button>
+
+<div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; border-radius: 5px; text-align: center;">
+  <img src="lien_vers_votre_logo" alt="Logo de votre entreprise" style="width: 100px; height: auto; margin-bottom: 20px;">
+  <p style="font-size: 16px; color: #333; margin-bottom: 20px;">Bienvenue sur notre plateforme ! Pour activer votre compte, cliquez sur le bouton ci-dessous :</p>
+  <a href="http://localhost:4200/activateAccount/%s/%s" target="_blank" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Activer le compte</a>
+</div>

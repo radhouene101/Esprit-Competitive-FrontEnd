@@ -1,0 +1,42 @@
+/* Style pour les sélecteurs personnalisés en mode sombre */
+.custom-select {
+  width: 200px; /* Ajustez la largeur selon vos besoins */
+  padding: 5px;
+  border: 1px solid #495057; /* Couleur plus sombre pour la bordure */
+  border-radius: 4px;
+  background-color: #343a40; /* Couleur de fond plus sombre */
+  color: #fff; /* Couleur du texte plus clair */
+}
+
+/* Style pour le bouton d'affectation en mode sombre */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff; /* Couleur de fond plus foncée pour le bouton */
+  color: #fff; /* Couleur du texte plus clair */
+}
+
+/* Style pour le tableau en mode sombre */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff; /* Couleur du texte plus clair */
+}
+
+/* Style pour les en-têtes de tableau en mode sombre */
+.table th {
+  background-color: #343a40;
+  color: #fff;
+}
+
+/* Style pour les lignes de tableau impaires en mode sombre */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #444d56; /* Couleur de fond plus foncée pour les lignes impaires */
+}
+
+/* Style pour les lignes de tableau au survol en mode sombre */
+.table tbody tr:hover {
+  background-color: #495057; /* Couleur de fond plus foncée pour les lignes au survol */
+}
