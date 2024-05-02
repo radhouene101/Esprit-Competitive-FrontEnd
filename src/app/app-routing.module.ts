@@ -10,6 +10,7 @@ import {ChatPageComponent} from "./chat-page/chat-page.component";
 import {AddContestComponent} from "./components/bal-de-project-components/add-contest/add-contest.component";
 import {AdminDashboardComponent} from "./pages/bal-de-projet-pages/admin-dashboard/admin-dashboard.component";
 import {ContestComponent} from "./pages/bal-de-projet-pages/contest/contest.component";
+import {ProjectFormComponent} from "./components/bal-de-project-components/project-form/project-form.component";
 
 
 const routes:Routes=[
@@ -52,6 +53,10 @@ const routes:Routes=[
   {
     path:'contest',
     component:ContestComponent
+  },
+  {
+    path: 'admin-add-project-form',
+    component:ProjectFormComponent
   },
   {
     path:'**',//route has error

@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {RouterModule, RouterOutlet, Routes} from "@angular/router";
 import { MyFirstCompComponent } from './my-first-comp/my-first-comp.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MessageDetailsComponent } from './message-details/message-details.component';
 import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
@@ -26,6 +25,7 @@ import {LayoutModule} from "@angular/cdk/layout";
 import {ContestComponent} from "./pages/bal-de-projet-pages/contest/contest.component";
 import {AdminDashboardComponent} from "./pages/bal-de-projet-pages/admin-dashboard/admin-dashboard.component";
 import {AddContestComponent} from "./components/bal-de-project-components/add-contest/add-contest.component";
+import {ProjectFormComponent} from "./components/bal-de-project-components/project-form/project-form.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import {AddContestComponent} from "./components/bal-de-project-components/add-co
     ContestComponent,
     AdminDashboardComponent,
     FooterComponent,
-    AddContestComponent
+    AddContestComponent,
+    ProjectFormComponent
   ],
   imports: [
     BrowserModule,
@@ -54,8 +55,9 @@ import {AddContestComponent} from "./components/bal-de-project-components/add-co
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    ApiModule.forRoot({rootUrl:'http://localhost:8083'}),
-    BrowserAnimationsModule
+    ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   exports:[],//Added for routing
   providers: [HttpClient],
