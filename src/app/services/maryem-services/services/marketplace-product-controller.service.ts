@@ -34,11 +34,11 @@ export class MarketplaceProductControllerService extends BaseService {
   }
 
 
-
   //FETCHING CATEGORIES
   getProductCategories(): Observable<ProductCategory[]> {
     return this.http.get<ProductCategory[]>(`${this.rootUrl}/api/marketplace/categories/getAllCategories`);
 }
+
 
 
 
@@ -161,6 +161,7 @@ export class MarketplaceProductControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
+  
   findProductsByCategoryId(params: FindProductsByCategoryId$Params, context?: HttpContext): Observable<Array<MarketplaceProduct>> {
     return this.findProductsByCategoryId$Response(params, context).pipe(
       map((r: StrictHttpResponse<Array<MarketplaceProduct>>): Array<MarketplaceProduct> => r.body)
