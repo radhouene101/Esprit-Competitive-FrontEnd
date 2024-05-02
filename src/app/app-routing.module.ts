@@ -11,6 +11,7 @@ import {SignUpPageComponent} from "./pages/sign-up-page/sign-up-page.component";
 import {AboutComponent} from "./pages/about/about.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {ChatPageComponent} from "./pages/chat/chat-page/chat-page.component";
+import {ActivateAccountComponent} from "./pages/activate-account/activate-account.component";
 
 
 const routes:Routes=[
@@ -53,6 +54,10 @@ const routes:Routes=[
   {
     path:'contest',
     component:ContestComponent
+  },
+  {
+    path:'activateAccount/:hash/:email',
+    component:ActivateAccountComponent
   },
   {
     path:'**',//route has error

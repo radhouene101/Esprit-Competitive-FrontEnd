@@ -29,6 +29,7 @@ import {NbChatModule} from "@nebular/theme";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import { UserChatComponent } from './components/chat/user-chat/user-chat.component';
 import { SelectedUserChatComponent } from './components/chat/selected-user-chat/selected-user-chat.component';
+import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -50,7 +51,8 @@ const socketConfig:SocketIoConfig={
     FooterComponent,
     AddContestComponent,
     UserChatComponent,
-    SelectedUserChatComponent
+    SelectedUserChatComponent,
+    ActivateAccountComponent
   ],
   imports: [
     BrowserModule,
