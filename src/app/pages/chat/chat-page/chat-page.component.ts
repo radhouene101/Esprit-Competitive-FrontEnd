@@ -34,10 +34,10 @@ export class ChatPageComponent implements OnInit {
         console.log("updating one !!")
       });
       this.webSocketService.stompClient.subscribe(`/user/public`, async (payload: any) => {
-        await this.fetchAndDisplayUserChat();
-        const msg = JSON.parse(payload.body);
-        console.log(msg);
-      }
+          await this.fetchAndDisplayUserChat();
+          const msg = JSON.parse(payload.body);
+          console.log(msg);
+        }
       );
     }, () => {
       console.log("Error connecting !!");
@@ -95,9 +95,12 @@ export class ChatPageComponent implements OnInit {
   }
 
   assignSelectedUser(name: string | undefined) {
-    this.selectedUser = name;
-    if(this.messages.length==0)
+    if(this.selectedUser !=name){
+      this.selectedUser = name;
+      this.messages=[]
       this.fetchAndDisplayUserChat().then();
+
+    }
   }
 
   updateMessage(event: any) {
@@ -108,7 +111,7 @@ export class ChatPageComponent implements OnInit {
     const userChatResponse = await fetch(`http://localhost:8083/messages/${this.user.name}/${this.selectedUser}`);
     const userChat = await userChatResponse.json();
 
-    this.messages=[];
+    //this.messages=[];
     userChat.forEach((chat: any) => {
      this.classifyMessage(chat.content,chat.senderId!=this.user.name,chat.timestamp);
     })
