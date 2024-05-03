@@ -9,6 +9,7 @@ import {LoginComponent} from "./login/login.component";
 import {ChatPageComponent} from "./chat-page/chat-page.component";
 import { ProductsFrontComponent } from './marketplace/products-front/products-front.component';
 import { CartComponent } from './marketplace/cart/cart.component';
+import { OrderComponent } from './marketplace/order/order.component';
 
 
 const routes:Routes=[
@@ -45,6 +46,10 @@ const routes:Routes=[
   {
     path: 'cart', // Define the path for ProductsFrontComponent
     component: CartComponent // Specify the component for the path
+  },
+  {
+    path: 'order', // Define the path for ProductsFrontComponent
+    component: OrderComponent // Specify the component for the path
   },
   {
     path:'',

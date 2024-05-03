@@ -17,6 +17,7 @@ import {ApiModule} from "./services/User/api.module";
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { ProductsFrontComponent } from './marketplace/products-front/products-front.component';
 import { CartComponent } from './marketplace/cart/cart.component';
+import { OrderComponent } from './marketplace/order/order.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { CartComponent } from './marketplace/cart/cart.component';
     ChatPageComponent,
     ProductsFrontComponent,
     CartComponent,
+    OrderComponent,
 
   ],
   imports: [
