@@ -60,7 +60,7 @@ const socketConfig:SocketIoConfig={
     UserChatComponent,
     SelectedUserChatComponent,
     ActivateAccountComponent,
-    RoleComponent
+    RoleComponent,
     ProductsFrontComponent,
     CartComponent,
     OrderComponent,
