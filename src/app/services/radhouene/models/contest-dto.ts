@@ -3,8 +3,10 @@
 import { Option } from '../models/option';
 import { ProjectsDto } from '../models/projects-dto';
 export interface ContestDto {
+  deadline?: string;
   description?: string;
   id?: number;
+  image?: string;
   name?: string;
   niveau?: 'PREMIERE' | 'DEUXIEME' | 'TROIXIEME' | 'QUATRIEME' | 'CINQUEME';
   option?: Option;

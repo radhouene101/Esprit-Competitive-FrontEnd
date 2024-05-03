@@ -26,6 +26,7 @@ import {ContestComponent} from "./pages/bal-de-projet-pages/contest/contest.comp
 import {AdminDashboardComponent} from "./pages/bal-de-projet-pages/admin-dashboard/admin-dashboard.component";
 import {AddContestComponent} from "./components/bal-de-project-components/add-contest/add-contest.component";
 import {ProjectFormComponent} from "./components/bal-de-project-components/project-form/project-form.component";
+import {UserService} from "./services/REST/User/user.service";
 
 @NgModule({
   declarations: [
@@ -63,4 +64,10 @@ import {ProjectFormComponent} from "./components/bal-de-project-components/proje
   providers: [HttpClient],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(
+    private userService : UserService
+  ) {}
+
+}

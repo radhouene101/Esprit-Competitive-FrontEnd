@@ -21,12 +21,20 @@
         <div class="card m-2" *ngFor="let contest of contestList">
           <div class="no-image">
             <img src="assets/racing%20contest.jpg"  class="card-img-top overflow-auto" alt="...">
-
           </div>
           <div class="content">
             <p class="name">{{ contest.name }}</p>
             <p class="time">{{ contest.description}}</p>
           </div>
+          <div class="small" *ngIf="myUser.roles?.includes({name : 'USER'})">
+            <a class="btn btn-outline-light small"> show </a>
+          </div>
+          <div class="small" *ngIf="myUser.roles?.includes({name : 'ADMIN'})">
+            <a class="btn btn-outline-light small"> edit </a>
+            <a class="btn btn-outline-light small"> delete </a>
+            <a class="btn btn-outline-light small"> show </a>
+          </div>
+
         </div>
 
         <div >
@@ -44,11 +52,12 @@
         </div>
 
         <div class="balancewrapper">
-          <span class="balanceHeading"> Group Name: {{ pl.groupName }}</span>
+          <span class="balanceHeading "> Group Name: {{ pl.groupName }}</span>
           <span class="balanceHeading">Speciality: {{ pl.optionSpeciality?.name}}</span>
-          <span class="balance-coach">Classe: {{ pl.classe}}</span>
-          <span class="balance"> Coach: {{pl.coach}}</span>
-          <span class="balance">year: {{pl.scolarYear}}</span>
+          <span class="balanceHeading">Classe: {{ pl.classe}}</span>
+          <span class="balanceHeading"> Coach: {{pl.coach}}</span>
+          <span class="balanceHeading">year: {{pl.scolarYear}}</span>
+
 
         </div>
       </div>

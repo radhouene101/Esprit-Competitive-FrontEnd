@@ -8,6 +8,9 @@ import {CategoryService} from "../../../services/radhouene/services/category.ser
 import {CategoryProjectsDto} from "../../../services/radhouene/models/category-projects-dto";
 import {UserService} from "../../../services/REST/User/user.service";
 import {UserDetails} from "../../../models/UserDetails";
+import {HelperService} from "../../../services/helper/helper.service";
+import {User} from "../../../services/User/models/user";
+import {Observable} from "rxjs";
 
 
 
@@ -23,19 +26,31 @@ export class ProjectFormComponent implements OnInit{
   projectForm!:FormGroup
   niveauOptions = ['PREMIERE', 'DEUXIEME', 'TROIXIEME', 'QUATRIEME', 'CINQUEME'];
   categoryList : CategoryProjectsDto[] = [];
-
+  user:User = {}
   constructor(
     private apiService : ProjectsService,
     private categoryService : CategoryService,
     private router: Router,
-    private theUser :UserService
+    private jwtHelper:HelperService,
+    private theUserService: UserService
   ) {
   }
-
-
+  displayData() {
+    let res = this.theUserService.getUserData();
+    res.subscribe({
+      next: (response) => {
+        this.user = <User>response;
+        console.log(this.user.id);
+      },
+      error: (response) => {
+        console.log(response)
+      }
+    })
+  }
   ngOnInit(): void {
 
-    let user = {body: this.theUser.getUserData()}
+
+    this.displayData()
     this.categoryService.getAllCategories()
       .subscribe(
         category =>this.categoryList=category);
@@ -55,23 +70,23 @@ export class ProjectFormComponent implements OnInit{
       votingpool: new FormControl(false), // Set default value for boolean
       winner: new FormControl(false)
     })
-    if(user.body!=null && this.theUser.getUserData())
-    {
-      console.log(user.body)
-    }
+
+
+
+
+
   }
 
   project!:ProjectsDto
   onSubmit() {
-
-    //this.project.userId=this.useridvar
     this.project=this.projectForm.value
-      this.apiService.addProject({
+    this.project.userId=this.user.id
+    this.apiService.addProject({
         body : this.project
       })
         .subscribe({
          next : async() => console.log(this.project)
       });
-    console.log(this.project);
+
   }
 }

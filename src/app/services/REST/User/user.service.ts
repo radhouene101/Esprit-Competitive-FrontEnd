@@ -49,16 +49,9 @@ export class UserService {
   }
 
   getUserData(){
-    let res=null;
-    this.getData.hello$Response().subscribe({
-      next:(response)=>{
-        console.log(response);
-        res=response;
-      },
-      error:()=>{
-        console.log("Data failed !!");
-      }
-    });
-    return res;
+
+
+    return this.getData.hello();
   }
+
 }

@@ -55,6 +55,10 @@ const routes:Routes=[
     component:ContestComponent
   },
   {
+    path:"add-contest",
+    component:AddContestComponent
+  },
+  {
     path: 'admin-add-project-form',
     component:ProjectFormComponent
   },
