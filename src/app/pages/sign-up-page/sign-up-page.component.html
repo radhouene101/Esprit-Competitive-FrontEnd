@@ -28,7 +28,7 @@
           <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirm Password" name="name" class="login-input">
         </div>
         <div class="login-input-frame">
-          <button type="submit" (click)="signup()" class="login-btn">Sign up</button>
+          <button type="submit" [disabled]="loading" (click)="signup()" class="login-btn">Sign up</button>
         </div>
         <div class="login-input-frame">
           <div class="other-btns">
