@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/services/maryem-services/models/cart-item';
 import { CartItemControllerService } from '../../services/maryem-services/services/cart-item-controller.service';
 import { DeleteItem$Params } from 'src/app/services/maryem-services/fn/cart-item-controller/delete-item';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -12,7 +12,9 @@ export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
   assetsImagePath = '/assets/images/';
 
-  constructor(private cartItemService: CartItemControllerService) { }
+  constructor(private cartItemService: CartItemControllerService ,
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
     this.loadCartItems();
@@ -45,7 +47,7 @@ export class CartComponent implements OnInit {
   }
 
   orderNow() {
-    console.log('Order Now clicked');
+    this.router.navigate([ '/order']);
   }
 
   deleteItem(item: CartItem): void {

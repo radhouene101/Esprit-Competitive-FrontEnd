@@ -35,6 +35,7 @@ import {RoleComponent} from "./pages/role/role.component";
 import { ProductsFrontComponent } from './marketplace/products-front/products-front.component';
 import { CartComponent } from './marketplace/cart/cart.component';
 import { OrderComponent } from './marketplace/order/order.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -80,7 +81,12 @@ const socketConfig:SocketIoConfig={
     ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
     SocketIoModule.forRoot(socketConfig),
     NbChatModule,
-    BrowserAnimationsModule,NoopAnimationsModule
+    BrowserAnimationsModule,NoopAnimationsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => sessionStorage.getItem('userToken')
+      }
+    })
   ],
   exports:[],//Added for routing
   providers: [HttpClient],
