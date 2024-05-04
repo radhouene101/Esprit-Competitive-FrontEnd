@@ -11,6 +11,6 @@
         <input type="text" id="adress" name="adress" [(ngModel)]="customer.adress" required style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 100%;">
       </div>
       <!-- Add other form fields as needed -->
-      <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit Order</button>
+      <button type="submit" (click)="validateCustomerInfo()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Validate Customer Info</button>
     </form>
 </div>

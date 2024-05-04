@@ -46,8 +46,9 @@ export class CartComponent implements OnInit {
     }, 0);
   }
 
-  orderNow() {
-    this.router.navigate([ '/order']);
+  orderNow(): void {
+    // Navigate to the order page with cart items data
+    this.router.navigate(['/order'], { state: { cartItems: this.cartItems } });
   }
 
   deleteItem(item: CartItem): void {
