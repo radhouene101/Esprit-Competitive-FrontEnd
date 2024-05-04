@@ -27,10 +27,10 @@
             <p class="time">{{ contest.description}}</p>
           </div>
           <div class="small" *ngIf="myUser.includes('USER')">
-            <a class="btn btn-outline-light small"  (click)="showContest(contest.id)"> show </a>
+            <a [routerLink]="['/show-contest',contest.id]" class="btn btn-outline-light small"  (click)="showContest(contest.id)"> show </a>
           </div>
           <div class="small" *ngIf="myUser.includes('ADMIN')">
-            <a class="btn btn-outline-light small" (click)="editContest(contest.id)"> edit </a>
+            <a [routerLink]="['/update-contest',contest.id]" class="btn btn-outline-light small" (click)="editContest(contest.id)"> edit </a>
             <a class="btn btn-outline-light small" (click)="deleteTheContest(contest.id,i)"> delete </a>
           </div>
 
@@ -58,9 +58,9 @@
           <span class="balanceHeading">year: {{pl.scolarYear}}</span>
 
           <div class="balanceHeading" *ngIf="myUser.includes('ADMIN')">
-            <a *ngIf="myUser.includes('USER')" class="fa fa-eye small balanceHeading link-success" (click)="showProject(pl.id)">  </a>
-            <a *ngIf="myUser.includes('ADMIN')" class="fa fa-edit balanceHeading m-2 link-primary" (click)="editProject(pl.id)">  </a>
-            <a *ngIf="myUser.includes('ADMIN')" class="fa fa-x small balanceHeading link-danger" (click)="deleteTheProject(i,pl.id)">  </a>
+            <a *ngIf="myUser.includes('USER')" class="fa fa-eye small balanceHeading link-success" [routerLink]="['/show-project-details',pl.id]" (click)="showProject(pl.id)">  </a>
+            <a *ngIf="myUser.includes('ADMIN')" class="fa fa-edit balanceHeading m-2 link-primary" [routerLink]="['/update-project',pl.id]"  (click)="editProject(pl.id)">  </a>
+            <a *ngIf="myUser.includes('ADMIN')" class="fa fa-x small balanceHeading link-danger" [routerLink]="['/update',pl.id]" (click)="deleteTheProject(i,pl.id)">  </a>
           </div>
 
 
@@ -76,3 +76,4 @@
     </div>
   </div>
 </div>
+<router-outlet></router-outlet> <!-- Child components will be rendered here -->
