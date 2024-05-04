@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { MyFirstCompComponent } from './pages/my-first-comp/my-first-comp.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MessageDetailsComponent } from './components/chat/message-details/message-details.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -31,6 +31,7 @@ import { UserChatComponent } from './components/chat/user-chat/user-chat.compone
 import { SelectedUserChatComponent } from './components/chat/selected-user-chat/selected-user-chat.component';
 import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
 import {RoleComponent} from "./pages/role/role.component";
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -54,24 +55,25 @@ const socketConfig:SocketIoConfig={
     UserChatComponent,
     SelectedUserChatComponent,
     ActivateAccountComponent,
-    RoleComponent
+    RoleComponent,
+    ForgotPasswordComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
-    SocketIoModule.forRoot(socketConfig),
-    NbChatModule,
-    BrowserAnimationsModule,NoopAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        LayoutModule,
+        ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
+        SocketIoModule.forRoot(socketConfig),
+        NbChatModule,
+        BrowserAnimationsModule, NoopAnimationsModule, ReactiveFormsModule
+    ],
   exports:[],//Added for routing
   providers: [HttpClient],
   bootstrap: [AppComponent]

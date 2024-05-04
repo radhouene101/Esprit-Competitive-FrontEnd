@@ -13,9 +13,14 @@ import {LoginComponent} from "./pages/login/login.component";
 import {ChatPageComponent} from "./pages/chat/chat-page/chat-page.component";
 import {ActivateAccountComponent} from "./pages/activate-account/activate-account.component";
 import {RoleComponent} from "./pages/role/role.component";
+import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
 
 
 const routes:Routes=[
+  {
+    path:'forgotpassword',
+    component:ForgotPasswordComponent
+  },
   {
     path:'role',
     component:RoleComponent
