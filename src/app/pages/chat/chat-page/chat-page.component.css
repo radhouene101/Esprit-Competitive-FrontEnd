@@ -78,10 +78,11 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  width: 100%;
 }
 .message-container-sender,.message-container-receiver{
   width: 100%;
-  height:70px;
+  height:auto;
   margin-bottom: 5px;
   display: flex;
   align-items: center;

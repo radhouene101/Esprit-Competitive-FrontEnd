@@ -9,6 +9,7 @@
           <app-user-chat *ngIf="i.name!=user.name"
                          (click)="assignSelectedUser(i.name)"
                          [username]="i.name"
+                         [status]="i.status"
           ></app-user-chat>
         </div>
 
@@ -38,13 +39,15 @@
           [cssClass]="'message-container-receiver'"
         >
         </app-message-details>
+
       </div>
+      <app-loading-message *ngIf="loading"></app-loading-message>
     </div>
 
     <form id="messageForm" name="messageForm" class="hidden">
       <div class="message-input">
           <input autocomplete="off" (keyup)="updateMessage($event)" type="text" id="message" placeholder="Type your message...">
-        <button (click)="sendMessage()" type="submit">Send</button>
+        <button [disabled]="loading" (click)="sendMessage()" type="submit">Send</button>
       </div>
     </form>
   </div>
