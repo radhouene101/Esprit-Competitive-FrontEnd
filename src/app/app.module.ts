@@ -27,6 +27,8 @@ import {AdminDashboardComponent} from "./pages/bal-de-projet-pages/admin-dashboa
 import {AddContestComponent} from "./components/bal-de-project-components/add-contest/add-contest.component";
 import {ProjectFormComponent} from "./components/bal-de-project-components/project-form/project-form.component";
 import {UserService} from "./services/REST/User/user.service";
+import { ConfirmationAlertComponent } from './components/confirmation-pop-up/confirmation-alert/confirmation-alert.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import {UserService} from "./services/REST/User/user.service";
     AdminDashboardComponent,
     FooterComponent,
     AddContestComponent,
-    ProjectFormComponent
+    ProjectFormComponent,
+    ConfirmationAlertComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import {UserService} from "./services/REST/User/user.service";
     LayoutModule,
     ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   exports:[],//Added for routing
   providers: [HttpClient],

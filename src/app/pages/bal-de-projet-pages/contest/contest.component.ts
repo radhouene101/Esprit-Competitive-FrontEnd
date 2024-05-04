@@ -10,6 +10,11 @@ import {User} from "../../../services/User/models/user";
 import {Role} from "../../../services/User/models/role";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {HelperService} from "../../../services/helper/helper.service";
+import {deleteProject} from "../../../services/radhouene/fn/projects/delete-project";
+import {
+  ConfirmationAlertComponent
+} from "../../../components/confirmation-pop-up/confirmation-alert/confirmation-alert.component";
+import {MatDialog} from "@angular/material/dialog";
 
 
 
@@ -25,7 +30,8 @@ export class ContestComponent implements OnInit{
     private projetService : ProjectsService,
     private contestService :ContestBalDeProjetService,
 
-    private jwtHelper : HelperService
+    private jwtHelper : HelperService,
+    private dialog: MatDialog
 
   ) { }
 
@@ -47,8 +53,10 @@ export class ContestComponent implements OnInit{
       }
     )
   }
-  myUser:any={}
+  myUser!:string[]
   ngOnInit(): void {
+    this.myUser=this.jwtHelper.userRolesNames
+    console.log("extracting roles names" , this.jwtHelper.userRolesNames)
     console.log(this.jwtHelper.userFullName)
     console.log(this.jwtHelper.userId)
 
@@ -57,4 +65,53 @@ export class ContestComponent implements OnInit{
   }
 
 
+
+  showProject(id: number | undefined) {
+
+  }
+
+  editProject(id: number | undefined) {
+
+  }
+
+
+  deleteTheProject(i: number | undefined, id: number | undefined) {
+    if(i!=undefined && id!=undefined ){
+      const dialogRef = this.dialog.open(ConfirmationAlertComponent, {
+        data: { message: 'Are you sure you want to delete?' },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.projetService.deleteProject({ id: id }).subscribe(() => {
+            this.projectList.splice(i, 1);
+          });
+        }
+      });
+    }
+  }
+
+  showContest(id: number | undefined) {
+
+  }
+
+  editContest(id: number | undefined) {
+
+  }
+
+  deleteTheContest(id: number | undefined, i: number) {
+
+    if(i!=undefined && id!=undefined ){
+      const dialogRef = this.dialog.open(ConfirmationAlertComponent, {
+        data: { message: 'Are you sure you want to delete this contest?' },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.contestService.deleteContestById({ id: id }).subscribe(() => {
+            this.contestList.splice(i, 1);
+          });
+        }
+      });
+    }
+
+  }
 }

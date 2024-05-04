@@ -19,6 +19,10 @@ export class HelperService {
   get userRoles(): any{
     return  this.decodedToken.rolesList;
   }
+  get userRolesNames(): string[]{
+    return this.decodedToken.rolesList.map((role: { name: any; }) => role.name)
+
+  }
   get userFullName(): string{
     return  this.decodedToken.name;
   }

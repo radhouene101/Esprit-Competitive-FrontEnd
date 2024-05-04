@@ -18,7 +18,7 @@
 <!--            <a href="#" class="btn btn-primary"> display competition</a>-->
 <!--          </div>-->
 <!--        </div>-->
-        <div class="card m-2" *ngFor="let contest of contestList">
+        <div class="card m-2" *ngFor="let contest of contestList ; index as i">
           <div class="no-image">
             <img src="assets/racing%20contest.jpg"  class="card-img-top overflow-auto" alt="...">
           </div>
@@ -26,13 +26,12 @@
             <p class="name">{{ contest.name }}</p>
             <p class="time">{{ contest.description}}</p>
           </div>
-          <div class="small" *ngIf="myUser.roles?.includes({name : 'USER'})">
-            <a class="btn btn-outline-light small"> show </a>
+          <div class="small" *ngIf="myUser.includes('USER')">
+            <a class="btn btn-outline-light small"  (click)="showContest(contest.id)"> show </a>
           </div>
-          <div class="small" *ngIf="myUser.roles?.includes({name : 'ADMIN'})">
-            <a class="btn btn-outline-light small"> edit </a>
-            <a class="btn btn-outline-light small"> delete </a>
-            <a class="btn btn-outline-light small"> show </a>
+          <div class="small" *ngIf="myUser.includes('ADMIN')">
+            <a class="btn btn-outline-light small" (click)="editContest(contest.id)"> edit </a>
+            <a class="btn btn-outline-light small" (click)="deleteTheContest(contest.id,i)"> delete </a>
           </div>
 
         </div>
@@ -46,7 +45,7 @@
 
     <div  class="rounded col-3  secondary-bg  border border-black border-1 text-center align-items-baseline m-5">
       <p class="text-white"> <i class="fa-solid fa-award "></i> Ranking </p>
-      <div class="walletBalanceCard border border-1 m-2" *ngFor="let pl of projectList">
+      <div class="walletBalanceCard border border-1 m-2" *ngFor="let pl of projectList; index as i ">
         <div class="svgwrapper">
           <img src="favicon.ico">
         </div>
@@ -57,6 +56,12 @@
           <span class="balanceHeading">Classe: {{ pl.classe}}</span>
           <span class="balanceHeading"> Coach: {{pl.coach}}</span>
           <span class="balanceHeading">year: {{pl.scolarYear}}</span>
+
+          <div class="balanceHeading" *ngIf="myUser.includes('ADMIN')">
+            <a *ngIf="myUser.includes('USER')" class="fa fa-eye small balanceHeading link-success" (click)="showProject(pl.id)">  </a>
+            <a *ngIf="myUser.includes('ADMIN')" class="fa fa-edit balanceHeading m-2 link-primary" (click)="editProject(pl.id)">  </a>
+            <a *ngIf="myUser.includes('ADMIN')" class="fa fa-x small balanceHeading link-danger" (click)="deleteTheProject(i,pl.id)">  </a>
+          </div>
 
 
         </div>
