@@ -1,7 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 import { GrantedAuthority } from '../models/granted-authority';
-import { Projects } from '../models/projects';
 import { Role } from '../models/role';
 export interface User {
   accountNonExpired?: boolean;
@@ -12,7 +11,6 @@ export interface User {
   email?: string;
   enabled?: boolean;
   id?: number;
-  listprojects?: Array<Projects>;
   name?: string;
   otp?: string;
   otpGeneratedTime?: string;

@@ -27,6 +27,8 @@ import { getNominatedProjects } from '../fn/projects/get-nominated-projects';
 import { GetNominatedProjects$Params } from '../fn/projects/get-nominated-projects';
 import { getProjectById } from '../fn/projects/get-project-by-id';
 import { GetProjectById$Params } from '../fn/projects/get-project-by-id';
+import { getProjectsByContest } from '../fn/projects/get-projects-by-contest';
+import { GetProjectsByContest$Params } from '../fn/projects/get-projects-by-contest';
 import { ProjectsDto } from '../models/projects-dto';
 
 @Injectable({ providedIn: 'root' })
@@ -257,6 +259,31 @@ export class ProjectsService extends BaseService {
   getGroupsByWinningSteak(params: GetGroupsByWinningSteak$Params, context?: HttpContext): Observable<Array<string>> {
     return this.getGroupsByWinningSteak$Response(params, context).pipe(
       map((r: StrictHttpResponse<Array<string>>): Array<string> => r.body)
+    );
+  }
+
+  /** Path part for operation `getProjectsByContest()` */
+  static readonly GetProjectsByContestPath = '/projects/find-projects-by-contestID/{contestId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getProjectsByContest()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getProjectsByContest$Response(params: GetProjectsByContest$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<ProjectsDto>>> {
+    return getProjectsByContest(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getProjectsByContest$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getProjectsByContest(params: GetProjectsByContest$Params, context?: HttpContext): Observable<Array<ProjectsDto>> {
+    return this.getProjectsByContest$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<ProjectsDto>>): Array<ProjectsDto> => r.body)
     );
   }
 

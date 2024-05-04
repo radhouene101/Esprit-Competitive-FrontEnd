@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import { Option } from '../models/option';
-import { ProjectsDto } from '../models/projects-dto';
+import { Projects } from '../models/projects';
 export interface ContestDto {
   deadline?: string;
   description?: string;
@@ -10,5 +10,5 @@ export interface ContestDto {
   name?: string;
   niveau?: 'PREMIERE' | 'DEUXIEME' | 'TROIXIEME' | 'QUATRIEME' | 'CINQUEME';
   option?: Option;
-  projects?: Array<ProjectsDto>;
+  projects?: Array<Projects>;
 }

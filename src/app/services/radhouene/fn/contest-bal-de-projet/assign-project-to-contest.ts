@@ -8,15 +8,15 @@ import { RequestBuilder } from '../../request-builder';
 
 
 export interface AssignProjectToContest$Params {
-  projectId: number;
   contestDtoID: number;
+  projectId: number;
 }
 
 export function assignProjectToContest(http: HttpClient, rootUrl: string, params: AssignProjectToContest$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
   const rb = new RequestBuilder(rootUrl, assignProjectToContest.PATH, 'patch');
   if (params) {
-    rb.path('projectId', params.projectId, {});
     rb.path('contestDtoID', params.contestDtoID, {});
+    rb.path('projectId', params.projectId, {});
   }
 
   return http.request(
@@ -29,4 +29,4 @@ export function assignProjectToContest(http: HttpClient, rootUrl: string, params
   );
 }
 
-assignProjectToContest.PATH = '/contest-bal-de-projet/assign-project-to-contest/{contestId}/{projectId}';
+assignProjectToContest.PATH = '/contest-bal-de-projet/assign-project-to-contest/{contestDtoID}/{projectId}';

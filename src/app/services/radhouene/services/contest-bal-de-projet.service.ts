@@ -105,7 +105,7 @@ export class ContestBalDeProjetService extends BaseService {
   }
 
   /** Path part for operation `assignProjectToContest()` */
-  static readonly AssignProjectToContestPath = '/contest-bal-de-projet/assign-project-to-contest/{contestId}/{projectId}';
+  static readonly AssignProjectToContestPath = '/contest-bal-de-projet/assign-project-to-contest/{contestDtoID}/{projectId}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.

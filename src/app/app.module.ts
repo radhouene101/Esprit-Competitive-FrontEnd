@@ -29,6 +29,11 @@ import {ProjectFormComponent} from "./components/bal-de-project-components/proje
 import {UserService} from "./services/REST/User/user.service";
 import { ConfirmationAlertComponent } from './components/confirmation-pop-up/confirmation-alert/confirmation-alert.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { UpdateContestComponent } from './pages/update-contest/update-contest.component';
+import { UpdateProjectComponent } from './pages/update-project/update-project.component';
+import { ShowContestComponent } from './pages/show-contest/show-contest.component';
+import { ShowProjectDetailsComponent } from './pages/show-project-details/show-project-details.component';
+import { ShowAllProjectsComponent } from './pages/show-all-projects/show-all-projects.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,12 @@ import {MatDialogModule} from "@angular/material/dialog";
     FooterComponent,
     AddContestComponent,
     ProjectFormComponent,
-    ConfirmationAlertComponent
+    ConfirmationAlertComponent,
+    UpdateContestComponent,
+    UpdateProjectComponent,
+    ShowContestComponent,
+    ShowProjectDetailsComponent,
+    ShowAllProjectsComponent
   ],
   imports: [
     BrowserModule,

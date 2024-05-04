@@ -11,6 +11,11 @@ import {AddContestComponent} from "./components/bal-de-project-components/add-co
 import {AdminDashboardComponent} from "./pages/bal-de-projet-pages/admin-dashboard/admin-dashboard.component";
 import {ContestComponent} from "./pages/bal-de-projet-pages/contest/contest.component";
 import {ProjectFormComponent} from "./components/bal-de-project-components/project-form/project-form.component";
+import {ShowContestComponent} from "./pages/show-contest/show-contest.component";
+import {UpdateContestComponent} from "./pages/update-contest/update-contest.component";
+import {ShowProjectDetailsComponent} from "./pages/show-project-details/show-project-details.component";
+import {UpdateProjectComponent} from "./pages/update-project/update-project.component";
+import {ShowAllProjectsComponent} from "./pages/show-all-projects/show-all-projects.component";
 
 
 const routes:Routes=[
@@ -52,7 +57,22 @@ const routes:Routes=[
   },
   {
     path:'contest',
-    component:ContestComponent
+    component:ContestComponent,
+  },
+  {path: "show-contest/:id",
+    component:ShowContestComponent
+  },
+  {path: "update-contest/:id",
+    component:UpdateContestComponent
+  },
+  {path: "show-project-details/:id",
+    component:ShowProjectDetailsComponent
+  },
+  {path: "update-project/:id",
+    component:UpdateProjectComponent
+  },
+  {path: "show-all-projects",
+    component:ShowAllProjectsComponent
   },
   {
     path:"add-contest",
