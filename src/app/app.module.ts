@@ -30,7 +30,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
 import { UserChatComponent } from './components/chat/user-chat/user-chat.component';
 import { SelectedUserChatComponent } from './components/chat/selected-user-chat/selected-user-chat.component';
 import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
-import {RoleComponent} from "./pages/role/role.component";
+//import {RoleComponent} from "./pages/role/role.component";
 import { LoadingMessageComponent } from './components/chat/loading-message/loading-message.component';
 
 const socketConfig:SocketIoConfig={
@@ -55,7 +55,7 @@ const socketConfig:SocketIoConfig={
     UserChatComponent,
     SelectedUserChatComponent,
     ActivateAccountComponent,
-    RoleComponent,
+    //RoleComponent,
     LoadingMessageComponent
   ],
   imports: [

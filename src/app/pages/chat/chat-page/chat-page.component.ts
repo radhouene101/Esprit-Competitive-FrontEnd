@@ -86,8 +86,9 @@ export class ChatPageComponent implements OnInit {
   loading:boolean=false;
   sendMessage() {
     if (this.selectedUser && this.user.name) {
-      this.loading=true;
+
       if(this.selectedUser!="GEMINI AI"){
+
         const chatMessage = {
           senderId: this.user.name,
           recipientId: this.selectedUser,
@@ -97,6 +98,7 @@ export class ChatPageComponent implements OnInit {
         this.webSocketService.stompClient.send('/app/chat', {}, JSON.stringify(chatMessage));
         this.classifyMessage(chatMessage.content,false,chatMessage.timestamp.toString());
       }else{
+        this.loading=true;
         console.log("sending message to GEMINI !");
         this.classifyMessage(this.message,false,new Date().toString());
         this.ChatBot.sendMessage(this.message).pipe(finalize(() => this.loading = false)).subscribe({
