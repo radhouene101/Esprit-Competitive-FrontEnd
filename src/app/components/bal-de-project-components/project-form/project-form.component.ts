@@ -35,22 +35,8 @@ export class ProjectFormComponent implements OnInit{
     private theUserService: UserService
   ) {
   }
-  displayData() {
-    let res = this.theUserService.getUserData();
-    res.subscribe({
-      next: (response) => {
-        this.user = <User>response;
-        console.log(this.user.id);
-      },
-      error: (response) => {
-        console.log(response)
-      }
-    })
-  }
+
   ngOnInit(): void {
-
-
-    this.displayData()
     this.categoryService.getAllCategories()
       .subscribe(
         category =>this.categoryList=category);
@@ -80,7 +66,8 @@ export class ProjectFormComponent implements OnInit{
   project!:ProjectsDto
   onSubmit() {
     this.project=this.projectForm.value
-    this.project.userId=this.user.id
+    this.project.userId=this.jwtHelper.userId
+    console.log(this.jwtHelper.userId);
     this.apiService.addProject({
         body : this.project
       })

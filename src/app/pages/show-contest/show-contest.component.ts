@@ -43,4 +43,7 @@ import {ContestBalDeProjetService} from "../../services/radhouene/services/conte
     console.log("hello from showContestComponent")
     }
 
+  voteUp(id: number | undefined) {
+    //this.projectsService.
   }
+}

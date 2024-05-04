@@ -29,7 +29,6 @@ export class ContestComponent implements OnInit{
     private breakpointObserver: BreakpointObserver,
     private projetService : ProjectsService,
     private contestService :ContestBalDeProjetService,
-
     private jwtHelper : HelperService,
     private dialog: MatDialog
 
