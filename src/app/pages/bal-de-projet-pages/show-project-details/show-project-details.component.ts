@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ProjectsDto} from "../../services/radhouene/models/projects-dto";
+
 import {ActivatedRoute, Router} from "@angular/router";
-import {ProjectsService} from "../../services/radhouene/services/projects.service";
+import {ProjectsService} from "../../../services/radhouene/services/projects.service";
+import {ProjectsDto} from "../../../services/radhouene/models/projects-dto";
+
 
 @Component({
   selector: 'app-show-project-details',
@@ -16,7 +18,7 @@ export class ShowProjectDetailsComponent implements OnInit{
   project!:ProjectsDto
   concernedProject(id:number){
     this.projectService.getProjectById({id:id}).subscribe({
-      next : (data) =>{
+      next : (data: any) =>{
         this.project=data
       }
     })

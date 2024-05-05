@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ProjectsDto} from "../../services/radhouene/models/projects-dto";
-import {ProjectsService} from "../../services/radhouene/services/projects.service";
-import {ContestDto} from "../../services/radhouene/models/contest-dto";
-import {ContestBalDeProjetService} from "../../services/radhouene/services/contest-bal-de-projet.service";
-import {HelperService} from "../../services/helper/helper.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {formatNumber} from "@angular/common";
+import {ProjectsService} from "../../../services/radhouene/services/projects.service";
+import {ContestBalDeProjetService} from "../../../services/radhouene/services/contest-bal-de-projet.service";
+import {HelperService} from "../../../services/helper/helper.service";
+import {ProjectsDto} from "../../../services/radhouene/models/projects-dto";
+import {ContestDto} from "../../../services/radhouene/models/contest-dto";
 
 @Component({
   selector: 'app-show-contest',

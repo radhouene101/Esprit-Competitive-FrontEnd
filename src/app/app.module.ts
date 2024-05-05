@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { MyFirstCompComponent } from './my-first-comp/my-first-comp.component';
+import { MyFirstCompComponent } from './pages/my-first-comp/my-first-comp.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MessageDetailsComponent } from './message-details/message-details.component';
 import { MenuComponent } from './menu/menu.component';
-import { AboutComponent } from './about/about.component';
+import { AboutComponent } from './pages/about/about.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import { LoginComponent } from './login/login.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { LoginComponent } from './pages/login/login.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import {ApiModule} from "./services/User/api.module";
-import { ChatPageComponent } from './chat-page/chat-page.component';
+import { ChatPageComponent } from './pages/chat/chat-page/chat-page.component';
 import {FooterComponent} from "./components/footer/footer/footer.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from "@angular/material/grid-list";
@@ -29,11 +29,14 @@ import {ProjectFormComponent} from "./components/bal-de-project-components/proje
 import {UserService} from "./services/REST/User/user.service";
 import { ConfirmationAlertComponent } from './components/confirmation-pop-up/confirmation-alert/confirmation-alert.component';
 import {MatDialogModule} from "@angular/material/dialog";
-import { UpdateContestComponent } from './pages/update-contest/update-contest.component';
-import { UpdateProjectComponent } from './pages/update-project/update-project.component';
-import { ShowContestComponent } from './pages/show-contest/show-contest.component';
-import { ShowProjectDetailsComponent } from './pages/show-project-details/show-project-details.component';
-import { ShowAllProjectsComponent } from './pages/show-all-projects/show-all-projects.component';
+import {UpdateContestComponent} from "./pages/bal-de-projet-pages/update-contest/update-contest.component";
+import {UpdateProjectComponent} from "./pages/bal-de-projet-pages/update-project/update-project.component";
+import {ShowContestComponent} from "./pages/bal-de-projet-pages/show-contest/show-contest.component";
+import {
+  ShowProjectDetailsComponent
+} from "./pages/bal-de-projet-pages/show-project-details/show-project-details.component";
+import {ShowAllProjectsComponent} from "./pages/bal-de-projet-pages/show-all-projects/show-all-projects.component";
+
 
 @NgModule({
   declarations: [
