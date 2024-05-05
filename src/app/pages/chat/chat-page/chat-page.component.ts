@@ -97,6 +97,7 @@ export class ChatPageComponent implements OnInit {
         }
         this.webSocketService.stompClient.send('/app/chat', {}, JSON.stringify(chatMessage));
         this.classifyMessage(chatMessage.content,false,chatMessage.timestamp.toString());
+        this.message=""
       }else{
         this.loading=true;
         console.log("sending message to GEMINI !");
