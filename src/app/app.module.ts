@@ -60,7 +60,7 @@ const socketConfig:SocketIoConfig={
     ForgotPasswordComponent,
     LoadingMessageComponent
   ],
-  
+
     imports: [
         BrowserModule,
         FormsModule,
