@@ -14,8 +14,8 @@ import {ActivateAccountComponent} from "./pages/activate-account/activate-accoun
 import {RoleComponent} from "./pages/role/role.component";
 import { ProductsFrontComponent } from './marketplace/products-front/products-front.component';
 import { CartComponent } from './marketplace/cart/cart.component';
-import { OrderComponent } from './marketplace/order/order.component';
-
+import { OrderComponent } from './marketplace/order/order.component'; 
+import { Order2Component } from './marketplace/order2/order2.component';
 
 const routes:Routes=[
   {
@@ -58,6 +58,10 @@ const routes:Routes=[
   {
     path: 'order', // Define the path for ProductsFrontComponent
     component: OrderComponent // Specify the component for the path
+  },
+  {
+    path: 'order2', // Define the path for ProductsFrontComponent
+    component: Order2Component // Specify the component for the path
   },
   {
     path:'',

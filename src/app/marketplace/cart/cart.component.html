@@ -3,7 +3,7 @@
     <div class="item">Item</div>
     <div class="quantity">Quantity</div>
     <div class="price">Price</div>
-    <div class="actions"></div> <!-- Add a column for actions -->
+    <div class="actions"></div>
   </div>
   <div *ngFor="let item of cartItems" class="cart-item">
     <div class="item-details">
@@ -16,13 +16,13 @@
     <div class="quantity">{{ item.quantity }}</div>
     <div class="price">{{ item.price }}</div>
     <div class="actions">
-      <button (click)="deleteItem(item)" class="delete-button">Delete</button> <!-- Add delete button -->
+      <button (click)="deleteItem(item)" class="delete-button">Delete</button>
     </div>
   </div>
   <div class="total-sum">
     <p>Total: {{ getTotalSum() }}</p>
   </div>
-  <button (click)="orderNow()" class="order-button">Order Now</button>
+  <button (click)="orderNoww()" class="order-button">Order Now</button>
 </div>
 
 <ng-template #emptyCart>

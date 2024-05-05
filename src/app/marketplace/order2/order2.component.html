@@ -1,0 +1,34 @@
+<div class="order-details">
+    <h2>Order Details</h2>
+
+     <!-- Customer Information -->
+     <div *ngIf="customer.email" style="margin-bottom: 20px;">
+        <h3>Customer Details</h3>
+        <p><strong>Email:</strong> {{ customer.email }}</p>
+        <p><strong>Name:</strong> {{ customer.fullname }}</p>
+        <p><strong>Phone:</strong> {{ customer.phone }}</p>
+      </div>
+
+
+    <!-- Cart Items -->
+    <h3>CartItems Details</h3>
+    <table *ngIf="cartItems && cartItems.length > 0" class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.product?.productName }}</td>
+          <td>{{ item.product?.category?.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -5,6 +5,8 @@ import { CustomerControllerService } from 'src/app/services/maryem-services/serv
 import { CreateCustomer$Params } from 'src/app/services/maryem-services/fn/customer-controller/create-customer';
 import { ActivatedRoute } from '@angular/router';
 import { CartItem } from 'src/app/services/maryem-services/models/cart-item';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-order',
@@ -18,7 +20,8 @@ export class OrderComponent implements OnInit {
   constructor(
     private jwtHelper: JwtHelperService,
     private customerService: CustomerControllerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -60,6 +63,8 @@ export class OrderComponent implements OnInit {
         (response) => {
           console.log('Customer created:', response);
           // Handle success
+           // Redirect to "/order2" upon successful customer creation
+           this.router.navigate(['/order2']);
         },
         (error) => {
           console.error('Error creating customer:', error);

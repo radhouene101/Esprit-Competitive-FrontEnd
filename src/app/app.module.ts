@@ -36,6 +36,7 @@ import { ProductsFrontComponent } from './marketplace/products-front/products-fr
 import { CartComponent } from './marketplace/cart/cart.component';
 import { OrderComponent } from './marketplace/order/order.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { Order2Component } from './marketplace/order2/order2.component';
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -65,6 +66,7 @@ const socketConfig:SocketIoConfig={
     ProductsFrontComponent,
     CartComponent,
     OrderComponent,
+    Order2Component,
 
   ],
   imports: [
