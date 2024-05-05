@@ -1,0 +1,10 @@
+<div class="user-chat-cotainer">
+  <img src="assets/default-user.jpg" alt="" srcset="" class="user-chat-img-style">
+  <div class="user-chat-details">
+    {{username}}
+    <div *ngIf="status== 'ONLINE' " class="user-chat-status-online">
+    </div>
+    <div *ngIf="status== 'OFFLINE' " class="user-chat-status-offline">
+    </div>
+  </div>
+</div>

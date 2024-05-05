@@ -13,7 +13,7 @@
     <div class="login-input-container" *ngIf="!sessionStorage.getItem('userToken')">
       <form class="login-input-layout" (ngSubmit)="login()">
         <div class="login-input-frame">
-          <input [(ngModel)]="user.email" type="text" placeholder="Email" name="email" class="login-input">
+          <input  [(ngModel)]="user.email" type="text" placeholder="Email" name="email" class="login-input">
         </div>
         <div class="login-input-frame">
           <input [(ngModel)]="user.password" type="password" placeholder="Password" name="password" class="login-input">
@@ -23,7 +23,7 @@
         </div>
         <div class="login-input-frame">
           <div class="other-btns">
-            <div class="other-btn">
+            <div class="other-btn" (click)="forgot(user.email)" >
               Forget Password ?
             </div>
             <div class="other-btn" routerLink="signup">

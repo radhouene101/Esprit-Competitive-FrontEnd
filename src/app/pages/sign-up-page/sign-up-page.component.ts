@@ -12,6 +12,7 @@ import {UserDetails} from "../../models/UserDetails";
 export class SignUpPageComponent {
   user:UserDetails=new UserDetails();
   confirmPassword!:string
+  loading: any;
   constructor(
     private userService:UserService,
     private router:Router

@@ -18,11 +18,20 @@ import {
 } from "./pages/bal-de-projet-pages/show-project-details/show-project-details.component";
 import {UpdateProjectComponent} from "./pages/bal-de-projet-pages/update-project/update-project.component";
 import {ShowAllProjectsComponent} from "./pages/bal-de-projet-pages/show-all-projects/show-all-projects.component";
-
+import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
+import {RoleComponent} from "./pages/role/role.component";
+import {ActivateAccountComponent} from "./pages/activate-account/activate-account.component";
 
 
 const routes:Routes=[
-
+  {
+    path:'forgotpassword',
+    component:ForgotPasswordComponent
+  },
+  {
+    path:'role',
+    component:RoleComponent
+  },
   {
     path:'home',
     component:MyFirstCompComponent
@@ -84,6 +93,10 @@ const routes:Routes=[
   {
     path: 'admin-add-project-form',
     component:ProjectFormComponent
+  },
+  {
+    path:'activateAccount/:hash/:email',
+    component:ActivateAccountComponent
   },
   {
     path:'**',//route has error

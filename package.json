@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "api-gen-bal-de-projet": "ng-openapi-gen --input ./src/app/swagger/swagger-radhouene.json --output src/app/services/radhouene/"
+    "api-gen-bal-de-projet": "ng-openapi-gen --input ./src/app/swagger/swagger-radhouene.json --output src/app/services/radhouene/",
+    "api-gen-ahmed": "ng-openapi-gen --input ./src/app/swagger/swagger-ahmed.json --output src/app/services/Role/"
+
   },
   "private": true,
   "dependencies": {
@@ -31,7 +33,9 @@
     "jwt-decode": "^4.0.0",
     "net": "^1.0.2",
     "ng-openapi-gen": "^0.51.0",
+    "ngx-socket-io": "^4.4.0",
     "rxjs": "~7.8.0",
+    "sockjs": "^0.3.24",
     "sockjs-client": "^1.6.1",
     "startbootstrap-creative": "^7.0.7",
     "startbootstrap-shop-item": "^5.0.6",

@@ -5,18 +5,21 @@ import {Router} from "@angular/router";
 import {SignupControllerService} from "../../User/services/signup-controller.service";
 import {RoleTestControllerService} from "../../User/services/role-test-controller.service";
 import {User} from "../../User/models/user";
+import {UserControllerService} from "../../User/services/user-controller.service";
+import {HttpClient} from "@angular/common/http";
+import {finalize} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  //baseUrl:string="http://localhost:8083/"
   constructor(
     private router:Router,
     private authController:AuthentificationControllerService,
     private signUpController:SignupControllerService,
-    private getData:RoleTestControllerService
+    private getData:RoleTestControllerService,
+    private getUsers:UserControllerService,
+    private http:HttpClient
   ) { }
 
   authenticate(user:AuthentificationRequest){
@@ -35,10 +38,12 @@ export class UserService {
       })
 
   }
+  loading=false;
   signup(user:User){
     this.signUpController.createUser$Response({
       body:user
-    }).subscribe({
+    }).pipe(finalize(() => this.loading = false))
+      .subscribe({
       next:(response)=>{
         console.log(response);
       },
@@ -50,8 +55,15 @@ export class UserService {
 
   getUserData(){
 
-
     return this.getData.hello();
+  }
+
+  getUserList(){
+    return this.getUsers.getAllUsers();
+  }
+
+  verifyEmail(hash: string,email:string) {
+    return this.http.put("http://localhost:8083/user/verify-account?email="+email+"&otp="+hash,{})
   }
 
 }
