@@ -1,5 +1,6 @@
 export { UserControllerService } from './services/user-controller.service';
 export { ForgotpasswordControllerService } from './services/forgotpassword-controller.service';
+export { RoleControllerService } from './services/role-controller.service';
 export { SousCategoryService } from './services/sous-category.service';
 export { SignupControllerService } from './services/signup-controller.service';
 export { ProjectsService } from './services/projects.service';

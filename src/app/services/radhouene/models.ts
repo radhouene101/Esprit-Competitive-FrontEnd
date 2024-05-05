@@ -12,6 +12,7 @@ export { OptionDto } from './models/option-dto';
 export { Projects } from './models/projects';
 export { ProjectsDto } from './models/projects-dto';
 export { Role } from './models/role';
+export { RoleDto } from './models/role-dto';
 export { SignupRequest } from './models/signup-request';
 export { SousCategory } from './models/sous-category';
 export { SousCategoryDto } from './models/sous-category-dto';

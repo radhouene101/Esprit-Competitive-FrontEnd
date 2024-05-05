@@ -13,6 +13,7 @@ export interface ProjectsDto {
   groupName?: string;
   groupStreak?: number;
   id?: number;
+  imageUrl?: string;
   name?: string;
   niveau?: 'PREMIERE' | 'DEUXIEME' | 'TROIXIEME' | 'QUATRIEME' | 'CINQUEME';
   nominated?: boolean;
