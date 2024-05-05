@@ -32,6 +32,7 @@ import { SelectedUserChatComponent } from './components/chat/selected-user-chat/
 import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
 import {RoleComponent} from "./pages/role/role.component";
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { LoadingMessageComponent } from './components/chat/loading-message/loading-message.component';
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -56,8 +57,10 @@ const socketConfig:SocketIoConfig={
     SelectedUserChatComponent,
     ActivateAccountComponent,
     RoleComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    LoadingMessageComponent
   ],
+  
     imports: [
         BrowserModule,
         FormsModule,

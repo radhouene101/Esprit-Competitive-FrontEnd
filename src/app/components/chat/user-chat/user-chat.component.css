@@ -14,13 +14,15 @@
   border-radius: 100%;
 }
 
-.user-chat-status{
+.user-chat-status-online,.user-chat-status-offline{
   width: 15px;
   height: 15px;
   background-color: green;
   border-radius: 100%;
 }
-
+.user-chat-status-offline{
+  background-color: red;
+}
 .user-chat-details{
   width: 75%;
   height: 100%;

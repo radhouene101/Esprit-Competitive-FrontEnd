@@ -8,4 +8,6 @@ import {Component, Input} from '@angular/core';
 export class UserChatComponent {
   @Input()
   username:any;
+  @Input()
+  status:any;
 }

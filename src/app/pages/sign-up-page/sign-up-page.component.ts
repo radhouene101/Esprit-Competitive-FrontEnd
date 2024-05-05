@@ -3,6 +3,8 @@ import {UserService} from "../../services/REST/User/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../services/User/models/user";
 import {UserDetails} from "../../models/UserDetails";
+import {finalize} from "rxjs";
+import {SignupControllerService} from "../../services/User/services/signup-controller.service";
 
 @Component({
   selector: 'app-sign-up-page',
@@ -13,12 +15,25 @@ export class SignUpPageComponent {
   user:UserDetails=new UserDetails();
   confirmPassword!:string
   constructor(
-    private userService:UserService,
+    private signUpController:SignupControllerService,
     private router:Router
   ) {
   }
 
+  loading=false;
   signup(){
-    this.userService.signup(this.user);
+    this.loading=true;
+    this.signUpController.createUser$Response({
+      body:this.user
+    }).pipe(finalize(() => this.loading = false))
+      .subscribe({
+        next:(response)=>{
+          console.log(response);
+          this.router.navigate([""]);
+        },
+        error:()=>{
+          console.log("Registration failed !!");
+        }
+      });
   }
 }

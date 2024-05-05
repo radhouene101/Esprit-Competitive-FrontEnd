@@ -91,7 +91,9 @@
   border: none;
   font-family: Montserrat;
   border-radius: 5px;
-
+}
+.login-btn:disabled,.login-btn[disabled]{
+  background-color: #888888;
 }
 
 .other-btns{

@@ -7,6 +7,7 @@ import {RoleTestControllerService} from "../../User/services/role-test-controlle
 import {User} from "../../User/models/user";
 import {UserControllerService} from "../../User/services/user-controller.service";
 import {HttpClient} from "@angular/common/http";
+import {finalize} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +38,12 @@ export class UserService {
       })
 
   }
+  loading=false;
   signup(user:User){
     this.signUpController.createUser$Response({
       body:user
-    }).subscribe({
+    }).pipe(finalize(() => this.loading = false))
+      .subscribe({
       next:(response)=>{
         console.log(response);
       },
