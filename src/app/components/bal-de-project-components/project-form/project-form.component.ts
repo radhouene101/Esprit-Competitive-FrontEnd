@@ -32,7 +32,6 @@ export class ProjectFormComponent implements OnInit{
     private categoryService : CategoryService,
     private router: Router,
     private jwtHelper:HelperService,
-    private theUserService: UserService
   ) {
   }
 
@@ -74,6 +73,6 @@ export class ProjectFormComponent implements OnInit{
         .subscribe({
          next : async() => console.log(this.project)
       });
-
+      this.router.navigate(["/contest"])
   }
 }

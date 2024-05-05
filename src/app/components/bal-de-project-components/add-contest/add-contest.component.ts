@@ -1,19 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Option} from "../../../services/radhouene/models/option";
-import {Projects} from "../../../services/radhouene/models/projects";
-import {CategoryProjectsDto} from "../../../services/radhouene/models/category-projects-dto";
-import {ProjectsService} from "../../../services/radhouene/services/projects.service";
-import {CategoryService} from "../../../services/radhouene/services/category.service";
-import {Router} from "@angular/router";
-import {HelperService} from "../../../services/helper/helper.service";
-import {UserService} from "../../../services/REST/User/user.service";
-import {ProjectsDto} from "../../../services/radhouene/models/projects-dto";
-import {Contest} from "../../../services/radhouene/models/contest";
 import {OptionsService} from "../../../services/radhouene/services/options.service";
 import {ContestBalDeProjetService} from "../../../services/radhouene/services/contest-bal-de-projet.service";
 import {ContestDto} from "../../../services/radhouene/models/contest-dto";
-import {OptionDto} from "../../../services/radhouene/models/option-dto";
+
 
 @Component({
   selector: 'app-add-contest',
@@ -27,12 +18,12 @@ export class AddContestComponent implements OnInit{
   contestToSave !:ContestDto;
 
 
+
   contestForm!:FormGroup
   constructor(
-    private projectsService : ProjectsService,
     private optionService : OptionsService,
-    private theUserService: UserService,
-    private contestService : ContestBalDeProjetService
+    private contestService : ContestBalDeProjetService,
+
   ) {
   }
   fillOptionList(){
@@ -51,6 +42,7 @@ export class AddContestComponent implements OnInit{
    id !: number;
 
   ngOnInit(): void {
+
     this.fillOptionList()
     this.contestForm = new FormGroup({
       deadline: new FormControl('',[Validators.required]),
@@ -67,7 +59,7 @@ export class AddContestComponent implements OnInit{
 
 
 
-   createContest()  {
+   async createContest()  {
     this.id=this.contestForm.get('option')?.value // getting the option id from the form
     this.contestToSave=this.contestForm.value;// affecting the form to the contest variable
     this.contestToSave.option={}
@@ -83,6 +75,8 @@ export class AddContestComponent implements OnInit{
         console.log(response)
       }
     })
+
+
 
   }
 }

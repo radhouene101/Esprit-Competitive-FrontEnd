@@ -18,7 +18,7 @@
 
       <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
       <div class="col-md-6">
-        <div class="small mb-1"> {{ contest.name }}</div>
+        <div class="small mb-1">Contest {{contest.name}}</div>
         <h1 class="display-5 fw-bolder">Contest Speciality: {{ contest.option?.name }}</h1>
 
           <p>Vote deadline: {{contest.deadline}}</p>
@@ -38,12 +38,12 @@
 <!-- Related items section-->
 <section class="py-5 bg-dark object-fit-contain text-white">
   <div class="container px-4 px-lg-5 mt-5">
-    <h2 class="fw-bolder mb-4">Related products</h2>
+    <h2 class="fw-bolder mb-4">Vote for the most impressive projects!</h2>
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-      <div class="col mb-5" *ngFor="let projects of projectList"  [routerLink]="['/show-project-details',projects.id]">
+      <div class="col mb-5" *ngFor="let projects of projectList"  >
         <div class="card h-100">
           <!-- Product image-->
-          <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+          <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."  [routerLink]="['/show-project-details',projects.id]"/>
           <!-- Product details-->
           <div class="card-body p-4">
             <div class="text-center ">
@@ -65,8 +65,11 @@
             </div>
           </div>
           <!-- Product actions-->
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="fa fa-circle-up  w-50 link-success" (click)="voteUp(projects.id)"> vote up </a></div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent btn">
+            <div class="text-center">
+              <a class="fa fa-circle-up w-50 link-success" (click)="voteUp(projects.id, projects.numberOfVotes)"> vote</a>
+              <a class="fw-bold text-black" > {{projects.numberOfVotes}}</a>
+            </div>
           </div>
         </div>
       </div>

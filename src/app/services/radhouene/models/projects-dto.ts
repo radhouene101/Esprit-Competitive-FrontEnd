@@ -1,13 +1,14 @@
 /* tslint:disable */
 /* eslint-disable */
 import { CategoryProjects } from '../models/category-projects';
-import { ContestDto } from '../models/contest-dto';
+import { Contest } from '../models/contest';
 import { Option } from '../models/option';
+import { User } from '../models/user';
 export interface ProjectsDto {
   category?: CategoryProjects;
   classe?: string;
   coach?: string;
-  contest?: ContestDto;
+  contest?: Contest;
   date?: string;
   groupName?: string;
   groupStreak?: number;
@@ -19,6 +20,8 @@ export interface ProjectsDto {
   optionSpeciality?: Option;
   scolarYear?: string;
   userId?: number;
+  videoUrl?: string;
+  voters?: Array<User>;
   votingpool?: boolean;
   winner?: boolean;
 }

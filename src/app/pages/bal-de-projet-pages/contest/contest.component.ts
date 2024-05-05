@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {ContestBalDeProjetService} from "../../../services/radhouene/services/contest-bal-de-projet.service";
 import {ProjectsService} from "../../../services/radhouene/services/projects.service";
@@ -30,7 +30,8 @@ export class ContestComponent implements OnInit{
     private projetService : ProjectsService,
     private contestService :ContestBalDeProjetService,
     private jwtHelper : HelperService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cdr: ChangeDetectorRef
 
   ) { }
 
@@ -43,24 +44,31 @@ export class ContestComponent implements OnInit{
     }
     )
   }
+  loading: boolean = false;
   projectList:Array<ProjectsDto>=[]
   getWinnersProjects(){
-    this.projetService.getAllWinners().subscribe(
-      (data)=>{
-        this.projectList=data
-        //console.log(JSON.stringify(this.projectList))
-      }
+    this.loading = true;
+    this.projetService.getAllWinners().subscribe({
+    next :(data) =>
+    {
+      this.projectList = data
+      this.loading = false;
+      //console.log(JSON.stringify(this.projectList))
+    }
+  }
     )
   }
   myUser!:string[]
   ngOnInit(): void {
+
+
     this.myUser=this.jwtHelper.userRolesNames
     console.log("extracting roles names" , this.jwtHelper.userRolesNames)
     console.log(this.jwtHelper.userFullName)
     console.log(this.jwtHelper.userId)
-
     this.getContestList()
-    this.getWinnersProjects();
+    this.getWinnersProjects()
+
   }
 
 

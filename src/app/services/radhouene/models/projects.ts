@@ -1,6 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import { Contest } from '../models/contest';
+import { User } from '../models/user';
 export interface Projects {
   classe?: string;
   coach?: string;
@@ -14,6 +15,8 @@ export interface Projects {
   nominated?: boolean;
   numberOfVotes?: number;
   scolarYear?: string;
+  videoUrl?: string;
+  voters?: Array<User>;
   votingpool?: boolean;
   winner?: boolean;
 }

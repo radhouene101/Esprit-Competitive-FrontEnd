@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MyFirstService} from "../services/my-first.service";
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-my-first-comp',
   templateUrl: './my-first-comp.component.html',
@@ -34,7 +35,10 @@ export class MyFirstCompComponent implements OnInit{
     this.service.deleteMessage(index);
   }
 
+
   ngOnInit(): void {
+
+
     if(!sessionStorage.getItem('userToken')){
       this.router.navigate(['notfound'])
     }

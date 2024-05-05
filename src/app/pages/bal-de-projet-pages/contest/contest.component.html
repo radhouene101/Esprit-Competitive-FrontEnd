@@ -7,7 +7,10 @@
   </div>
   <div class="p-5 row align-content-center  ">
     <div  class="rounded col-7 ms-5  secondary-bg border border-black border-1 ">
-
+      <div *ngIf="loading">
+        <!-- Display loading indicator here -->
+        Loading...
+      </div>
       <p class="text-white  "><i class="fa-solid fa-trophy "></i> Contests</p>
       <div class="row m-auto "><!--here we load all the contests-->
 <!--        <div class="card bg-dark-subtle " style="width: 18rem;" *ngFor="let contest of contestList">-->
@@ -18,20 +21,17 @@
 <!--            <a href="#" class="btn btn-primary"> display competition</a>-->
 <!--          </div>-->
 <!--        </div>-->
-        <div class="card m-2" *ngFor="let contest of contestList ; index as i">
-          <div class="no-image">
+        <div class="card m-2" *ngFor="let contest of contestList ; index as i" >
+          <div class="no-image" [routerLink]="['/show-contest',contest.id]">
             <img src="assets/racing%20contest.jpg"  class="card-img-top overflow-auto" alt="...">
           </div>
           <div class="content">
             <p class="name">{{ contest.name }}</p>
             <p class="time">{{ contest.description}}</p>
           </div>
-          <div class="small" *ngIf="myUser.includes('USER')">
-            <a [routerLink]="['/show-contest',contest.id]" class="btn btn-outline-light small"  (click)="showContest(contest.id)"> show </a>
-          </div>
           <div class="small" *ngIf="myUser.includes('ADMIN')">
             <a [routerLink]="['/update-contest',contest.id]" class="btn btn-outline-light small" (click)="editContest(contest.id)"> edit </a>
-            <a class="btn btn-outline-light small" (click)="deleteTheContest(contest.id,i)"> delete </a>
+            <a class="btn btn-outline-danger small m-2" (click)="deleteTheContest(contest.id,i)"> delete </a>
           </div>
 
         </div>
@@ -46,7 +46,7 @@
     <div  class="rounded col-3  secondary-bg  border border-black border-1 text-center align-items-baseline m-5">
       <p class="text-white"> <i class="fa-solid fa-award "></i> Ranking </p>
       <div class="walletBalanceCard border border-1 m-2" *ngFor="let pl of projectList; index as i ">
-        <div class="svgwrapper">
+        <div class="svgwrapper"   [routerLink]="['/show-project-details',pl.id]">
           <img src="favicon.ico">
         </div>
 
@@ -60,7 +60,7 @@
           <div class="balanceHeading" *ngIf="myUser.includes('ADMIN')">
             <a *ngIf="myUser.includes('USER')" class="fa fa-eye small balanceHeading link-success" [routerLink]="['/show-project-details',pl.id]" (click)="showProject(pl.id)">  </a>
             <a *ngIf="myUser.includes('ADMIN')" class="fa fa-edit balanceHeading m-2 link-primary" [routerLink]="['/update-project',pl.id]"  (click)="editProject(pl.id)">  </a>
-            <a *ngIf="myUser.includes('ADMIN')" class="fa fa-x small balanceHeading link-danger" [routerLink]="['/update',pl.id]" (click)="deleteTheProject(i,pl.id)">  </a>
+            <a *ngIf="myUser.includes('ADMIN')" class="fa fa-x small balanceHeading link-danger" (click)="deleteTheProject(i,pl.id)">  </a>
           </div>
 
 

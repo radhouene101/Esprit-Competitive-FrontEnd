@@ -31,13 +31,16 @@
               "node_modules/@nebular/theme/styles/prebuilt/default.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "node_modules/startbootstrap-shop-item/dist/css/styles.css"
+              "node_modules/startbootstrap-shop-item/dist/css/styles.css",
+              "node_modules/startbootstrap-creative/dist/css/styles.css"
+
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/startbootstrap-shop-item/node_modules/bootstrap/dist/js/bootstrap.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+
+
 
 
 
