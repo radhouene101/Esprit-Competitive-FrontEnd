@@ -39,6 +39,8 @@ import {NgOptimizedImage} from "@angular/common";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import {AgmCoreModule} from "@druk/agm-core";
+import { CompetitionsPageComponent } from './pages/competition-page/competitions-page/competitions-page.component';
+import { CompetitionsCardComponent } from './pages/competition-page/competitions-card/competitions-card.component';
 
 
 const socketConfig:SocketIoConfig={
@@ -67,7 +69,9 @@ const socketConfig:SocketIoConfig={
     ForgotPasswordComponent,
     LoadingMessageComponent,
     EventsComponent,
-    EventsdetailsComponent
+    EventsdetailsComponent,
+    CompetitionsPageComponent,
+    CompetitionsCardComponent
   ],
     imports: [
         BrowserModule,

@@ -16,6 +16,7 @@ import {RoleComponent} from "./pages/role/role.component";
 import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
 import {EventsComponent} from "./pages/eventpage/events/events.component";
 import {EventsdetailsComponent} from "./pages/eventpage/eventsdetails/eventsdetails.component";
+import {CompetitionsPageComponent} from "./pages/competition-page/competitions-page/competitions-page.component";
 
 
 const routes:Routes=[
@@ -55,6 +56,10 @@ const routes:Routes=[
   {
     path:'messages',//Path Param
     component:ChatPageComponent
+  },
+  {
+    path:'competitions',//Path Param
+    component:CompetitionsPageComponent
   },
   {
     path:'',
