@@ -45,6 +45,7 @@ import {
 } from "./pages/bal-de-projet-pages/show-project-details/show-project-details.component";
 import {ShowAllProjectsComponent} from "./pages/bal-de-projet-pages/show-all-projects/show-all-projects.component";
 import {HelperService} from "./services/helper/helper.service";
+import {AddCategoryComponent} from "./pages/bal-de-projet-pages/add-category/add-category.component";
 
 
 const socketConfig:SocketIoConfig={
@@ -80,7 +81,8 @@ const socketConfig:SocketIoConfig={
     RoleComponent,
     ForgotPasswordComponent,
     LoadingMessageComponent,
-    ShowAllProjectsComponent
+    ShowAllProjectsComponent,
+    AddCategoryComponent
   ],
 
   imports: [
