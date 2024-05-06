@@ -15,6 +15,7 @@ import {
   ConfirmationAlertComponent
 } from "../../../components/confirmation-pop-up/confirmation-alert/confirmation-alert.component";
 import {MatDialog} from "@angular/material/dialog";
+import {waitForAsync} from "@angular/core/testing";
 
 
 
@@ -37,12 +38,12 @@ export class ContestComponent implements OnInit{
 
   contestList:Array<ContestDto> = [];
   getContestList(){
-    this.contestService.getAllContests().subscribe(
-    (data)=>{
+    this.contestService.getAllContests().subscribe({ next : (data)=>{
       this.contestList=data
       //console.log(JSON.stringify(this.contestList));
     }
-    )
+
+    })
   }
   loading: boolean = false;
   projectList:Array<ProjectsDto>=[]
@@ -60,15 +61,12 @@ export class ContestComponent implements OnInit{
   }
   myUser!:string[]
   ngOnInit(): void {
-
-
     this.myUser=this.jwtHelper.userRolesNames
     console.log("extracting roles names" , this.jwtHelper.userRolesNames)
     console.log(this.jwtHelper.userFullName)
     console.log(this.jwtHelper.userId)
     this.getContestList()
     this.getWinnersProjects()
-
   }
 
 

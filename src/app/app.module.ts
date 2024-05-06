@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule, OnInit} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -44,6 +44,7 @@ import {
   ShowProjectDetailsComponent
 } from "./pages/bal-de-projet-pages/show-project-details/show-project-details.component";
 import {ShowAllProjectsComponent} from "./pages/bal-de-projet-pages/show-all-projects/show-all-projects.component";
+import {HelperService} from "./services/helper/helper.service";
 
 
 const socketConfig:SocketIoConfig={
@@ -78,7 +79,8 @@ const socketConfig:SocketIoConfig={
     ActivateAccountComponent,
     RoleComponent,
     ForgotPasswordComponent,
-    LoadingMessageComponent
+    LoadingMessageComponent,
+    ShowAllProjectsComponent
   ],
 
   imports: [
@@ -101,10 +103,11 @@ const socketConfig:SocketIoConfig={
   providers: [HttpClient],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+export class AppModule{
 
   constructor(
-    private userService : UserService
+
   ) {}
+
 
 }

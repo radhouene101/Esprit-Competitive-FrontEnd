@@ -1,0 +1,13 @@
+.navbar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  background-color: #212529;
+  transition: 0.4s;
+}
+
+.my-container {
+  transition: 0.4s;
+  margin-left: 250px;
+  margin-top: 3.5%;
+}

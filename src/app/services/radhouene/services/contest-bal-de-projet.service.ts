@@ -22,6 +22,8 @@ import { getAllContests } from '../fn/contest-bal-de-projet/get-all-contests';
 import { GetAllContests$Params } from '../fn/contest-bal-de-projet/get-all-contests';
 import { getContestById } from '../fn/contest-bal-de-projet/get-contest-by-id';
 import { GetContestById$Params } from '../fn/contest-bal-de-projet/get-contest-by-id';
+import { updateContest } from '../fn/contest-bal-de-projet/update-contest';
+import { UpdateContest$Params } from '../fn/contest-bal-de-projet/update-contest';
 
 @Injectable({ providedIn: 'root' })
 export class ContestBalDeProjetService extends BaseService {
@@ -75,6 +77,31 @@ export class ContestBalDeProjetService extends BaseService {
    */
   addContest(params: AddContest$Params, context?: HttpContext): Observable<ContestDto> {
     return this.addContest$Response(params, context).pipe(
+      map((r: StrictHttpResponse<ContestDto>): ContestDto => r.body)
+    );
+  }
+
+  /** Path part for operation `updateContest()` */
+  static readonly UpdateContestPath = '/contest-bal-de-projet/update/{id}/{optionId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `updateContest()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  updateContest$Response(params: UpdateContest$Params, context?: HttpContext): Observable<StrictHttpResponse<ContestDto>> {
+    return updateContest(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `updateContest$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  updateContest(params: UpdateContest$Params, context?: HttpContext): Observable<ContestDto> {
+    return this.updateContest$Response(params, context).pipe(
       map((r: StrictHttpResponse<ContestDto>): ContestDto => r.body)
     );
   }

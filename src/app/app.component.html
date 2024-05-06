@@ -1,8 +1,14 @@
+<body class="bg-dark">
+<!--<div *ngIf="user.includes('USER') || user.length==0" >-->
+  <app-menu></app-menu>
 
-<app-menu></app-menu>
-<div class="main-container-fixed">
-<router-outlet></router-outlet>
-</div>
-  <div class="card-footer ">
-<app-footer></app-footer>
-</div>
+<!--</div>-->
+
+  <div *ngIf="user.includes('ADMIN')" >
+<!--    <app-navs class="navbar"></app-navs>-->
+
+  </div>
+<router-outlet ></router-outlet>
+<app-footer class="my-container"></app-footer>
+
+</body>
