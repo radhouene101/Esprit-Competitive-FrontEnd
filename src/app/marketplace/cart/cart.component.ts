@@ -10,6 +10,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { OrderControllerService } from '../../../app/services/maryem-services/services/order-controller.service';
 import { CreateOrder$Params } from 'src/app/services/maryem-services/fn/order-controller/create-order';
 import { Order } from 'src/app/services/maryem-services/models';
+import { GetAllItems$Params } from 'src/app/services/maryem-services/fn/cart-item-controller/get-all-items';
 
 @Component({
   selector: 'app-cart',
@@ -41,13 +42,23 @@ export class CartComponent implements OnInit {
   loadCartItems() {
     this.cartItemService.getAllItems().subscribe(
       (items: CartItem[]) => {
-        this.cartItems = items;
+        console.log('All items:', items); // Log all items received
+        
+        // Filter out items that do not have an associated order
+        this.cartItems = items.filter(item => !item.order);
+  
+        console.log('Filtered items:', this.cartItems); // Log filtered items
       },
       (error) => {
         console.error('Error fetching cart items: ', error);
       }
     );
   }
+  
+  
+  
+  
+  
 
   getTotalSum(): number {
     if (!this.cartItems) {
@@ -75,7 +86,7 @@ export class CartComponent implements OnInit {
   
     // Log the JSON payload
     console.log('Order payload:', order);
-    
+  
     // Prepare the parameters for createOrder function
     const params: CreateOrder$Params = { body: order };
   
@@ -85,6 +96,11 @@ export class CartComponent implements OnInit {
         console.log('Order created:', response);
         // Redirect to "/order2" upon successful order creation
         this.router.navigate(['/order2'], { state: { order: response } });
+  
+        // Clear the cart after placing the order
+        this.cartItems.forEach(item => {
+          this.deleteItem(item);
+        });
       },
       (error) => {
         console.error('Error creating order:', error);
