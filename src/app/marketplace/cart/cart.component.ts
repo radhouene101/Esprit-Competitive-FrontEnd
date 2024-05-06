@@ -7,7 +7,9 @@ import { CustomerControllerService } from 'src/app/services/maryem-services/serv
 import { CreateCustomer$Params } from 'src/app/services/maryem-services/fn/customer-controller/create-customer';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
+import { OrderControllerService } from '../../../app/services/maryem-services/services/order-controller.service';
+import { CreateOrder$Params } from 'src/app/services/maryem-services/fn/order-controller/create-order';
+import { Order } from 'src/app/services/maryem-services/models';
 
 @Component({
   selector: 'app-cart',
@@ -22,9 +24,9 @@ export class CartComponent implements OnInit {
   constructor(
     private cartItemService: CartItemControllerService,
     private customerService: CustomerControllerService,
+    private orderService: OrderControllerService,
     private router: Router,
     private jwtHelper: JwtHelperService,
-
   ) { }
 
   ngOnInit(): void {
@@ -59,24 +61,40 @@ export class CartComponent implements OnInit {
   }
 
   orderNoww(): void {
-    // Prepare the parameters for createCustomer function
-    const params: CreateCustomer$Params = {
-      body: this.customer
+    // Prepare the parameters for createOrder function
+    const order: Order = {
+      orderStatus: 'PENDING', // Ensure it matches one of the values defined in the model
+      paymentMethod: 'ONLINE', // Ensure it matches one of the values defined in the model
+      customer: this.customer,
+      orderCustomer: this.cartItems.map(item => ({
+        quantity: item.quantity,
+        price: item.price,
+        product: item.product
+      }))
     };
-
-    // Call createCustomer function to create a new customer
-    this.customerService.createCustomer(params).subscribe(
+  
+    // Log the JSON payload
+    console.log('Order payload:', order);
+    
+    // Prepare the parameters for createOrder function
+    const params: CreateOrder$Params = { body: order };
+  
+    // Call createOrder function to create a new order
+    this.orderService.createOrder(params).subscribe(
       (response) => {
-        console.log('Customer created:', response);
-        // Redirect to "/order2" upon successful customer creation
-        this.router.navigate(['/order2'], { state: { cartItems: this.cartItems, customer: response } });
+        console.log('Order created:', response);
+        // Redirect to "/order2" upon successful order creation
+        this.router.navigate(['/order2'], { state: { order: response } });
       },
       (error) => {
-        console.error('Error creating customer:', error);
+        console.error('Error creating order:', error);
         // Handle error
       }
     );
   }
+  
+  
+  
 
   deleteItem(item: CartItem): void {
     if (!item.id) {
@@ -106,9 +124,11 @@ export class CartComponent implements OnInit {
       this.customer.email = decodedToken.sub;
       this.customer.fullname = decodedToken.name;
       this.customer.phone = decodedToken.phone;
+      this.customer.id = decodedToken.userId; // Change this line
       console.log('Customer Email:', this.customer.email);
     } else {
       console.log('Token not found');
     }
   }
+  
 }
