@@ -21,14 +21,12 @@ export class Order2Component implements OnInit {
   ngOnInit(): void {
 
     this.extractUserInfoFromToken();
-    this.route.paramMap.subscribe(params => {
-      if (window.history.state && window.history.state.cartItems) {
-        this.cartItems = window.history.state.cartItems;
-        console.log('Cart items received in Order2Component:', this.cartItems);
-      } else {
-        console.log('No cart items received in Order2Component');
-      }
-    });
+    if (window.history.state && window.history.state.cartItems) {
+      this.cartItems = window.history.state.cartItems;
+      console.log('Cart items received in Order2Component:', this.cartItems);
+    } else {
+      console.log('No cart items received in Order2Component');
+    }
   }
   private extractUserInfoFromToken(): void {
     const token = sessionStorage.getItem('userToken');

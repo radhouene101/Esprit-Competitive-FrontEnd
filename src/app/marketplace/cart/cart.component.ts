@@ -10,7 +10,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { OrderControllerService } from '../../../app/services/maryem-services/services/order-controller.service';
 import { CreateOrder$Params } from 'src/app/services/maryem-services/fn/order-controller/create-order';
 import { Order } from 'src/app/services/maryem-services/models';
-import { GetAllItems$Params } from 'src/app/services/maryem-services/fn/cart-item-controller/get-all-items';
 
 @Component({
   selector: 'app-cart',
@@ -44,10 +43,8 @@ export class CartComponent implements OnInit {
       (items: CartItem[]) => {
         console.log('All items:', items); // Log all items received
         
-        // Filter out items that do not have an associated order
-        this.cartItems = items.filter(item => !item.order);
-  
-        console.log('Filtered items:', this.cartItems); // Log filtered items
+        this.cartItems = items;
+
       },
       (error) => {
         console.error('Error fetching cart items: ', error);
@@ -60,16 +57,16 @@ export class CartComponent implements OnInit {
   
   
 
-  getTotalSum(): number {
-    if (!this.cartItems) {
-      return 0;
-    }
-
-    return this.cartItems.reduce((sum, item) => {
-      const itemPrice = item.price ?? 0;
-      return sum + itemPrice;
-    }, 0);
+ getTotalSum(): number {
+  if (!this.cartItems) {
+    return 0;
   }
+
+  return this.cartItems.reduce((sum, item) => {
+    const itemTotal = (item.price ?? 0) * (item.quantity ?? 1); // Multiply price by quantity
+    return sum + itemTotal;
+  }, 0);
+}
 
   orderNoww(): void {
     // Prepare the parameters for createOrder function
@@ -97,10 +94,7 @@ export class CartComponent implements OnInit {
         // Redirect to "/order2" upon successful order creation
         this.router.navigate(['/order2'], { state: { order: response } });
   
-        // Clear the cart after placing the order
-        this.cartItems.forEach(item => {
-          this.deleteItem(item);
-        });
+       
       },
       (error) => {
         console.error('Error creating order:', error);
