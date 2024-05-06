@@ -1,0 +1,143 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1f1f1f; /* Soft black */
+  color: #fff;
+  min-height: 1000vh; /* Set minimum height of the body to 100% of viewport height */
+  display: flex; /* Use flexbox to align content vertically */
+  flex-direction: column; /* Stack child elements vertically */
+  background-image: url('/assets/EventBackground.jpeg');
+
+}
+
+.container {
+  flex: 1; /* Let the container grow to fill available space */
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  background-color: #333;
+  padding: 20px 0;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.main {
+  padding: 20px 0;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+}
+
+
+form {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block; /* Display input as block-level element */
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.event-container {
+  display: flex; /* Use Flexbox */
+  flex-wrap: wrap; /* Wrap items to the next line */
+}
+
+.event-frame {
+  width: calc(33.33% - 20px); /* Adjust width as needed */
+  margin: 10px; /* Add margin between event frames */
+  background-color: rgba(108, 81, 81, 0.66); /* Background color of event frame */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth effect */
+}
+
+.event-details {
+  padding: 10px; /* Add padding for content */
+}
+
+.event-details div {
+  margin-bottom: 5px; /* Add spacing between details */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .event-frame {
+    width: calc(50% - 20px); /* Adjust width for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .event-frame {
+    width: calc(100% - 20px); /* Adjust width for even smaller screens */
+  }
+}
+.event-buttons {
+  display: flex;
+  justify-content: space-between; /* Space buttons evenly */
+}
+
+.event-buttons button {
+  padding: 5px 10px;
+  background-color: #332424;
+  color: #fff8f8;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.event-buttons button:hover {
+  background-color: #3c4845;
+}
+

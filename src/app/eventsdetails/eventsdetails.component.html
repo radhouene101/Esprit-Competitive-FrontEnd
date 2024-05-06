@@ -1,0 +1,95 @@
+<body>
+<header class="header">
+  <div class="container">
+    <h1>Event Details</h1>
+  </div>
+</header>
+
+<main class="main">
+  <section id="event-details" class="section">
+    <br>
+    <br>
+    <div class="row">
+    <div class="card" data-bs-theme="dark" style="width: 30rem;length: 90rem;margin-left: 100px;">
+      <h2>Event Information</h2>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+      <div class="col-md-4">
+      <img [src]="'assets/' + event.imageUrl" class="img-fluid rounded-start" alt="Event Image" >
+      </div>
+          <div class="col-md-8">
+      <div class="card-body">
+        <div class="detail"><strong>Name:</strong> {{event. name}}</div>
+        <div class="detail"><strong>Organizer:</strong> {{event.organizer}}</div>
+        <div class="detail"><strong>Prize:</strong> {{event.prize}}</div>
+        <div class="detail"><strong>Location:</strong> {{event.location}}</div>
+      </div>
+
+          </div>
+          <div class="input-group">
+            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" (change)="onFileSelected($event)">
+            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Upload</button>
+            <button type="button" class="btn btn-secondary" data-href="websiteUrl"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://esprit.tn&amp;src=sdkpreparse">Facebook</a></button>
+
+          </div>
+    </div>
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
+    <div class="container1">
+      <h2 style="text-align: center">Groups Participating</h2>
+      <ul class="group-list" *ngFor="let group of groups">
+        <li style="text-align: center">{{group.name?.toLocaleUpperCase()}}</li>
+      </ul>
+    </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <br>
+
+    <div class="events-form-container">
+      <form id="createGroupForm" [formGroup]="addForm"  (ngSubmit)="onAddGroup()" >
+        <label >Group Name:</label>
+        <input type="text" id="name" ngModel name="name" formControlName="name" required>
+
+        <label for="prize">Captain:</label>
+        <input type="text" id="prize" ngModel name="prize" formControlName="captain" required>
+        <div>
+        <label for="prize">Member 1:</label>
+        <select (change)="updateId1($event)" >
+          <option value="" selected disabled>Select a user</option>
+          <option  *ngFor="let user of users"  [value]="user.id">{{ user.name }}</option>
+        </select>
+        <label for="prize">Member 2:</label>
+        <select (change)="updateId2($event)" >
+          <option value="" selected disabled>Select a user</option>
+          <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+        </select>
+        <label for="prize">Member 3:</label>
+        <select  (change)="updateId3($event)">
+          <option value="" selected disabled>Select a user</option>
+          <option   *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+        </select>
+          <label for="prize">Member 4:</label>
+          <select  (change)="updateId4($event)">
+            <option value="" selected disabled>Select a user</option>
+            <option   *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+          </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary btn-sm">Add Group</button>
+      </form>
+    </div>
+
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2024 Event Management System</p>
+  </div>
+</footer>
+</body>

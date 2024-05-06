@@ -11,6 +11,8 @@ import {SignUpPageComponent} from "./pages/sign-up-page/sign-up-page.component";
 import {AboutComponent} from "./pages/about/about.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {ChatPageComponent} from "./pages/chat/chat-page/chat-page.component";
+import {EventsComponent} from "./events/events.component";
+import {EventsdetailsComponent} from "./eventsdetails/eventsdetails.component";
 
 
 const routes:Routes=[
@@ -24,9 +26,14 @@ const routes:Routes=[
     component:SignUpPageComponent
   },
   {
+    path:'events',
+    component:EventsComponent
+  },
+  {
     path:'about',
     component:AboutComponent
   },
+
   {
     path:'about/:username',//Path Param
     component:AboutComponent
@@ -54,6 +61,7 @@ const routes:Routes=[
     path:'contest',
     component:ContestComponent
   },
+  {path:"showevent/:id",component: EventsdetailsComponent},
   {
     path:'**',//route has error
     component: NotFoundComponent

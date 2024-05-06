@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import {RouterModule, RouterOutlet, Routes} from "@angular/router";
 import { MyFirstCompComponent } from './pages/my-first-comp/my-first-comp.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MessageDetailsComponent } from './components/chat/message-details/message-details.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -29,6 +29,11 @@ import {SocketIoConfig, SocketIoModule} from "ngx-socket-io";
 import {NbChatModule} from "@nebular/theme";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import { EventsComponent } from './events/events.component';
+import { EventsdetailsComponent } from './eventsdetails/eventsdetails.component';
+import {NgOptimizedImage} from "@angular/common";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import {AgmCoreModule} from "@druk/agm-core";
 
 
 const socketConfig:SocketIoConfig={
@@ -50,24 +55,34 @@ const socketConfig:SocketIoConfig={
     AdminDashboardComponent,
     FooterComponent,
     AddContestComponent,
-    EventsComponent
+    EventsComponent,
+    EventsdetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
-    SocketIoModule.forRoot(socketConfig),
-    NbChatModule,
-    BrowserAnimationsModule,NoopAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        SweetAlert2Module.forRoot(),
+        LayoutModule,
+      AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyCZ8-b4aGYLmIYlq-Ksk5Dg7kyB3KzFrHg'
+      }),
+        ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
+        SocketIoModule.forRoot(socketConfig),
+        NbChatModule,
+        BrowserAnimationsModule, NoopAnimationsModule, ReactiveFormsModule, NgOptimizedImage, ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: !isDevMode(),
+  // Register the ServiceWorker as soon as the application is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+})
+    ],
   exports:[],//Added for routing
   providers: [HttpClient],
   bootstrap: [AppComponent]
