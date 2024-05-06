@@ -7,7 +7,7 @@ body {
   min-height: 1000vh; /* Set minimum height of the body to 100% of viewport height */
   display: flex; /* Use flexbox to align content vertically */
   flex-direction: column; /* Stack child elements vertically */
-  background-image: url('/assets/EventBackground.jpeg');
+  background-image: url('/src/assets/EventBackground.jpeg');
 
 }
 

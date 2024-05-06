@@ -1,12 +1,12 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Event} from "../services/Salim/models/event";
-import {EventControllerService} from "../services/Salim/services/event-controller.service";
-import {GroupControllerService} from "../services/Salim/services/group-controller.service";
-import {Group} from "../services/Salim/models/group";
+import {Event} from "../../../services/Salim/models/event";
+import {EventControllerService} from "../../../services/Salim/services/event-controller.service";
+import {GroupControllerService} from "../../../services/Salim/services/group-controller.service";
+import {Group} from "../../../services/Salim/models/group";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserControllerService} from "../services/Salim/services/user-controller.service";
-import {User} from "../services/Salim/models/user";
+import {UserControllerService} from "../../../services/Salim/services/user-controller.service";
+import {User} from "../../../services/Salim/models/user";
 
 
 

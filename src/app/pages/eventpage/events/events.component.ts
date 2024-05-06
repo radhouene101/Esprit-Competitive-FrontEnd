@@ -1,10 +1,10 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
-import {EventControllerService} from "../services/Salim/services/event-controller.service";
+import {EventControllerService} from "../../../services/Salim/services/event-controller.service";
 import {Router} from "@angular/router";
-import {Event} from "../services/Salim/models/event";
+import {Event} from "../../../services/Salim/models/event";
 import Swal from 'sweetalert2';
-import {HelperService} from "../services/Helper/HelperService";
+import {HelperService} from "../../../services/Helper/HelperService";
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',

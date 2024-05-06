@@ -5,7 +5,7 @@ body {
   background-color: #1f1f1f; /* Dark mode background color */
   color: #fff; /* Text color */
   min-height: 1000vh;
-  background-image: url('/assets/EventDetailsBackground.jpeg');
+  background-image: url('/src/assets/EventDetailsBackground.jpeg');
 }
 
 .container {
