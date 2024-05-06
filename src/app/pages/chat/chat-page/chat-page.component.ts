@@ -31,17 +31,14 @@ export class ChatPageComponent implements OnInit {
     this.webSocketService.stompClient.connect({}, () => {
       this.webSocketService.stompClient.subscribe(`/user/${this.user.name}/queue/messages`,
         async (payload: any) => {
-        await this.fetchAndDisplayUserChat();
+        //await this.fetchAndDisplayUserChat();
         const msg = JSON.parse(payload.body);
-        console.log(msg)
+        console.log(msg.content);
+        if(this.selectedUser)
+          this.classifyMessage(msg.content,true,new Date().toString());
         console.log("updating one !!")
       });
-      /*this.webSocketService.stompClient.subscribe(`/user/public`, async (payload: any) => {
-          await this.fetchAndDisplayUserChat();
-          const msg = JSON.parse(payload.body);
-          console.log(msg);
-        }
-      );*/
+
     }, () => {
       console.log("Error connecting !!");
     });
