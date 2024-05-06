@@ -15,7 +15,7 @@ export class AddContestComponent implements OnInit{
 
   niveauOptions = ['PREMIERE', 'DEUXIEME', 'TROIXIEME', 'QUATRIEME', 'CINQUEME'];
   optionSpecialityList : Option[]=[]
-  contestToSave !:ContestDto;
+  contestToSave !:any;
 
 
 
@@ -58,25 +58,15 @@ export class AddContestComponent implements OnInit{
 
 
 
-
-   async createContest()  {
+    loading !: boolean
+  createContest()   {
     this.id=this.contestForm.get('option')?.value // getting the option id from the form
     this.contestToSave=this.contestForm.value;// affecting the form to the contest variable
-    this.contestToSave.option={}
+      console.log(this.contestToSave);
+      this.contestToSave.option={}
+      this.loading = true;
     console.log(" outside the promise ", this.contestToSave.option); // loging the contest variable
     //saving the contest , the customSaveContest takes 2 variables , the body of the contest to save and the option id
-    this.contestService.customSaveContest({ optionId:this.id, body : this.contestToSave}).subscribe({
-      next :
-        async() =>{
-
-          console.log("inside the promise of custom save ! ",this.contestToSave.option)
-        },
-      error:(response)=>{
-        console.log(response)
-      }
-    })
-
-
-
+    this.contestService.customSaveContest({ optionId:this.id, body : this.contestToSave}).subscribe()
   }
 }

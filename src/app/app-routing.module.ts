@@ -57,6 +57,10 @@ const routes:Routes=[
     component:ChatPageComponent
   },
   {
+    path:'add-project-form',
+    component:ProjectFormComponent
+  },
+  {
     path:'',
     component:LoginComponent
   },
