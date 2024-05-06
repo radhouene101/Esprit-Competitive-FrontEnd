@@ -14,6 +14,8 @@ import {ChatPageComponent} from "./pages/chat/chat-page/chat-page.component";
 import {ActivateAccountComponent} from "./pages/activate-account/activate-account.component";
 import {RoleComponent} from "./pages/role/role.component";
 import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
+import {EventsComponent} from "./pages/eventpage/events/events.component";
+import {EventsdetailsComponent} from "./pages/eventpage/eventsdetails/eventsdetails.component";
 
 
 const routes:Routes=[
@@ -34,9 +36,14 @@ const routes:Routes=[
     component:SignUpPageComponent
   },
   {
+    path:'events',
+    component:EventsComponent
+  },
+  {
     path:'about',
     component:AboutComponent
   },
+
   {
     path:'about/:username',//Path Param
     component:AboutComponent
@@ -64,6 +71,7 @@ const routes:Routes=[
     path:'contest',
     component:ContestComponent
   },
+  {path:"showevent/:id",component: EventsdetailsComponent},
   {
     path:'activateAccount/:hash/:email',
     component:ActivateAccountComponent

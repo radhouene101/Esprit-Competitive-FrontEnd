@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management System</title>
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <h1>Event Management System</h1>
+  </div>
+</header>
+
+<main class="main">
+  <section id="event-list" class="section">
+    <div class="container">
+      <h2>Events List</h2>
+      <div class="event-container">
+        <div *ngFor="let event of events" class="event-frame">
+          <div class="event-details">
+            <div><strong>Name:</strong> {{ event.name }}</div>
+            <div><strong>Organizer:</strong> {{ event.organizer }}</div>
+            <div><strong>Prize:</strong> {{ event.prize }}</div>
+            <div><strong>Location:</strong> {{ event.location }}</div>
+          </div>
+          <div class="event-buttons">
+            <button *ngIf="helperuser.includes('ADMIN')" (click)="editEvent(addForm.value,event.id)" >Edit</button>
+            <button *ngIf="helperuser.includes('ADMIN')" (click)="deleteEvent(event.id)">Delete</button>
+            <button [routerLink]="['/showevent',event.id]">Show</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="create-event" class="section" *ngIf="helperuser.includes('ADMIN')">
+    <div class="container">
+      <h2>Create Event</h2>
+      <form id="createEventForm" [formGroup]="addForm"  (ngSubmit)="onAddEvent()">
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" ngModel name="name"formControlName="name" required>
+
+        <label for="prize">Prize:</label>
+        <input type="text" id="prize" ngModel name="prize" formControlName="prize" required>
+
+        <label for="organizer">Organizer:</label>
+        <input type="text" id="organizer" ngModel name="organizer" formControlName="organizer">
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" formControlName="location">
+
+        <label for="longitude">longitude:</label>
+        <input type="text" id="longitude" name="longitude" formControlName="longitude">
+
+        <label for="lattitude">lattitude:</label>
+        <input type="text" id="lattitude" name="lattitude" formControlName="lattitude">
+
+        <button type="submit">Create Event</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2024 Event Management System</p>
+  </div>
+</footer>
+</body>
+</html>
