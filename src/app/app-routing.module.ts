@@ -16,6 +16,8 @@ import { ProductsFrontComponent } from './marketplace/products-front/products-fr
 import { CartComponent } from './marketplace/cart/cart.component';
 import { OrderComponent } from './marketplace/order/order.component'; 
 import { Order2Component } from './marketplace/order2/order2.component';
+import { ProductsBackComponent } from './marketplace/products-back/products-back.component';
+import { AddProductsBackComponent } from './marketplace/add-products-back/add-products-back.component';
 
 const routes:Routes=[
   {
@@ -38,7 +40,17 @@ const routes:Routes=[
   {
     path:'about/:username',//Path Param
     component:AboutComponent
-  },
+  },  
+  {
+    path:'productsback',//Path Param
+    component:  ProductsBackComponent
+
+  }, 
+  {
+    path:'addproductsback',//Path Param
+    component:  AddProductsBackComponent
+
+  }, 
   {
     path:'notfound',//Path Param
     component:NotFoundComponent

@@ -37,6 +37,9 @@ import { CartComponent } from './marketplace/cart/cart.component';
 import { OrderComponent } from './marketplace/order/order.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { Order2Component } from './marketplace/order2/order2.component';
+import { ProductsBackComponent } from './marketplace/products-back/products-back.component';
+import { AddProductsBackComponent } from './marketplace/add-products-back/add-products-back.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -67,10 +70,13 @@ const socketConfig:SocketIoConfig={
     CartComponent,
     OrderComponent,
     Order2Component,
+    ProductsBackComponent,
+    AddProductsBackComponent,
 
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
