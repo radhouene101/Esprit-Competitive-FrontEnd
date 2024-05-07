@@ -16,6 +16,11 @@
 <div class="competition-lists-container bg-dark">
   <div class="competition-lists-layout">
     <div class="competition-lists rounded-5">
+      <p class="text-white size-medium font-monospace">
+      here you can check other projects :
+        <a [routerLink]="['/show-all-projects']"> here</a>
+      </p>
+
       <div class="competition-container" *ngFor="let contest of contestList; index as i">
         <img class="competition-img rounded-2" src="assets/{{contest.image}}" [routerLink]="['/show-contest',contest.id]" alt="" srcset="" >
         <div class="competition-text">
