@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
 })
 export class ProductsBackComponent implements OnInit {
   products: MarketplaceProduct[] = [];
+  assetsImagePath = '/assets/images/';
 
   constructor(private productService: MarketplaceProductControllerService, private router: Router,) { }
 
   ngOnInit(): void {
     this.loadProducts();
-   
   }
 
   loadProducts(): void {
@@ -28,14 +28,25 @@ export class ProductsBackComponent implements OnInit {
       }
     );
   }
- // Function to navigate to /addproductbacks route
- navigateToAddProductBacks() {
-  this.router.navigate(['addproductsback']);
-}
+
+  // Function to navigate to /addproductbacks route
+  navigateToAddProductBacks() {
+    this.router.navigate(['addproductsback']);
+  }
+
   deleteProduct(productId?: number): void {
     if (productId) {
-      // Implement delete product functionality
-      // Call the appropriate service method to delete the product
+      const params = { id: productId };
+
+      this.productService.deleteProduct(params).subscribe(
+        () => {
+          // Remove the deleted product from the products array
+          this.products = this.products.filter(product => product.id !== productId);
+        },
+        (error) => {
+          console.error('Error deleting product:', error);
+        }
+      );
     }
   }
 
