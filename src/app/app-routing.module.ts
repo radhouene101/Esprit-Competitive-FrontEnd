@@ -18,6 +18,7 @@ import { OrderComponent } from './marketplace/order/order.component';
 import { Order2Component } from './marketplace/order2/order2.component';
 import { ProductsBackComponent } from './marketplace/products-back/products-back.component';
 import { AddProductsBackComponent } from './marketplace/add-products-back/add-products-back.component';
+import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
 
 const routes:Routes=[
   {
@@ -50,7 +51,11 @@ const routes:Routes=[
     path:'addproductsback',//Path Param
     component:  AddProductsBackComponent
 
-  }, 
+  },
+  {
+    path:'ordersback',//Path Param
+    component:  OrdersBackComponent
+  },
   {
     path:'notfound',//Path Param
     component:NotFoundComponent

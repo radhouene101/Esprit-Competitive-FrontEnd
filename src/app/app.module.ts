@@ -40,6 +40,7 @@ import { Order2Component } from './marketplace/order2/order2.component';
 import { ProductsBackComponent } from './marketplace/products-back/products-back.component';
 import { AddProductsBackComponent } from './marketplace/add-products-back/add-products-back.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -72,6 +73,7 @@ const socketConfig:SocketIoConfig={
     Order2Component,
     ProductsBackComponent,
     AddProductsBackComponent,
+    OrdersBackComponent,
 
   ],
   imports: [
