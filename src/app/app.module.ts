@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { MyFirstCompComponent } from './pages/my-first-comp/my-first-comp.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 import { MessageDetailsComponent } from './components/chat/message-details/message-details.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -13,6 +13,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import {ApiModule} from "./services/User/api.module";
+
 import {FooterComponent} from "./components/footer/footer/footer.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
@@ -42,11 +43,21 @@ import {AgmCoreModule} from "@druk/agm-core";
 import { CompetitionsPageComponent } from './pages/competition-page/competitions-page/competitions-page.component';
 import { CompetitionsCardComponent } from './pages/competition-page/competitions-card/competitions-card.component';
 
+import { ProductsFrontComponent } from './marketplace/products-front/products-front.component';
+import { CartComponent } from './marketplace/cart/cart.component';
+import { OrderComponent } from './marketplace/order/order.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { Order2Component } from './marketplace/order2/order2.component';
+import { ProductsBackComponent } from './marketplace/products-back/products-back.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
   options:{}
 }
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +82,13 @@ const socketConfig:SocketIoConfig={
     EventsComponent,
     EventsdetailsComponent,
     CompetitionsPageComponent,
-    CompetitionsCardComponent
+    CompetitionsCardComponent,
+    OrderComponent,
+    ProductsFrontComponent,
+    CartComponent,
+    Order2Component,
+    OrdersBackComponent,
+    ProductsBackComponent
   ],
     imports: [
         BrowserModule,
@@ -88,6 +105,11 @@ const socketConfig:SocketIoConfig={
         SocketIoModule.forRoot(socketConfig),
         NbChatModule,
         BrowserAnimationsModule, NoopAnimationsModule, ReactiveFormsModule,
+        JwtModule.forRoot({
+          config: {
+            tokenGetter: () => sessionStorage.getItem('userToken')
+          }
+        }),
         SweetAlert2Module.forRoot(),
         LayoutModule,
       AgmCoreModule.forRoot({

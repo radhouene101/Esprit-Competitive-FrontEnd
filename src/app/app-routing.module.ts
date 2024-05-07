@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, RouterOutlet, Routes} from "@angular/router";
-
 import {AddContestComponent} from "./components/bal-de-project-components/add-contest/add-contest.component";
 import {AdminDashboardComponent} from "./pages/bal-de-projet-pages/admin-dashboard/admin-dashboard.component";
 import {ContestComponent} from "./pages/bal-de-projet-pages/contest/contest.component";
@@ -18,6 +17,12 @@ import {EventsComponent} from "./pages/eventpage/events/events.component";
 import {EventsdetailsComponent} from "./pages/eventpage/eventsdetails/eventsdetails.component";
 import {CompetitionsPageComponent} from "./pages/competition-page/competitions-page/competitions-page.component";
 
+import { ProductsFrontComponent } from './marketplace/products-front/products-front.component';
+import { CartComponent } from './marketplace/cart/cart.component';
+import { OrderComponent } from './marketplace/order/order.component';
+import { Order2Component } from './marketplace/order2/order2.component';
+import { ProductsBackComponent } from './marketplace/products-back/products-back.component';
+import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
 
 const routes:Routes=[
   {
@@ -50,6 +55,16 @@ const routes:Routes=[
     component:AboutComponent
   },
   {
+    path:'productsback',//Path Param
+    component:  ProductsBackComponent
+
+  },
+
+  {
+    path:'ordersback',//Path Param
+    component:  OrdersBackComponent
+  },
+  {
     path:'notfound',//Path Param
     component:NotFoundComponent
   },
@@ -58,8 +73,20 @@ const routes:Routes=[
     component:ChatPageComponent
   },
   {
-    path:'competitions',//Path Param
-    component:CompetitionsPageComponent
+    path: 'products', // Define the path for ProductsFrontComponent
+    component: ProductsFrontComponent // Specify the component for the path
+  },
+  {
+    path: 'cart', // Define the path for ProductsFrontComponent
+    component: CartComponent // Specify the component for the path
+  },
+  {
+    path: 'order', // Define the path for ProductsFrontComponent
+    component: OrderComponent // Specify the component for the path
+  },
+  {
+    path: 'order2', // Define the path for ProductsFrontComponent
+    component: Order2Component // Specify the component for the path
   },
   {
     path:'',

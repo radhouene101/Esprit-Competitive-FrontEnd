@@ -10,7 +10,8 @@
     "api-gen-bal-de-projet": "ng-openapi-gen --input ./src/app/swagger/swagger-radhouene.json --output src/app/services/radhouene/",
     "api-gen-ahmed": "ng-openapi-gen --input ./src/app/swagger/swagger-ahmed.json --output src/app/services/Role/",
 
-    "api-gen-salim": "ng-openapi-gen --input ./src/app/swagger/swagger-salim.json --output src/app/services/salim/"
+    "api-gen-salim": "ng-openapi-gen --input ./src/app/swagger/swagger-salim.json --output src/app/services/salim/",
+    "maryem-api-gen": "ng-openapi-gen --input ./src/app/swagger/swagger-maryem.json --output ./src/app/services/maryem-services"
   },
   "private": true,
   "dependencies": {

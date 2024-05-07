@@ -1,0 +1,19 @@
+<div class="order-form" style="background-color: #f4f4f4; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center; color: #333; font-family: Arial, sans-serif;">Order Form</h2>
+    <div *ngIf="customer.email" style="margin-bottom: 20px;">
+      <p><strong>Email:</strong> {{ customer.email }}</p>
+      <p><strong>Name:</strong> {{ customer.fullname }}</p>
+      <p><strong>Phone:</strong> {{ customer.phone }}</p>
+    </div>
+    <form *ngIf="customer.email">
+      <div style="margin-bottom: 20px;">
+        <label for="adress" style="font-weight: bold; color: #555;">Address:</label>
+        <input type="text" id="adress" name="adress" [(ngModel)]="customer.adress" required style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 100%;">
+      </div>
+      <!-- Add other form fields as needed -->
+      <button type="submit" (click)="validateCustomerInfo()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Validate Customer Info</button>
+      
+
+
+    </form>
+</div>
