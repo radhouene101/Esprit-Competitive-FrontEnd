@@ -5,6 +5,7 @@ import {User} from "../../services/User/models/user";
 import {UserDetails} from "../../models/UserDetails";
 import {finalize} from "rxjs";
 import {SignupControllerService} from "../../services/User/services/signup-controller.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-sign-up-page',
@@ -22,6 +23,8 @@ export class SignUpPageComponent {
 
   loading=false;
   signup(){
+    Swal.fire('Welcome!','verify you email to activate your account','success').then(res=>window.location.reload())
+
     this.loading=true;
     this.signUpController.createUser$Response({
       body:this.user
@@ -36,4 +39,5 @@ export class SignUpPageComponent {
         }
       });
   }
+
 }
