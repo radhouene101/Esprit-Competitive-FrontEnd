@@ -3,6 +3,7 @@
 import { Option } from '../models/option';
 import { Projects } from '../models/projects';
 export interface Contest {
+  allowVote?: boolean;
   deadline?: string;
   description?: string;
   id?: number;

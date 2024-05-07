@@ -15,6 +15,16 @@
 <section class="py-5 bg-dark text-white object-fit-contain">
   <div class="container px-4 px-lg-5 my-5">
     <div class="row gx-4 gx-lg-5 align-items-center">
+      <div *ngIf="userRoles.includes('ADMIN')" class="container m-2">
+        <form [formGroup]="form" class="container w-50 ">
+        <div class="form-group p-2">
+          <label for="project">Add project:</label>
+          <select class="form-control bg-dark text-white cente" id="project" formControlName="project">
+            <option *ngFor="let project of allprojectList " [value]="project.id">Project Name : {{ project.name }} <br> Groupe Name : {{project.groupName}}  <br> Classe : {{project.classe}}</option> </select>
+          <button type="submit" class="btn btn-outline-success w-100" (click)="affectTheProjectToTheCurrentContest()">save </button>
+        </div>
+        </form>
+      </div>
 
       <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
       <div class="col-md-6">
@@ -37,13 +47,14 @@
 </section>
 <!-- Related items section-->
 <section class="py-5 bg-dark object-fit-contain text-white">
-  <div class="container px-4 px-lg-5 mt-5">
+  <div class="container px-4 px-lg-5 mt-5" *ngIf="contest.allowVote">
     <h2 class="fw-bolder mb-4">Vote for the most impressive projects!</h2>
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-      <div class="col mb-5" *ngFor="let projects of projectList"  >
+      <div class="col mb-5" *ngFor="let projects of projectList;index as i"  >
         <div class="card h-100">
           <!-- Product image-->
           <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."  [routerLink]="['/show-project-details',projects.id]"/>
+
           <!-- Product details-->
           <div class="card-body p-4">
             <div class="text-center ">
@@ -67,7 +78,8 @@
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent btn">
             <div class="text-center">
-              <a class="fa fa-circle-up w-50 link-success" (click)="voteUp(projects.id, projects.numberOfVotes)"> vote</a>
+              <a *ngIf="userRoles.includes('ADMIN')" class="fa fa-minus btn-danger" (click)="unassignProject(projects.id,i)">remove</a>
+              <a class="fa fa-circle-up w-50 link-success " (click)="voteUp(projects.id)"> vote</a>
               <a class="fw-bold text-black" > {{projects.numberOfVotes}}</a>
             </div>
           </div>
@@ -76,6 +88,20 @@
     </div>
   </div>
 </section>
+  <section class="page-section bg-primary" id="about" *ngIf="!contest.allowVote">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-8 text-center">
+
+          <h2 class="text-white mt-0">THE VOTE FINISHED AND THE WINNDER IS {{winner.classe}}!</h2>
+          <img src="assets/win-celebration.png"  class="container">
+          <hr class="divider divider-light" />
+          <p class="text-white-75 mb-4">if you find the  work impressive vote it up in the contest </p>
+          <a class="btn btn-light btn-xl" href="#services">Get Started!</a>
+        </div>
+      </div>
+    </div>
+  </section>
 <!-- Footer-->
 </div>
 </html>

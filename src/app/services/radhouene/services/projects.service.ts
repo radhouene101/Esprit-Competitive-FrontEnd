@@ -142,7 +142,7 @@ export class ProjectsService extends BaseService {
   }
 
   /** Path part for operation `updateProject()` */
-  static readonly UpdateProjectPath = '/projects/updateProject/{projectId}';
+  static readonly UpdateProjectPath = '/projects/updateProject/{projectId}/{optionId}/{categoryId}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.

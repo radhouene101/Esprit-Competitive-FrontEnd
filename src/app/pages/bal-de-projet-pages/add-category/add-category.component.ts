@@ -14,18 +14,22 @@ export class AddCategoryComponent implements OnInit{
     private categoryService: CategoryService
   ) {}
   cat!:CategoryProjectsDto
-  addCategory(cat:CategoryProjectsDto){
+  bo!:boolean
+  addCategory(){
     this.cat=this.categoryForm.value
-    this.categoryService.addCategory({body:cat}).subscribe({
+    this.categoryService.addCategory({body:this.cat}).subscribe({
       next :(data)=>{
         console.log(data);
       }
     })
+    this.bo=true
   }
+
 
 
   categoryForm!:FormGroup
   ngOnInit(): void {
+    this.bo=false
     this.categoryForm = new FormGroup({
       description: new FormControl('',[Validators.required]),
       name: new FormControl('',[Validators.required]),

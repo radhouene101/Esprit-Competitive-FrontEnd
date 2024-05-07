@@ -22,6 +22,7 @@ import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.c
 import {RoleComponent} from "./pages/role/role.component";
 import {ActivateAccountComponent} from "./pages/activate-account/activate-account.component";
 import {AddCategoryComponent} from "./pages/bal-de-projet-pages/add-category/add-category.component";
+import {AddOptionComponent} from "./pages/bal-de-projet-pages/add-option/add-option.component";
 
 
 const routes:Routes=[
@@ -98,6 +99,10 @@ const routes:Routes=[
   {
     path: 'admin-add-project-form',
     component:ProjectFormComponent
+  },
+  {
+    path:'add-option',
+    component:AddOptionComponent
   },
   {
     path:"add-category",

@@ -7,6 +7,10 @@ import {CategoryService} from "../../../services/radhouene/services/category.ser
 import {ActivatedRoute, Router} from "@angular/router";
 import {HelperService} from "../../../services/helper/helper.service";
 import {ProjectsDto} from "../../../services/radhouene/models/projects-dto";
+import {OptionsService} from "../../../services/radhouene/services/options.service";
+import {OptionDto} from "../../../services/radhouene/models/option-dto";
+import {Option} from "../../../services/radhouene/models/option";
+import {CategoryProjects} from "../../../services/radhouene/models/category-projects";
 
 @Component({
   selector: 'app-update-project',
@@ -23,18 +27,31 @@ export class UpdateProjectComponent implements  OnInit{
     private categoryService : CategoryService,
     private router: Router,
     private jwtHelper:HelperService,
-    private activatedRoute : ActivatedRoute
+    private activatedRoute : ActivatedRoute,
+    private optionsService:OptionsService
   ) {
+  }
+  optionList:OptionDto[]=[]
+  fillOptionSpeciality(){
+    this.optionsService.getAllOptions1().subscribe({
+      next : (data) =>{
+        this.optionList=data;
+        console.log(this.optionList);
+      }
+    })
   }
   projectId!:number
   ngOnInit(): void {
+    this.fillOptionSpeciality()
     this.projectId=this.activatedRoute.snapshot.params["id"]
-    this.categoryService.getAllCategories()
-      .subscribe(
-        category =>this.categoryList=category);
+    this.categoryService.getAllCategories().subscribe(
+      { next :(data)=>{
+        this.categoryList=data
+      }
+      })
 
     this.projectForm= new FormGroup({
-      categoryId: new FormControl('', [Validators.required]),
+      category: new FormControl("", [Validators.required]),
       name: new FormControl('', [Validators.required]),
       groupName: new FormControl('', [Validators.required]),
       classe: new FormControl(''), // Optional field
@@ -43,7 +60,7 @@ export class UpdateProjectComponent implements  OnInit{
       niveau: new FormControl('', [Validators.required]),
       nominated: new FormControl(false), // Set default value for boolean
       numberOfVotes: new FormControl(0), // Set default value for number
-      optionSpeciality: new FormControl(null), // Allow for null value
+      optionSpeciality: new FormControl("",[Validators.required]), // Allow for null value
       scolarYear: new FormControl(''), // Optional field
       votingpool: new FormControl(false), // Set default value for boolean
       winner: new FormControl(false),
@@ -62,17 +79,50 @@ export class UpdateProjectComponent implements  OnInit{
   }
 
   project!:ProjectsDto
+  elOption!:Option
+  elCategory!:CategoryProjects
+  bo:boolean=false
+  getTheOptionAndCategory(){
+    var categoryid=this.projectForm.get("category")?.value
+    this.categoryService.getCategoryById({id : categoryid}).subscribe({
+      next : (data)=>{
+        this.elCategory=data
+      }
+    })
+    var optionid=this.projectForm.get("optionSpeciality")?.value
+    this.optionsService.getOptionById1({id :optionid}).subscribe({
+      next : (data) =>{
+        this.elOption=data
+      }
+    })
+    this.bo=true
+  }
   onSubmit() {
+    this.getTheOptionAndCategory()
+    if (!this.bo){
+      console.log("wait")
+    }else {
+
+
+    console.log("this is the option id " , this.projectForm.get("optionSpeciality")?.value)
+    console.log("this is the option id " , this.projectForm.get("category")?.value)
     this.project=this.projectForm.value
+
+    this.project.optionSpeciality=this.elOption
+    this.project.category=this.elCategory
+    console.log(this.project.category);
     this.project.userId=this.jwtHelper.userId
     console.log(this.jwtHelper.userId);
     this.apiService.updateProject({
       projectId: this.projectId,
+      optionId: this.projectForm.get("optionSpeciality")?.value,
+      categoryId:this.projectForm.get("category")?.value,
       body: this.project
-    })
-      .subscribe({
-        next : async() => console.log(this.project)
-      });
+    }).subscribe(
+      {next : (data) =>{
+        console.log(this.project)
+      }});
     this.router.navigate(["/contest"])
+  }
   }
 }

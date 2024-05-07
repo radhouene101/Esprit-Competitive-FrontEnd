@@ -40,8 +40,8 @@
         <div *ngIf="contestForm.get('niveau')?.invalid && contestForm.get('niveau')?.touched" class="alert alert-danger">
           Please select a level.
         </div>
-        <div class="btn btn-outline-light m-2 w-50">
-          <a  (click)="createContest()" > save</a>
+        <div class="m-2 w-50">
+          <button type="submit"   class="btn btn-outline-light" (click)="createContest()" > save</button>
         </div>
       </div>
     </form>
