@@ -7,6 +7,9 @@ import {ProjectsDto} from "../../../services/radhouene/models/projects-dto";
 import {ProjectsService} from "../../../services/radhouene/services/projects.service";
 import {ContestDto} from "../../../services/radhouene/models/contest-dto";
 import {ActivatedRoute} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+import {Contest} from "../../../services/radhouene/models/contest";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-update-contest',
@@ -26,7 +29,8 @@ export class UpdateContestComponent implements OnInit{
     private optionService : OptionsService,
     private contestService : ContestBalDeProjetService,
     private projectService: ProjectsService,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private  http :HttpClient
 
   ) {
   }
@@ -60,7 +64,7 @@ export class UpdateContestComponent implements OnInit{
     this.contestForm = new FormGroup({
       deadline: new FormControl('',[Validators.required]),
       description: new FormControl('',[Validators.required]),
-      imageUrl: new FormControl(""),
+      image: new FormControl(""),
       name: new FormControl('',[Validators.required]),
       niveau: new FormControl('',[Validators.required]),
       option: new FormControl('',[Validators.required]),
@@ -68,7 +72,7 @@ export class UpdateContestComponent implements OnInit{
     })
     this.getCurrentContest(this.currentContestId)
   }
-  currentContest!:ContestDto
+  currentContest!:Contest
   getCurrentContest(id:any){
     this.contestService.getContestById({id : id}).subscribe({
       next :(data)=> {
@@ -96,5 +100,33 @@ export class UpdateContestComponent implements OnInit{
     //saving the contest , the customSaveContest takes 2 variables , the body of the contest to save and the option id
     this.contestService.updateContest({ id: this.currentContestId,optionId: this.optionid, body: this.contestToSave }).subscribe()//updating
     this.contestService.assignProjectToContest({contestDtoID: this.currentContestId ,projectId: this.projectId}).subscribe()//asigning project to contest
+    this.uploadimage()
+    Swal.fire('New Event Upcoming!','','success').then(res=>window.location.reload())
   }
+
+
+
+
+
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    console.log(event.target.files[0])
+  }
+  uploadimage(){
+    this.uploadEventImage().subscribe()
+  }
+  uploadEventImage() {
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
+
+    return this.http.post(`http://localhost:8083/contest-bal-de-projet/add-image-to-contest/${this.currentContestId}`, formData);
+
+  }
+  selectedFile!: File;
+
+
+
+
+
 }

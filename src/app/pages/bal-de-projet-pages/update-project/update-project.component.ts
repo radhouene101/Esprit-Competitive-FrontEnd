@@ -11,6 +11,8 @@ import {OptionsService} from "../../../services/radhouene/services/options.servi
 import {OptionDto} from "../../../services/radhouene/models/option-dto";
 import {Option} from "../../../services/radhouene/models/option";
 import {CategoryProjects} from "../../../services/radhouene/models/category-projects";
+import {HttpClient} from "@angular/common/http";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-update-project',
@@ -28,7 +30,8 @@ export class UpdateProjectComponent implements  OnInit{
     private router: Router,
     private jwtHelper:HelperService,
     private activatedRoute : ActivatedRoute,
-    private optionsService:OptionsService
+    private optionsService:OptionsService,
+    private  http :HttpClient
   ) {
   }
   optionList:OptionDto[]=[]
@@ -122,7 +125,36 @@ export class UpdateProjectComponent implements  OnInit{
       {next : (data) =>{
         console.log(this.project)
       }});
-    this.router.navigate(["/contest"])
+      this.uploadimage()
+      Swal.fire('New Event Upcoming!','','success').then(res=>window.location.reload())
+
+      this.router.navigate(["/contest"])
   }
   }
+
+
+
+
+
+
+
+
+
+
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    console.log(event.target.files[0])
+  }
+  uploadimage(){
+    this.uploadEventImage().subscribe()
+  }
+  uploadEventImage() {
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
+
+    return this.http.post(`http://localhost:8083/projects/add-image-to-project/${this.projectId}`, formData);
+
+  }
+  selectedFile!: File;
 }

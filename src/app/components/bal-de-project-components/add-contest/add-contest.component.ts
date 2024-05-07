@@ -5,6 +5,8 @@ import {OptionsService} from "../../../services/radhouene/services/options.servi
 import {ContestBalDeProjetService} from "../../../services/radhouene/services/contest-bal-de-projet.service";
 import {ContestDto} from "../../../services/radhouene/models/contest-dto";
 
+import {HttpClient} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-add-contest',
@@ -23,6 +25,7 @@ export class AddContestComponent implements OnInit{
   constructor(
     private optionService : OptionsService,
     private contestService : ContestBalDeProjetService,
+    private http: HttpClient
 
   ) {
   }
@@ -55,6 +58,9 @@ export class AddContestComponent implements OnInit{
     })
 
   }
+
+
+
 
 
 

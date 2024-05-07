@@ -23,7 +23,7 @@
 <!--        </div>-->
         <div class="card m-2" *ngFor="let contest of contestList ; index as i" >
           <div class="no-image" [routerLink]="['/show-contest',contest.id]">
-            <img src="assets/racing%20contest.jpg"  class="card-img-top overflow-auto" alt="...">
+            <img src="assets/{{contest.image}}"  class="card-img-top overflow-auto" alt="...">
           </div>
           <div class="content">
             <p class="name">{{ contest.name }}</p>

@@ -9,6 +9,10 @@ import {ProjectsDto} from "../../../services/radhouene/models/projects-dto";
 import {ContestDto} from "../../../services/radhouene/models/contest-dto";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Contest} from "../../../services/radhouene/models/contest";
+import {
+  ConfirmationAlertComponent
+} from "../../../components/confirmation-pop-up/confirmation-alert/confirmation-alert.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-show-contest',
@@ -27,7 +31,8 @@ import {Contest} from "../../../services/radhouene/models/contest";
     private activatedRoute :ActivatedRoute,
     private projectsService: ProjectsService,
     private contestService : ContestBalDeProjetService,
-    private jwtHelper : HelperService
+    private jwtHelper : HelperService,
+    private dialog: MatDialog,
   ) {
   }
   projectList : ProjectsDto[]=[]//to display projects that are affected to the contest
@@ -50,11 +55,22 @@ import {Contest} from "../../../services/radhouene/models/contest";
   }
 
   unassignProject(id: any,i:number){
-    this.contestService.unAssignProjectToContest({contestDtoID: this.id,projectId: id}).subscribe({
-      next :(data)=>{
-        this.projectList.splice(i,1)
-      }
-    })
+
+    if(i!=undefined && id!=undefined ){
+      const dialogRef = this.dialog.open(ConfirmationAlertComponent, {
+        data: { message: 'Are you sure you want to delete?' },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.contestService.unAssignProjectToContest({contestDtoID: this.id,projectId: id}).subscribe({
+            next :(data)=>{
+              this.projectList.splice(i,1)
+            }
+          })
+        }
+      });
+    }
+
   }
   affectTheProjectToTheCurrentContest(){
       this.contestService.assignProjectToContest({contestDtoID: this.id, projectId: this.form.get("project")?.value}).subscribe({

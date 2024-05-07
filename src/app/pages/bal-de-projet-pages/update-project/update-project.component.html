@@ -58,7 +58,7 @@
       </div>
       <div class="form-group p-2">
         <label for="imageUrl">Image: </label>
-        <input type="file" class="form-control bg-dark text-white" id="imageUrl" formControlName="imageUrl">
+        <input type="file" class="form-control bg-dark text-white" id="imageUrl" formControlName="imageUrl" (change)="onFileSelected($event)">
       </div>
       <div class="form-group p-2">
         <label for="videoUrl">paste the project presentation url: </label>

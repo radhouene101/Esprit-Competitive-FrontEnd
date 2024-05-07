@@ -47,6 +47,7 @@ import {ShowAllProjectsComponent} from "./pages/bal-de-projet-pages/show-all-pro
 import {HelperService} from "./services/helper/helper.service";
 import {AddCategoryComponent} from "./pages/bal-de-projet-pages/add-category/add-category.component";
 import {AddOptionComponent} from "./pages/bal-de-projet-pages/add-option/add-option.component";
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 
 const socketConfig:SocketIoConfig={
@@ -100,6 +101,7 @@ const socketConfig:SocketIoConfig={
     LayoutModule,
     ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
     SocketIoModule.forRoot(socketConfig),
+    SweetAlert2Module.forRoot(),
     NbChatModule,
     BrowserAnimationsModule, NoopAnimationsModule, ReactiveFormsModule, MatDialogModule
   ],
