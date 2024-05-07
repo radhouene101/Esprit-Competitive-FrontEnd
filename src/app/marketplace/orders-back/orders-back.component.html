@@ -20,8 +20,9 @@
           <td>{{ order.paymentMethod }}</td>
           <td>{{ getTotalOrderPrice(order) }}</td>
           <td>
-            <button class="btn btn-primary" >Send Confirmation Email</button>
+            <button class="btn btn-primary" (click)="order.customer && order.customer.email && sendConfirmationEmail(order.customer.email)">Send Confirmation Email</button>
           </td>
+          
         </tr>
       </tbody>
     </table>
