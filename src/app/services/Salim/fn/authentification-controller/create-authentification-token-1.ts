@@ -7,13 +7,14 @@ import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
 import { AuthentificationRequest } from '../../models/authentification-request';
+import { AuthentificationResponse } from '../../models/authentification-response';
 
-export interface Login$Params {
+export interface CreateAuthentificationToken1$Params {
       body: AuthentificationRequest
 }
 
-export function login(http: HttpClient, rootUrl: string, params: Login$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
-  const rb = new RequestBuilder(rootUrl, login.PATH, 'put');
+export function createAuthentificationToken1(http: HttpClient, rootUrl: string, params: CreateAuthentificationToken1$Params, context?: HttpContext): Observable<StrictHttpResponse<AuthentificationResponse>> {
+  const rb = new RequestBuilder(rootUrl, createAuthentificationToken1.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/json');
   }
@@ -23,9 +24,9 @@ export function login(http: HttpClient, rootUrl: string, params: Login$Params, c
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<string>;
+      return r as StrictHttpResponse<AuthentificationResponse>;
     })
   );
 }
 
-login.PATH = '/user/login';
+createAuthentificationToken1.PATH = '/authentication';

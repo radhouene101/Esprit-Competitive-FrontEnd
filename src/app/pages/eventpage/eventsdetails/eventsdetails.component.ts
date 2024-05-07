@@ -7,6 +7,8 @@ import {Group} from "../../../services/Salim/models/group";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserControllerService} from "../../../services/Salim/services/user-controller.service";
 import {User} from "../../../services/Salim/models/user";
+import {HttpClient} from "@angular/common/http";
+import Swal from "sweetalert2";
 
 
 
@@ -35,7 +37,7 @@ export class EventsdetailsComponent implements OnInit {
   title = 'My first AGM project';
   lat !:any;
   lng!:any;
-  constructor(private act: ActivatedRoute,private groupService:GroupControllerService, private eventService: EventControllerService,private userService:UserControllerService ,private route: Router) {
+  constructor(private http: HttpClient,private act: ActivatedRoute,private groupService:GroupControllerService, private eventService: EventControllerService,private userService:UserControllerService ,private route: Router) {
   }
 
   ngOnInit() {
@@ -73,7 +75,16 @@ export class EventsdetailsComponent implements OnInit {
       iduser4: this.id4,
       body: this.group
     };
-    this.groupService.creategroupetaffecterusers(params).subscribe(
+    this.groupService.creategroupetaffecterusers(params).subscribe(response => {
+        console.log('Event Updated successfully:', response);
+        window.location.reload()
+        // Optionally, display a success message to the user
+      },
+      error => {
+        console.error('Error updating event:', error);
+        Swal.fire('Members already assigned','','error').then(res=>window.location.reload())
+        // Optionally, display an error message to the user
+      }
     );
 
     //window.location.reload()
@@ -125,7 +136,16 @@ export class EventsdetailsComponent implements OnInit {
   }
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    console.log(event.target.files[0])
   }
+  uploadimage(){
+    this.uploadEventImage().subscribe()
+  }
+  uploadEventImage() {
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
 
+    return this.http.post(`http://localhost:8083/event/${this.id}/image`, formData);
+  }
 
 }

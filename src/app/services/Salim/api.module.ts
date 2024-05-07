@@ -8,6 +8,7 @@ import { UserControllerService } from './services/user-controller.service';
 import { ForgotpasswordControllerService } from './services/forgotpassword-controller.service';
 import { GroupControllerService } from './services/group-controller.service';
 import { EventControllerService } from './services/event-controller.service';
+import { RoleControllerService } from './services/role-controller.service';
 import { SousCategoryService } from './services/sous-category.service';
 import { SignupControllerService } from './services/signup-controller.service';
 import { ProjectsService } from './services/projects.service';
@@ -29,6 +30,7 @@ import { RoleTestControllerService } from './services/role-test-controller.servi
     ForgotpasswordControllerService,
     GroupControllerService,
     EventControllerService,
+    RoleControllerService,
     SousCategoryService,
     SignupControllerService,
     ProjectsService,

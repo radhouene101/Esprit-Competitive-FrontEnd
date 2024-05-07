@@ -8,4 +8,5 @@ import {Component, Input} from '@angular/core';
 export class CompetitionsCardComponent {
   @Input()
   var1!:string;
+  var2!:string;
 }

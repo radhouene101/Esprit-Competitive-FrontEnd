@@ -29,4 +29,4 @@ export function createAuthentificationToken(http: HttpClient, rootUrl: string, p
   );
 }
 
-createAuthentificationToken.PATH = '/authentication';
+createAuthentificationToken.PATH = '/user/authentication';

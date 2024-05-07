@@ -38,6 +38,12 @@ export class EventsComponent implements OnInit{
       ]),
       lattitude:new FormControl('',[
         Validators.required,
+      ]),
+      date:new FormControl('',[
+        Validators.required,
+      ]),
+      description:new FormControl('',[
+        Validators.required,
       ])
     });
   }
@@ -90,6 +96,12 @@ public onAddEvent(){
       }
     );
 
+  }
+  oldevent(event: any): boolean {
+    const today = new Date();
+    console.log(today);
+    const eventDate = new Date(event.date);
+    return eventDate < today; // Check if event date is after today
   }
 
 }

@@ -1,11 +1,13 @@
 body {
+
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #1f1f1f; /* Dark mode background color */
   color: #fff; /* Text color */
-  min-height: 1000vh;
-  background-image: url('/src/assets/EventDetailsBackground.jpeg');
+  min-height: 210%;
+  height: 100%;
+  background-image: url('/assets/EventDetailsBackground.jpeg');
 }
 
 .container {
@@ -13,20 +15,27 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
+.horizontal-list {
+  list-style-type: none;
+  padding: 5px;
+}
 
-.container1 {
-  max-width: 300px;
-  margin: 0 auto;
-  padding: 0 20px;
+.horizontal-list li {
+
+  display: inline;
+  /* or display: inline-block; */
+  margin-right: 10px; /* Adjust spacing between items */
+  padding-right: 20px;
+
 }
 
 
-
 .header {
-  background-color: #222; /* Darker header and footer background color */
+  background-color: #222;
   color: #fff;
   padding: 20px 0;
   text-align: center;
+  background-image:url('/assets/EventDetailsBackground.jpeg');
 }
 
 .header h1 {
@@ -38,7 +47,7 @@ body {
 }
 
 .section {
-  margin-bottom: 40px;
+  margin-bottom: 400px;
 }
 
 .section h2 {
@@ -76,7 +85,7 @@ form {
   background-color: #333;
   padding: 20px;
   border-radius: 5px;
-  width: 39%;
+  width: 100%;
   height: 550px;
 }
 
@@ -116,7 +125,6 @@ select {
 }
 
 .footer {
-  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -134,5 +142,7 @@ select {
 }
 agm-map {
   height: 200px;
-  width: 450px;
+  width: 100%;
+  border-radius: 10px;
 }
+

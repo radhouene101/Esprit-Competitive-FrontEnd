@@ -9,18 +9,17 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
+import { AuthentificationResponse } from '../models/authentification-response';
+import { createAuthentificationToken } from '../fn/user-controller/create-authentification-token';
+import { CreateAuthentificationToken$Params } from '../fn/user-controller/create-authentification-token';
+import { createUser } from '../fn/user-controller/create-user';
+import { CreateUser$Params } from '../fn/user-controller/create-user';
 import { getAllUserEmails } from '../fn/user-controller/get-all-user-emails';
 import { GetAllUserEmails$Params } from '../fn/user-controller/get-all-user-emails';
 import { getAllUsers } from '../fn/user-controller/get-all-users';
 import { GetAllUsers$Params } from '../fn/user-controller/get-all-users';
-import { getUserbyId } from '../fn/user-controller/get-userby-id';
-import { GetUserbyId$Params } from '../fn/user-controller/get-userby-id';
-import { login } from '../fn/user-controller/login';
-import { Login$Params } from '../fn/user-controller/login';
 import { regenerateOtp } from '../fn/user-controller/regenerate-otp';
 import { RegenerateOtp$Params } from '../fn/user-controller/regenerate-otp';
-import { register } from '../fn/user-controller/register';
-import { Register$Params } from '../fn/user-controller/register';
 import { User } from '../models/user';
 import { verifyAccount } from '../fn/user-controller/verify-account';
 import { VerifyAccount$Params } from '../fn/user-controller/verify-account';
@@ -81,78 +80,57 @@ export class UserControllerService extends BaseService {
     );
   }
 
-  /** Path part for operation `login()` */
-  static readonly LoginPath = '/user/login';
+  /** Path part for operation `createUser()` */
+  static readonly CreateUserPath = '/user/register';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `login()` instead.
+   * To access only the response body, use `createUser()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  login$Response(params: Login$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
-    return login(this.http, this.rootUrl, params, context);
+  createUser$Response(params: CreateUser$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return createUser(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `login$Response()` instead.
+   * To access the full response (for headers, for example), `createUser$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  login(params: Login$Params, context?: HttpContext): Observable<string> {
-    return this.login$Response(params, context).pipe(
-      map((r: StrictHttpResponse<string>): string => r.body)
+  createUser(params: CreateUser$Params, context?: HttpContext): Observable<{
+}> {
+    return this.createUser$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
     );
   }
 
-  /** Path part for operation `register()` */
-  static readonly RegisterPath = '/user/register';
+  /** Path part for operation `createAuthentificationToken()` */
+  static readonly CreateAuthentificationTokenPath = '/user/authentication';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `register()` instead.
+   * To access only the response body, use `createAuthentificationToken()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  register$Response(params: Register$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
-    return register(this.http, this.rootUrl, params, context);
+  createAuthentificationToken$Response(params: CreateAuthentificationToken$Params, context?: HttpContext): Observable<StrictHttpResponse<AuthentificationResponse>> {
+    return createAuthentificationToken(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `register$Response()` instead.
+   * To access the full response (for headers, for example), `createAuthentificationToken$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  register(params: Register$Params, context?: HttpContext): Observable<string> {
-    return this.register$Response(params, context).pipe(
-      map((r: StrictHttpResponse<string>): string => r.body)
-    );
-  }
-
-  /** Path part for operation `getUserbyId()` */
-  static readonly GetUserbyIdPath = '/user/getuserbyid/{userid}';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `getUserbyId()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  getUserbyId$Response(params: GetUserbyId$Params, context?: HttpContext): Observable<StrictHttpResponse<User>> {
-    return getUserbyId(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `getUserbyId$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  getUserbyId(params: GetUserbyId$Params, context?: HttpContext): Observable<User> {
-    return this.getUserbyId$Response(params, context).pipe(
-      map((r: StrictHttpResponse<User>): User => r.body)
+  createAuthentificationToken(params: CreateAuthentificationToken$Params, context?: HttpContext): Observable<AuthentificationResponse> {
+    return this.createAuthentificationToken$Response(params, context).pipe(
+      map((r: StrictHttpResponse<AuthentificationResponse>): AuthentificationResponse => r.body)
     );
   }
 

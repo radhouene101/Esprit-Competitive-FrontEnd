@@ -6,16 +6,18 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { SignupRequest } from '../../models/signup-request';
+import { RoleDto } from '../../models/role-dto';
 
-export interface Register$Params {
-      body: SignupRequest
+export interface UpdateRole$Params {
+  id: number;
+  role: RoleDto;
 }
 
-export function register(http: HttpClient, rootUrl: string, params: Register$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
-  const rb = new RequestBuilder(rootUrl, register.PATH, 'post');
+export function updateRole(http: HttpClient, rootUrl: string, params: UpdateRole$Params, context?: HttpContext): Observable<StrictHttpResponse<RoleDto>> {
+  const rb = new RequestBuilder(rootUrl, updateRole.PATH, 'post');
   if (params) {
-    rb.body(params.body, 'application/json');
+    rb.path('id', params.id, {});
+    rb.query('role', params.role, {});
   }
 
   return http.request(
@@ -23,9 +25,9 @@ export function register(http: HttpClient, rootUrl: string, params: Register$Par
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<string>;
+      return r as StrictHttpResponse<RoleDto>;
     })
   );
 }
 
-register.PATH = '/user/register';
+updateRole.PATH = '/updateRole/{id}';

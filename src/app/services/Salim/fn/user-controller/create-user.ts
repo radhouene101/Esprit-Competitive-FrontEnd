@@ -30,4 +30,4 @@ export function createUser(http: HttpClient, rootUrl: string, params: CreateUser
   );
 }
 
-createUser.PATH = '/register';
+createUser.PATH = '/user/register';

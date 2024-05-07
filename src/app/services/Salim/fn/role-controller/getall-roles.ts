@@ -6,16 +6,14 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { User } from '../../models/user';
+import { Role } from '../../models/role';
 
-export interface GetUserbyId$Params {
-  userid: number;
+export interface GetallRoles$Params {
 }
 
-export function getUserbyId(http: HttpClient, rootUrl: string, params: GetUserbyId$Params, context?: HttpContext): Observable<StrictHttpResponse<User>> {
-  const rb = new RequestBuilder(rootUrl, getUserbyId.PATH, 'get');
+export function getallRoles(http: HttpClient, rootUrl: string, params?: GetallRoles$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Role>>> {
+  const rb = new RequestBuilder(rootUrl, getallRoles.PATH, 'get');
   if (params) {
-    rb.path('userid', params.userid, {});
   }
 
   return http.request(
@@ -23,9 +21,9 @@ export function getUserbyId(http: HttpClient, rootUrl: string, params: GetUserby
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<User>;
+      return r as StrictHttpResponse<Array<Role>>;
     })
   );
 }
 
-getUserbyId.PATH = '/user/getuserbyid/{userid}';
+getallRoles.PATH = '/getallRoles';

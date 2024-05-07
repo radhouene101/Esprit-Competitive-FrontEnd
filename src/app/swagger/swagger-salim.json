@@ -84,36 +84,6 @@
         }
       }
     },
-    "/user/login": {
-      "put": {
-        "tags": [
-          "user-controller"
-        ],
-        "operationId": "login",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AuthentificationRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/set-password": {
       "put": {
         "tags": [
@@ -269,7 +239,7 @@
         "tags": [
           "user-controller"
         ],
-        "operationId": "register",
+        "operationId": "createUser",
         "requestBody": {
           "content": {
             "application/json": {
@@ -286,7 +256,76 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/authentication": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "operationId": "createAuthentificationToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthentificationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthentificationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateRole/{id}": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "operationId": "updateRole",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RoleDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleDTO"
                 }
               }
             }
@@ -350,7 +389,7 @@
         "tags": [
           "signup-controller"
         ],
-        "operationId": "createUser",
+        "operationId": "createUser_1",
         "requestBody": {
           "content": {
             "application/json": {
@@ -717,6 +756,36 @@
         }
       }
     },
+    "/createRole": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "operationId": "createRole",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/contest-bal-de-projet": {
       "get": {
         "tags": [
@@ -858,7 +927,7 @@
         "tags": [
           "authentification-controller"
         ],
-        "operationId": "createAuthentificationToken",
+        "operationId": "createAuthentificationToken_1",
         "requestBody": {
           "content": {
             "application/json": {
@@ -879,6 +948,39 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/affect-role-to-user/{userId}/{roleId}": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "operationId": "affectRoleToUser",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "roleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -912,37 +1014,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/user/getuserbyid/{userid}": {
-      "get": {
-        "tags": [
-          "user-controller"
-        ],
-        "operationId": "getUserbyId",
-        "parameters": [
-          {
-            "name": "userid",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
           }
         }
       }
@@ -1285,6 +1356,29 @@
         }
       }
     },
+    "/list-all-roles": {
+      "get": {
+        "tags": [
+          "role-controller"
+        ],
+        "operationId": "showAllRoles",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RoleDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/group/getgroupbyid/{id}": {
       "get": {
         "tags": [
@@ -1331,6 +1425,29 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Group"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getallRoles": {
+      "get": {
+        "tags": [
+          "role-controller"
+        ],
+        "operationId": "getallRoles",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Role"
                   }
                 }
               }
@@ -1573,21 +1690,34 @@
           }
         }
       }
+    },
+    "/deleteRole/{idRole}": {
+      "delete": {
+        "tags": [
+          "role-controller"
+        ],
+        "operationId": "DeleteRole",
+        "parameters": [
+          {
+            "name": "idRole",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "AuthentificationRequest": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          }
-        }
-      },
       "CategoryProjects": {
         "type": "object",
         "properties": {
@@ -1670,14 +1800,21 @@
             "type": "string"
           },
           "longitude": {
-            "type": "integer",
-            "format": "int64"
+            "type": "number",
+            "format": "double"
           },
           "lattitude": {
-            "type": "integer",
-            "format": "int64"
+            "type": "number",
+            "format": "double"
           },
           "imageUrl": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
             "type": "string"
           },
           "groups": {
@@ -1882,24 +2019,24 @@
           "username": {
             "type": "string"
           },
-          "accountNonExpired": {
-            "type": "boolean"
-          },
-          "credentialsNonExpired": {
-            "type": "boolean"
-          },
           "authorities": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GrantedAuthority"
             }
           },
-          "accountNonLocked": {
-            "type": "boolean"
-          },
           "otpGeneratedTime": {
             "type": "string",
             "format": "date-time"
+          },
+          "credentialsNonExpired": {
+            "type": "boolean"
+          },
+          "accountNonExpired": {
+            "type": "boolean"
+          },
+          "accountNonLocked": {
+            "type": "boolean"
           }
         }
       },
@@ -1924,6 +2061,37 @@
           "otpGeneratedTime": {
             "type": "string",
             "format": "date-time"
+          }
+        }
+      },
+      "AuthentificationRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "AuthentificationResponse": {
+        "type": "object",
+        "properties": {
+          "jwt": {
+            "type": "string"
+          }
+        }
+      },
+      "RoleDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
           }
         }
       },
@@ -2078,14 +2246,6 @@
             "items": {
               "$ref": "#/components/schemas/SousCategory"
             }
-          }
-        }
-      },
-      "AuthentificationResponse": {
-        "type": "object",
-        "properties": {
-          "jwt": {
-            "type": "string"
           }
         }
       }
