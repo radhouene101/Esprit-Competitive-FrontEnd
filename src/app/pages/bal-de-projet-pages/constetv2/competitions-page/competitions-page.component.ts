@@ -47,7 +47,7 @@ export class CompetitionsPageComponent implements OnInit{
     this.projetService.getAllWinners().subscribe({
         next :(data) =>
         {
-          this.projectListWinners = data
+          this.projectListWinners = data.slice(0,5)
           this.loading = false;
           //console.log(JSON.stringify(this.projectList))
         }
