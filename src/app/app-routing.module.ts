@@ -32,6 +32,9 @@ import { OrderComponent } from './marketplace/order/order.component';
 import { Order2Component } from './marketplace/order2/order2.component';
 import { ProductsBackComponent } from './marketplace/products-back/products-back.component';
 import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
+import {
+  CompetitionsContestPageComponent
+} from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
 
 const routes:Routes=[
   {
@@ -40,7 +43,7 @@ const routes:Routes=[
   },
   {
     path:'contest-page',
-    component:CompetitionsPageComponent
+    component:CompetitionsContestPageComponent
   },
   {
     path:'role',

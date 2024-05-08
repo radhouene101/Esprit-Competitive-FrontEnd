@@ -16,7 +16,7 @@ import {Contest} from "../../../../services/radhouene/models/contest";
   templateUrl: './competitions-page.component.html',
   styleUrls: ['./competitions-page.component.css','./leaderboard.scss']
 })
-export class CompetitionsPageComponent implements OnInit{
+export class CompetitionsContestPageComponent implements OnInit{
 
   headerContestList:Contest[]=[]
   constructor(

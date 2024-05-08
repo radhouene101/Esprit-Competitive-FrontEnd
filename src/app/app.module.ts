@@ -64,6 +64,9 @@ import { ProductsBackComponent } from './marketplace/products-back/products-back
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
 import {AboutComponent} from "./pages/about/about.component";
+import {
+  CompetitionsContestPageComponent
+} from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -71,6 +74,8 @@ const socketConfig:SocketIoConfig={
 }
 @NgModule({
   declarations: [
+    CompetitionsPageComponent,
+    CompetitionsContestPageComponent,
     AppComponent,
     MyFirstCompComponent,
     MessageDetailsComponent,
@@ -102,7 +107,6 @@ const socketConfig:SocketIoConfig={
     CompetitionsCardComponent,
     EventsComponent,
     EventsdetailsComponent,
-    CompetitionsPageComponent,
     OrderComponent,
     ProductsFrontComponent,
     CartComponent,
