@@ -65,8 +65,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
 import { UploadVideoComponent } from './pages/upload-video/upload-video.component';
 import { VideoDetailsComponent } from './pages/video-details/video-details.component';
+
+import { VideoListComponent } from './pages/video-list/video-list.component';
+import { EnumToArrayPipe } from './services/farouk/enum-to-array.pipe';
 import {AboutComponent} from "./pages/about/about.component";
 import { CompetitionsContestPageComponent } from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
+
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -114,7 +118,9 @@ const socketConfig:SocketIoConfig={
     OrdersBackComponent,
     ProductsBackComponent,
     UploadVideoComponent,
-    VideoDetailsComponent
+    VideoDetailsComponent,
+    VideoListComponent,
+    EnumToArrayPipe
   ],
   imports: [
     BrowserModule,
