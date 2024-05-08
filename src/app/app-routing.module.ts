@@ -37,6 +37,7 @@ import {UploadVideoComponent} from "./pages/upload-video/upload-video.component"
 
 import {VideoDetailsComponent} from "./pages/video-details/video-details.component";
 import {VideoListComponent} from "./pages/video-list/video-list.component";
+import {VideoComponent} from "./pages/video/video.component";
 
 import {CompetitionsContestPageComponent} from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
 
@@ -61,6 +62,10 @@ const routes:Routes=[
   {
     path:'upload-video',
     component: UploadVideoComponent
+  },
+  {
+    path:'video',
+    component: VideoComponent
   },
   {
     path:'video-list',

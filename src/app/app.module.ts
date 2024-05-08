@@ -68,8 +68,15 @@ import { VideoDetailsComponent } from './pages/video-details/video-details.compo
 
 import { VideoListComponent } from './pages/video-list/video-list.component';
 import { EnumToArrayPipe } from './services/farouk/enum-to-array.pipe';
+import { VideoComponent } from './pages/video/video.component';
+import { VideoDetailsFormComponent } from './pages/video-details-form/video-details-form.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatLegacyChipsModule} from "@angular/material/legacy-chips";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatOptionModule} from "@angular/material/core";
 import {AboutComponent} from "./pages/about/about.component";
 import { CompetitionsContestPageComponent } from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
+
 
 
 const socketConfig:SocketIoConfig={
@@ -120,7 +127,41 @@ const socketConfig:SocketIoConfig={
     UploadVideoComponent,
     VideoDetailsComponent,
     VideoListComponent,
-    EnumToArrayPipe
+    EnumToArrayPipe,
+    VideoComponent,
+    VideoDetailsFormComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
+    ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
+    SocketIoModule.forRoot(socketConfig),
+    NbChatModule,
+    BrowserAnimationsModule, NoopAnimationsModule, ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => sessionStorage.getItem('userToken')
+      }
+    }),
+    SweetAlert2Module.forRoot(),
+    LayoutModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCZ8-b4aGYLmIYlq-Ksk5Dg7kyB3KzFrHg'
+    }),
+    NgOptimizedImage, ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }), MatFormFieldModule, MatLegacyChipsModule, MatOptionModule, MatAutocompleteModule
   ],
   imports: [
     BrowserModule,
@@ -154,6 +195,7 @@ const socketConfig:SocketIoConfig={
       registrationStrategy: 'registerWhenStable:30000'
     }), MatDialogModule
   ],
+
   exports:[],//Added for routing
   providers: [HttpClient],
   bootstrap: [AppComponent]
