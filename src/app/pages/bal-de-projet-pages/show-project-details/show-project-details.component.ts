@@ -23,6 +23,7 @@ export class ShowProjectDetailsComponent implements OnInit{
       }
     })
   }
+  url:string= "https://www.youtube.com/watch?v=xcVZ1r53k1s&list=PLaxA49z0jsuiXfMSxO8VBH1wuVmQ7_63y";
   projectId!:number
   ngOnInit(): void {
     this.projectId=this.router.snapshot.params['id']
