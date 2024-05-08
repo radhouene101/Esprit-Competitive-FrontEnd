@@ -48,6 +48,12 @@ import {HelperService} from "./services/helper/helper.service";
 import {AddCategoryComponent} from "./pages/bal-de-projet-pages/add-category/add-category.component";
 import {AddOptionComponent} from "./pages/bal-de-projet-pages/add-option/add-option.component";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import {
+  CompetitionsCardComponent
+} from "./pages/bal-de-projet-pages/constetv2/competitions-card/competitions-card.component";
+import {
+  CompetitionsPageComponent
+} from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
 
 
 const socketConfig:SocketIoConfig={
@@ -85,7 +91,9 @@ const socketConfig:SocketIoConfig={
     LoadingMessageComponent,
     ShowAllProjectsComponent,
     AddCategoryComponent,
-    AddOptionComponent
+    AddOptionComponent,
+    CompetitionsCardComponent,
+    CompetitionsPageComponent
   ],
 
   imports: [

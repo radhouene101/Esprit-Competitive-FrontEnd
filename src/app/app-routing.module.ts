@@ -8,7 +8,6 @@ import {AboutComponent} from "./pages/about/about.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {ChatPageComponent} from "./pages/chat/chat-page/chat-page.component";
 import {AddContestComponent} from "./components/bal-de-project-components/add-contest/add-contest.component";
-import {AdminDashboardComponent} from "./pages/bal-de-projet-pages/admin-dashboard/admin-dashboard.component";
 import {ContestComponent} from "./pages/bal-de-projet-pages/contest/contest.component";
 import {ProjectFormComponent} from "./components/bal-de-project-components/project-form/project-form.component";
 import {ShowContestComponent} from "./pages/bal-de-projet-pages/show-contest/show-contest.component";
@@ -23,12 +22,17 @@ import {RoleComponent} from "./pages/role/role.component";
 import {ActivateAccountComponent} from "./pages/activate-account/activate-account.component";
 import {AddCategoryComponent} from "./pages/bal-de-projet-pages/add-category/add-category.component";
 import {AddOptionComponent} from "./pages/bal-de-projet-pages/add-option/add-option.component";
+import {CompetitionsPageComponent} from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
 
 
 const routes:Routes=[
   {
     path:'forgotpassword',
     component:ForgotPasswordComponent
+  },
+  {
+    path:'contest-page',
+    component:CompetitionsPageComponent
   },
   {
     path:'role',
@@ -65,13 +69,6 @@ const routes:Routes=[
   {
     path:'',
     component:LoginComponent
-  },
-  {
-    path: 'admin',
-    component: AdminDashboardComponent,
-    children :[
-      {path: 'add-contest', component: AddContestComponent}
-    ]
   },
   {
     path:'contest',
