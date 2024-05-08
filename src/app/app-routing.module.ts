@@ -34,6 +34,7 @@ import { ProductsBackComponent } from './marketplace/products-back/products-back
 import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
 
 import {UploadVideoComponent} from "./services/upload-video/upload-video.component";
+import {VideoDetailsComponent} from "./pages/video-details/video-details.component";
 
 import {CompetitionsContestPageComponent} from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
 
@@ -58,6 +59,9 @@ const routes:Routes=[
   {
     path:'upload-video',
     component: UploadVideoComponent
+  },
+  { path: 'video/:id',
+    component: VideoDetailsComponent
   },
   {
     path:'signup',
