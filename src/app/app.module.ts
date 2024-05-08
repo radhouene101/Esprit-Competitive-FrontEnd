@@ -52,6 +52,7 @@ import { ProductsBackComponent } from './marketplace/products-back/products-back
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
 import { UploadVideoComponent } from './services/upload-video/upload-video.component';
+import { VideoDetailsComponent } from './pages/video-details/video-details.component';
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -90,7 +91,8 @@ const socketConfig:SocketIoConfig={
     Order2Component,
     OrdersBackComponent,
     ProductsBackComponent,
-    UploadVideoComponent
+    UploadVideoComponent,
+    VideoDetailsComponent
   ],
     imports: [
         BrowserModule,

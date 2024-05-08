@@ -24,6 +24,7 @@ import { Order2Component } from './marketplace/order2/order2.component';
 import { ProductsBackComponent } from './marketplace/products-back/products-back.component';
 import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
 import {UploadVideoComponent} from "./services/upload-video/upload-video.component";
+import {VideoDetailsComponent} from "./pages/video-details/video-details.component";
 
 const routes:Routes=[
   {
@@ -41,6 +42,9 @@ const routes:Routes=[
   {
     path:'upload-video',
     component: UploadVideoComponent
+  },
+  { path: 'video/:id',
+    component: VideoDetailsComponent
   },
   {
     path:'signup',
