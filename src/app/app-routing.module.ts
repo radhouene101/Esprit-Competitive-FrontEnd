@@ -101,10 +101,7 @@ const routes:Routes=[
     path:'ordersback',//Path Param
     component:  OrdersBackComponent
   },
-  {
-    path:'notfound',//Path Param
-    component:NotFoundComponent
-  },
+
   {
     path:'messages',//Path Param
     component:ChatPageComponent
@@ -174,8 +171,8 @@ const routes:Routes=[
     component:ActivateAccountComponent
   },
   {
-    path:'**',//route has error
-    component: NotFoundComponent
+    path:'notfound',//Path Param
+    component:NotFoundComponent
   }
 ]//Added for Routing
 @NgModule({

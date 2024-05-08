@@ -161,40 +161,40 @@ const socketConfig:SocketIoConfig={
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    }), MatFormFieldModule, MatLegacyChipsModule, MatOptionModule, MatAutocompleteModule
+    }), MatFormFieldModule, MatLegacyChipsModule, MatOptionModule, MatAutocompleteModule, MatDialogModule
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
-    SocketIoModule.forRoot(socketConfig),
-    NbChatModule,
-    BrowserAnimationsModule, NoopAnimationsModule, ReactiveFormsModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: () => sessionStorage.getItem('userToken')
-      }
-    }),
-    SweetAlert2Module.forRoot(),
-    LayoutModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCZ8-b4aGYLmIYlq-Ksk5Dg7kyB3KzFrHg'
-    }),
-    NgOptimizedImage, ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    }), MatDialogModule
-  ],
+  // imports: [
+  //   BrowserModule,
+  //   FormsModule,
+  //   HttpClientModule,
+  //   AppRoutingModule,
+  //   MatGridListModule,
+  //   MatCardModule,
+  //   MatMenuModule,
+  //   MatIconModule,
+  //   MatButtonModule,
+  //   LayoutModule,
+  //   ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
+  //   SocketIoModule.forRoot(socketConfig),
+  //   NbChatModule,
+  //   BrowserAnimationsModule, NoopAnimationsModule, ReactiveFormsModule,
+  //   JwtModule.forRoot({
+  //     config: {
+  //       tokenGetter: () => sessionStorage.getItem('userToken')
+  //     }
+  //   }),
+  //   SweetAlert2Module.forRoot(),
+  //   LayoutModule,
+  //   AgmCoreModule.forRoot({
+  //     apiKey: 'AIzaSyCZ8-b4aGYLmIYlq-Ksk5Dg7kyB3KzFrHg'
+  //   }),
+  //   NgOptimizedImage, ServiceWorkerModule.register('ngsw-worker.js', {
+  //     enabled: !isDevMode(),
+  //     // Register the ServiceWorker as soon as the application is stable
+  //     // or after 30 seconds (whichever comes first).
+  //     registrationStrategy: 'registerWhenStable:30000'
+  //   }), MatDialogModule
+  // ],
 
   exports:[],//Added for routing
   providers: [HttpClient],

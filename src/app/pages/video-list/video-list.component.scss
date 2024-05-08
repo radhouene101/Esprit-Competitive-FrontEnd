@@ -41,7 +41,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255, 223, 0, 0.6), transparent 70%);
+      background: radial-gradient(circle, rgba(3, 153, 162, 0.53), transparent 70%);
       animation: rotate 6s linear infinite;
     }
 
@@ -64,7 +64,7 @@
       color: #ffffff;
     }
     50% {
-      color: #FFD700; // Gold color for pulsing effect
+      color: #f3d018; // Gold color for pulsing effect
     }
   }
 }
@@ -110,7 +110,7 @@ select {
   transition: all 0.3s ease; // Smooth transition for hover effects
 
   &:hover, &:focus {
-    background-color: #444; // Darker on hover/focus
+    background-color: #d0b103; // Darker on hover/focus
     outline: none;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); // Subtle white glow
   }
@@ -148,7 +148,7 @@ select {
     cursor: pointer;
 
     &:hover, &:focus {
-      background-color: #444;
+      background-color: #01adb2;
       transform: translateY(-2px);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); // Adds a subtle shadow for depth
     }
