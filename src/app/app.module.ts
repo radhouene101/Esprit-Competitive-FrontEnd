@@ -1,10 +1,8 @@
-import {NgModule, OnInit} from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-import { AboutComponent } from './pages/about/about.component';
 import { MyFirstCompComponent } from './pages/my-first-comp/my-first-comp.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 import { MessageDetailsComponent } from './components/chat/message-details/message-details.component';
 import { MenuComponent } from './components/menu/menu.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
@@ -47,14 +45,25 @@ import {ShowAllProjectsComponent} from "./pages/bal-de-projet-pages/show-all-pro
 import {HelperService} from "./services/helper/helper.service";
 import {AddCategoryComponent} from "./pages/bal-de-projet-pages/add-category/add-category.component";
 import {AddOptionComponent} from "./pages/bal-de-projet-pages/add-option/add-option.component";
-import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
-import {
-  CompetitionsCardComponent
-} from "./pages/bal-de-projet-pages/constetv2/competitions-card/competitions-card.component";
-import {
-  CompetitionsPageComponent
-} from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
 
+import { EventsComponent } from './pages/eventpage/events/events.component';
+import { EventsdetailsComponent } from './pages/eventpage/eventsdetails/eventsdetails.component';
+import {NgOptimizedImage} from "@angular/common";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import {AgmCoreModule} from "@druk/agm-core";
+import { CompetitionsPageComponent } from './pages/competition-page/competitions-page/competitions-page.component';
+import { CompetitionsCardComponent } from './pages/competition-page/competitions-card/competitions-card.component';
+
+import { ProductsFrontComponent } from './marketplace/products-front/products-front.component';
+import { CartComponent } from './marketplace/cart/cart.component';
+import { OrderComponent } from './marketplace/order/order.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { Order2Component } from './marketplace/order2/order2.component';
+import { ProductsBackComponent } from './marketplace/products-back/products-back.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
+import {AboutComponent} from "./pages/about/about.component";
 
 const socketConfig:SocketIoConfig={
   url:"http://localhost:8083/ws",
@@ -82,20 +91,25 @@ const socketConfig:SocketIoConfig={
     ShowContestComponent,
     ShowProjectDetailsComponent,
     ShowAllProjectsComponent,
-    AddContestComponent,
     UserChatComponent,
     SelectedUserChatComponent,
     ActivateAccountComponent,
     RoleComponent,
     ForgotPasswordComponent,
     LoadingMessageComponent,
-    ShowAllProjectsComponent,
     AddCategoryComponent,
     AddOptionComponent,
     CompetitionsCardComponent,
-    CompetitionsPageComponent
+    EventsComponent,
+    EventsdetailsComponent,
+    CompetitionsPageComponent,
+    OrderComponent,
+    ProductsFrontComponent,
+    CartComponent,
+    Order2Component,
+    OrdersBackComponent,
+    ProductsBackComponent
   ],
-
   imports: [
     BrowserModule,
     FormsModule,
@@ -109,19 +123,27 @@ const socketConfig:SocketIoConfig={
     LayoutModule,
     ApiModule.forRoot({rootUrl: 'http://localhost:8083'}),
     SocketIoModule.forRoot(socketConfig),
-    SweetAlert2Module.forRoot(),
     NbChatModule,
-    BrowserAnimationsModule, NoopAnimationsModule, ReactiveFormsModule, MatDialogModule
+    BrowserAnimationsModule, NoopAnimationsModule, ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => sessionStorage.getItem('userToken')
+      }
+    }),
+    SweetAlert2Module.forRoot(),
+    LayoutModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCZ8-b4aGYLmIYlq-Ksk5Dg7kyB3KzFrHg'
+    }),
+    NgOptimizedImage, ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }), MatDialogModule
   ],
   exports:[],//Added for routing
   providers: [HttpClient],
   bootstrap: [AppComponent]
 })
-export class AppModule{
-
-  constructor(
-
-  ) {}
-
-
-}
+export class AppModule { }

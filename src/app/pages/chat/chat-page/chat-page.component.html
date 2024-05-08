@@ -1,29 +1,54 @@
-<p>chat-page works!</p>
-
-<div class="chat-container hidden" id="chat-page">
+<div class="chat-container">
   <div class="users-list">
     <div class="users-list-container">
-      <h2>Users</h2>
-      <ul id="connectedUsers">
+      <div class="chat-current-user">
+        Available Users
+      </div>
+      <ul>
+        <div *ngFor="let i of users">
+          <app-user-chat *ngIf="i.name!=user.name"
+                         (click)="assignSelectedUser(i.name)"
+                         [username]="i.name"
+                         [status]="i.status"
+          ></app-user-chat>
+        </div>
+
       </ul>
     </div>
-    <div>
-      <p id="connected-user-fullname">{{user.name}}</p>
-      <a class="logout" href="javascript:void(0)" id="logout">Logout</a>
+    <div class="chat-current-user">
+      <p>{{user.name}}</p>
     </div>
   </div>
 
   <div class="chat-area">
-    <div class="chat-area" id="chat-messages">
+    <div class="selected-user-details" *ngIf="selectedUser">
+      <app-selected-user-chat [username]="selectedUser"></app-selected-user-chat>
+    </div>
+    <div class="chat-area" id="chat-messages" >
+      <div  *ngFor="let msg of messages">
+        <app-message-details
+          *ngIf="!msg.reply"
+          [message]="msg.text"
+          [cssClass]="'message-container-sender'"
+        >
+        </app-message-details>
+        <app-message-details
+          *ngIf="msg.reply"
+          [message]="msg.text"
+          [timestamp]="msg.date"
+          [cssClass]="'message-container-receiver'"
+        >
+        </app-message-details>
+
+      </div>
+      <app-loading-message *ngIf="loading"></app-loading-message>
     </div>
 
     <form id="messageForm" name="messageForm" class="hidden">
       <div class="message-input">
-        <input autocomplete="off" type="text" id="message" placeholder="Type your message...">
-        <button>Send</button>
+        <input autocomplete="off" (keyup)="updateMessage($event)" type="text" id="message" placeholder="Type your message...">
+        <button [disabled]="loading" (click)="sendMessage()" type="submit">Send</button>
       </div>
     </form>
   </div>
 </div>
-
-<button (click)="displayData()">click me</button>

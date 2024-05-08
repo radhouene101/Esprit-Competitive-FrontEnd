@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {User} from "../../services/User/models/user";
 import {UserDetails} from "../../models/UserDetails";
 import {ForgotpasswordControllerService} from "../../services/Role/services/forgotpassword-controller.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,8 @@ export class LoginComponent{
     const params = {       email: email    };
 
     this.forgotpassword.forgotPassword(params).subscribe()
+    Swal.fire('Reset Password','verify you email to reset your account','success').then(res=>window.location.reload())
+
   }
 
   protected readonly sessionStorage = sessionStorage;

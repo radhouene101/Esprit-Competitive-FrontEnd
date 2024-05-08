@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="categories" style="text-align: right; margin-bottom: 20px;">
+    <label for="categorySelect" style="font-weight: bold; font-size: 1.1rem; color: #333;">Select a category:</label>
+    <select id="categorySelect" (change)="filterProductsByCategory($event)" style="padding: 8px 16px; border-radius: 4px; border: 1px solid #ccc; background-color: #fff; color: #333; font-size: 1rem; margin-top: 8px; margin-right: 8px;">
+      <option value="">All Categories</option>
+
+      <option *ngFor="let category of categories" [value]="category.id" style="padding: 8px 0; margin-top: 8px; border-bottom: 1px solid #eee;">{{ category.name }}</option>
+    </select>
+  </div>
+
+  <div class="products-container">
+    <div class="product-card" *ngFor="let product of filteredProducts" style="border: 1px solid #ccc; border-radius: 8px; padding: 16px; margin-bottom: 20px;">
+      <div class="product-image" style="text-align: center;">
+        <img [src]="assetsImagePath + product.imageUrl" alt="Product Image" style="max-width: 100%; max-height: 200px;">
+      </div>
+      <div class="product-details" style="margin-top: 16px;">
+        <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 8px;">{{ product.productName }}</h3>
+        <p class="description" style="font-size: 1rem; color: #666;">{{ product.productDescription }}</p>
+        <p class="price" style="font-size: 1.1rem; color: #333; margin-top: 12px;">{{ product.productPrice }} TND</p>
+        <button class="add-to-cart-button" (click)="onAddToCart(product)" style="background-color: #007bff; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 12px;">Add to Cart</button>
+        <div class="quantity-counter" style="margin-top: 12px;">
+          <button (click)="decrementQuantity(product)" style="background-color: #f8f9fa; color: #007bff; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer;">-</button>
+          <span style="margin: 0 8px; font-size: 1.1rem;">{{ productQuantities[product.id!] || 1 }}</span> <!-- Display product quantity -->
+          <button (click)="incrementQuantity(product)" style="background-color: #f8f9fa; color: #007bff; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer;">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

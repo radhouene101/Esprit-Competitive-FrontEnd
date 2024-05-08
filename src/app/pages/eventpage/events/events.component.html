@@ -1,0 +1,71 @@
+<div class="competition-section1 bg-dark">
+  <div class="competition-cards-layout">
+
+  </div>
+  <div class="competition-cards-container">
+    <div *ngFor="let event of events" (click)="showEvent(event.id)" class="event-frame">
+      <div class="competition-card" *ngIf="!oldevent(event)">
+        <div class="competition-card-timer">
+          <svg style="margin-right: 10px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="lc-md:text-lg mr-2 text-base"><path fill-rule="evenodd" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zm1-13.4v4.782l3.047 1.524a1 1 0 11-.894 1.788l-3.6-1.8A1 1 0 0111 12V6.6a1 1 0 112 0z" clip-rule="evenodd">20:00</path></svg>
+          {{ event.name }}
+        </div>
+        <div class="competition-card-description">
+          <span>{{ event.location }}</span>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example"*ngIf="!oldevent(event)">
+          <button *ngIf="helperuser.includes('ADMIN')" (click)="editEvent(addForm.value,event.id)" class="btn btn-secondary" >Edit</button>
+          <button *ngIf="helperuser.includes('ADMIN')" (click)="deleteEvent(event.id)" class="btn btn-secondary">Delete</button>
+          <button [routerLink]="['/showevent',event.id]" class="btn btn-secondary">Show</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="competition-lists-container bg-dark">
+  <div class="competition-lists-layout">
+    <div class="competition-lists rounded-5">
+      <div class="competition-container" *ngFor="let eventt of events" >
+
+        <img class="competition-img" src="https://leetcode.com/_next/static/images/weekly-default-553ede7bcc8e1b4a44c28a9e4a32068c.png" alt="" *ngIf="oldevent(eventt)" srcset="">
+        <div class="competition-text" *ngIf="oldevent(eventt)" >
+          <span>{{eventt.name}}</span>
+          <p>{{ eventt.date | date:'yyyy-MM-dd' }}</p>
+        </div>
+      </div>
+      </div>
+
+      <form id="createEventForm"  style="color: whitesmoke;" [formGroup]="addForm"  (ngSubmit)="onAddEvent()">
+        <div *ngIf="helperuser.includes('ADMIN')">
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" ngModel name="name"formControlName="name" style="text-" required>
+
+        <label for="prize">Prize:</label>
+        <input type="text" id="prize" ngModel name="prize" formControlName="prize" required>
+
+        <label for="organizer">Organizer:</label>
+        <input type="text" id="organizer" ngModel name="organizer" formControlName="organizer">
+
+        <label for="location" ><a href="https://www.latlong.net">Location:</a></label>
+        <input type="text" id="location" name="location" formControlName="location">
+
+        <label for="longitude">longitude:</label>
+        <input type="text" id="longitude" name="longitude" formControlName="longitude">
+
+        <label for="lattitude">lattitude:</label>
+        <input type="text" id="lattitude" name="lattitude" formControlName="lattitude">
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" formControlName="date">
+        <br>
+        <label for="description">Description:</label>
+        <textarea type="text" id="description" name="description" formControlName="description"></textarea>
+        <div class="row">
+        <button type="submit" class="btn btn-primary ">Create Event</button>
+        </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+

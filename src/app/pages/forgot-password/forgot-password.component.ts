@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ForgotpasswordControllerService} from "../../services/Role/services/forgotpassword-controller.service";
 import {FormControl, FormGroup, FormBuilder, Validators} from "@angular/forms";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-forgot-password',
@@ -23,6 +24,8 @@ export class ForgotPasswordComponent implements OnInit {
     const params = { email: email, newPassword: newPassword };
     this.forgotpassword.setPassword(params).subscribe(
     );
+    Swal.fire('password reset successfully','','success').then(res=>window.location.reload())
+
   }
 
   get email() {
