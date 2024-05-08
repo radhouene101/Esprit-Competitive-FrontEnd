@@ -54,6 +54,7 @@ export class UserService {
   }
 
   getUserData(){
+
     return this.getData.hello();
   }
 
@@ -64,4 +65,5 @@ export class UserService {
   verifyEmail(hash: string,email:string) {
     return this.http.put("http://localhost:8083/user/verify-account?email="+email+"&otp="+hash,{})
   }
+
 }
