@@ -1,0 +1,20 @@
+.dark-mode-container {
+  background-color: #121212; /* Dark background for dark mode */
+  color: #ffffff; /* Light text color for readability */
+  padding: 20px; /* Add some padding around the content */
+  min-height: 100vh; /* Optional: make the div take at least the full height of the viewport */
+  box-sizing: border-box; /* Ensures padding does not add extra width */
+}
+button {
+  padding: 10px 20px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
