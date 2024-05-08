@@ -32,9 +32,15 @@ import { OrderComponent } from './marketplace/order/order.component';
 import { Order2Component } from './marketplace/order2/order2.component';
 import { ProductsBackComponent } from './marketplace/products-back/products-back.component';
 import { OrdersBackComponent } from './marketplace/orders-back/orders-back.component';
-import {
-  CompetitionsContestPageComponent
-} from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
+
+import {UploadVideoComponent} from "./pages/upload-video/upload-video.component";
+
+import {VideoDetailsComponent} from "./pages/video-details/video-details.component";
+import {VideoListComponent} from "./pages/video-list/video-list.component";
+import {VideoComponent} from "./pages/video/video.component";
+
+import {CompetitionsContestPageComponent} from "./pages/bal-de-projet-pages/constetv2/competitions-page/competitions-page.component";
+
 
 const routes:Routes=[
   {
@@ -52,6 +58,21 @@ const routes:Routes=[
   {
     path:'home',
     component:MyFirstCompComponent
+  },
+  {
+    path:'upload-video',
+    component: UploadVideoComponent
+  },
+  {
+    path:'video',
+    component: VideoComponent
+  },
+  {
+    path:'video-list',
+    component: VideoListComponent
+  },
+  { path: 'video/:id',
+    component: VideoDetailsComponent
   },
   {
     path:'signup',
@@ -80,10 +101,7 @@ const routes:Routes=[
     path:'ordersback',//Path Param
     component:  OrdersBackComponent
   },
-  {
-    path:'notfound',//Path Param
-    component:NotFoundComponent
-  },
+
   {
     path:'messages',//Path Param
     component:ChatPageComponent
@@ -153,8 +171,8 @@ const routes:Routes=[
     component:ActivateAccountComponent
   },
   {
-    path:'**',//route has error
-    component: NotFoundComponent
+    path:'notfound',//Path Param
+    component:NotFoundComponent
   }
 ]//Added for Routing
 @NgModule({
