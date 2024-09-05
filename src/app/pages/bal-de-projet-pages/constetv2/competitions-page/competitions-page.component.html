@@ -2,9 +2,7 @@
   <div class="competition-cards-layout">
     <div class="container center">
       <div class="card-title text-white ">
-        <p class="">
-          Vote Fast for you favorite product!!
-        </p>
+
       </div>
     </div>
 
@@ -13,6 +11,9 @@
         <button type="submit" class="btn btn-outline-success m-1 w-50" [routerLink]="['/add-contest']"> add Contest</button>
         <button type="submit" class="btn btn-outline-primary m-1 w-50" [routerLink]="['/add-project-form']"> add project</button>
       </div>
+    </div>
+    <div class="container d-flex justify-content-center align-items-center text-white full-height pt-5">
+      <h1 class="title ">Navigate the Contest Page !</h1>
     </div>
   </div>
   <div class="competition-cards-container" *ngFor="let contest of headerContestList">

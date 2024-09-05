@@ -40,7 +40,7 @@ export class ContestComponent implements OnInit{
   getContestList(){
     this.contestService.getAllContests().subscribe({ next : (data)=>{
       this.contestList=data
-      //console.log(JSON.stringify(this.contestList));
+      console.log(JSON.stringify(this.contestList));
     }
 
     })

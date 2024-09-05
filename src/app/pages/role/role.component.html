@@ -2,7 +2,7 @@
 
 
 <h1>liste des utilisateurs</h1>
-<table class="table table-striped">
+<table class="table table-striped text-white">
   <thead class="thead-dark">
   <tr>
     <th scope="col">#</th>
@@ -27,7 +27,7 @@
   </tbody>
 </table>
 <h1>affecter un role</h1>
-<select (change)="getuserid($event)" class="custom-select">
+<select (change)="getuserid($event)" class="custom-select text-white">
   <option value="" selected disabled>Select a user</option>
   <option *ngFor="let user of listUsers" [value]="user.id">{{ user.name }}</option>
 </select>
